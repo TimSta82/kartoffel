@@ -1,9 +1,9 @@
 package de.bornholdtlee.defaultprojectkotlin.injection
 
-import com.facebook.stetho.okhttp3.StethoInterceptor
+import com.jakewharton.retrofit2.adapter.kotlin.coroutines.CoroutineCallAdapterFactory
 import de.bornholdtlee.defaultprojectkotlin.BuildConfig
-import de.bornholdtlee.defaultprojectkotlin.api.ApiInterface
 import de.bornholdtlee.defaultprojectkotlin.api.AuthInterceptor
+import de.bornholdtlee.defaultprojectkotlin.api.RecipeApiInterface
 import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
 import org.koin.dsl.module
@@ -21,8 +21,9 @@ private fun provideOkHttpClient(): OkHttpClient {
     val builder = OkHttpClient.Builder()
 
     if (BuildConfig.DEBUG) {
-        builder.addInterceptor(HttpLoggingInterceptor().apply { level = HttpLoggingInterceptor.Level.BODY })
-        builder.addNetworkInterceptor(StethoInterceptor())
+        builder.addInterceptor(HttpLoggingInterceptor().apply {
+            level = HttpLoggingInterceptor.Level.BODY
+        })
     }
 
     builder.addInterceptor(AuthInterceptor())
@@ -36,6 +37,7 @@ private fun provideOkHttpClient(): OkHttpClient {
 private fun provideRetrofit(okHttpClient: OkHttpClient) = Retrofit.Builder()
     .baseUrl(BuildConfig.BASE_URL)
     .addConverterFactory(GsonConverterFactory.create())
+    .addCallAdapterFactory(CoroutineCallAdapterFactory())
     .client(okHttpClient)
     .build()
-    .create(ApiInterface::class.java)
+    .create(RecipeApiInterface::class.java)
