@@ -1,7 +1,7 @@
 package de.bornholdtlee.defaultprojectkotlin.usecases
 
 import de.bornholdtlee.defaultprojectkotlin.api.ResponseEvaluator
-import org.koin.core.KoinComponent
+import org.koin.core.component.KoinComponent
 
 abstract class BaseUseCase : KoinComponent {
 

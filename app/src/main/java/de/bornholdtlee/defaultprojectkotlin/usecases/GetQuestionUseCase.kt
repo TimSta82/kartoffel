@@ -2,7 +2,7 @@ package de.bornholdtlee.defaultprojectkotlin.usecases
 
 import de.bornholdtlee.defaultprojectkotlin.api.model.QuestionListDto
 import de.bornholdtlee.defaultprojectkotlin.repositories.QuestionRepository
-import org.koin.core.inject
+import org.koin.core.component.inject
 
 class GetQuestionUseCase : BaseUseCase() {
 

@@ -6,7 +6,7 @@ import de.bornholdtlee.defaultprojectkotlin.api.model.QuestionListDto
 import de.bornholdtlee.defaultprojectkotlin.database.dao.QuestionDao
 import de.bornholdtlee.defaultprojectkotlin.database.model.Question
 import kotlinx.coroutines.launch
-import org.koin.core.inject
+import org.koin.core.component.inject
 
 class QuestionRepository : BaseRepository() {
 
