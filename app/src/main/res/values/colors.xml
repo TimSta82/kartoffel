@@ -6,6 +6,7 @@
     <color name="blue">#284198</color>
     <color name="green">#09670D</color>
     <color name="yellow">#E4E232</color>
+    <color name="transparent">#00000000</color>
 
     <color name="easy_flip_front">#D1176E</color>
     <color name="easy_flip_back">#03A9F4</color>

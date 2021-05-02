@@ -8,7 +8,7 @@ import de.bornholdtlee.defaultprojectkotlin.R
 import de.bornholdtlee.defaultprojectkotlin.databinding.GridItemSetupBinding
 import de.bornholdtlee.defaultprojectkotlin.model.data_types.FoodCategory
 
-class SetupAdapter/*(private val onClick: () -> Unit)*/ : RecyclerView.Adapter<SetupAdapter.SetupViewHolder>() {
+class SetupAdapter(private val onClick: () -> Unit) : RecyclerView.Adapter<SetupAdapter.SetupViewHolder>() {
 
     private var queries = emptyList<FoodCategory>()
 
@@ -24,7 +24,8 @@ class SetupAdapter/*(private val onClick: () -> Unit)*/ : RecyclerView.Adapter<S
             }
 
             itemBinding.root.setOnClickListener {
-                itemBinding.gridItemSetupEfv.flipTheView()
+                onClick()
+//                itemBinding.gridItemSetupEfv.flipTheView()
             }
         }
     }
