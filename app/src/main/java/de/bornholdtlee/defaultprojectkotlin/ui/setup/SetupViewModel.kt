@@ -29,7 +29,6 @@ class SetupViewModel : ViewModel() {
     val seven: LiveData<FoodCategory> = _seven
 
     fun applySelectedCategory(oldPosition: Int, selectedCategory: FoodCategory) {
-        selectedCategory.isFrontSide = true
         when (oldPosition) {
             1 -> _one.value = selectedCategory
             2 -> _two.value = selectedCategory
@@ -38,11 +37,21 @@ class SetupViewModel : ViewModel() {
             5 -> _five.value = selectedCategory
             6 -> _six.value = selectedCategory
             7 -> _seven.value = selectedCategory
-            else -> {}
+            else -> {
+            }
         }
     }
 
     fun submitSetup() {
+        val list = listOf(
+            _one.value!!.queryMap,
+            _two.value!!.queryMap,
+            _three.value!!.queryMap,
+            _four.value!!.queryMap,
+            _five.value!!.queryMap,
+            _six.value!!.queryMap,
+            _seven.value!!.queryMap,
+        )
 
     }
 }

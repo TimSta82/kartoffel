@@ -2,7 +2,6 @@ package de.bornholdtlee.defaultprojectkotlin.repositories
 
 import androidx.lifecycle.LiveData
 import de.bornholdtlee.defaultprojectkotlin.api.ResponseEvaluator
-import de.bornholdtlee.defaultprojectkotlin.api.model.QuestionListDto
 import de.bornholdtlee.defaultprojectkotlin.database.dao.QuestionDao
 import de.bornholdtlee.defaultprojectkotlin.database.model.Question
 import kotlinx.coroutines.launch

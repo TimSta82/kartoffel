@@ -14,6 +14,14 @@
     <dimen name="ten_grid_unit">80dp</dimen>
     <dimen name="eleven_grid_unit">88dp</dimen>
     <dimen name="twelve_grid_unit">96dp</dimen>
+    <dimen name="fourteen_grid_unit">112dp</dimen>
+    <dimen name="fifteen_grid_unit">120dp</dimen>
+    <dimen name="fifteen_and_half_grid_unit">124dp</dimen>
+    <dimen name="sixteen_grid_unit">128dp</dimen>
+    <dimen name="eighteen_grid_unit">144dp</dimen>
 
     <dimen name="card_corner_radius">8dp</dimen>
+
+    <dimen name="fab_menu_proceed_distance">@dimen/eight_grid_unit</dimen>
+    <dimen name="fab_menu_save_distance">@dimen/fifteen_and_half_grid_unit</dimen>
 </resources>

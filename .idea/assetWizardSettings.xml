@@ -18,7 +18,7 @@
                                 <PersistentState>
                                   <option name="values">
                                     <map>
-                                      <entry key="url" value="file:$USER_HOME$/Library/Android/sdk/icons/material/materialicons/surfing/baseline_surfing_24.xml" />
+                                      <entry key="url" value="file:$USER_HOME$/Library/Android/sdk/icons/material/materialicons/double_arrow/baseline_double_arrow_24.xml" />
                                     </map>
                                   </option>
                                 </PersistentState>
@@ -28,7 +28,7 @@
                         </option>
                         <option name="values">
                           <map>
-                            <entry key="outputName" value="ic_surfing" />
+                            <entry key="outputName" value="ic_proceed" />
                             <entry key="sourceFile" value="$PROJECT_DIR$/flaticons/vegetarian.svg" />
                           </map>
                         </option>

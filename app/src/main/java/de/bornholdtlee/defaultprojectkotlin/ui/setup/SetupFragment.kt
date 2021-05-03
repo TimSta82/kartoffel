@@ -19,6 +19,8 @@ class SetupFragment : BaseFragment(R.layout.fragment_setup) {
     private val binding by viewBinding(FragmentSetupBinding::bind)
     private val viewModel by viewModels<SetupViewModel>()
 
+    private var isFabMenuOpen = false
+
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         Logger.debug("SetupFragment")
@@ -36,9 +38,24 @@ class SetupFragment : BaseFragment(R.layout.fragment_setup) {
         binding.easyFlipSixEfv.setOnClickListener { showDialog(6) }
         binding.easyFlipSevenEfv.setOnClickListener { showDialog(7) }
 
-        binding.setupMenuFab.setOnClickListener {
-            viewModel.submitSetup()
-        }
+        binding.setupMenuFab.setOnClickListener { toggleFabMenu() }
+        binding.setupProceedFab.setOnClickListener { viewModel.submitSetup() }
+        binding.setupSaveFab.setOnClickListener { Toast.makeText(requireContext(), "TODO -> save", Toast.LENGTH_SHORT).show() }
+    }
+
+    private fun toggleFabMenu() {
+        if (!isFabMenuOpen) showFabMenu() else hideFabMenu()
+        isFabMenuOpen = isFabMenuOpen.not()
+    }
+
+    private fun hideFabMenu() {
+        binding.setupProceedFab.animate().translationY(-resources.getDimension(R.dimen.fab_menu_proceed_distance))
+        binding.setupSaveFab.animate().translationY(-resources.getDimension(R.dimen.fab_menu_save_distance))
+    }
+
+    private fun showFabMenu() {
+        binding.setupProceedFab.animate().translationY(0F)
+        binding.setupSaveFab.animate().translationY(0F)
     }
 
     private fun showDialog(index: Int) {

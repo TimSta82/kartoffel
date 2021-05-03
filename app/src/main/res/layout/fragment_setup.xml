@@ -139,14 +139,37 @@
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 
-    <com.google.android.material.floatingactionbutton.FloatingActionButton
-        android:id="@+id/setup_menu_Fab"
+    <RelativeLayout
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_height="0dp"
         android:layout_marginEnd="@dimen/two_grid_unit"
         android:layout_marginBottom="@dimen/two_grid_unit"
-        android:src="@drawable/ic_placeholde"
+        android:gravity="bottom"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent" />
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <com.google.android.material.floatingactionbutton.FloatingActionButton
+            android:id="@+id/setup_save_Fab"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:src="@drawable/ic_save" />
+
+        <com.google.android.material.floatingactionbutton.FloatingActionButton
+            android:id="@+id/setup_proceed_Fab"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:src="@drawable/ic_proceed" />
+
+        <com.google.android.material.floatingactionbutton.FloatingActionButton
+            android:id="@+id/setup_menu_Fab"
+            android:layout_width="@dimen/eight_grid_unit"
+            android:layout_height="@dimen/eight_grid_unit"
+            android:layout_centerInParent="true"
+            android:src="@drawable/ic_placeholde"
+            app:fabCustomSize="@dimen/eight_grid_unit" />
+    </RelativeLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

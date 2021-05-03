@@ -2,7 +2,6 @@ package de.bornholdtlee.defaultprojectkotlin.ui.dialogs.select
 
 import android.os.Bundle
 import android.view.View
-import android.widget.Toast
 import androidx.fragment.app.FragmentManager
 import de.bornholdtlee.defaultprojectkotlin.R
 import de.bornholdtlee.defaultprojectkotlin.databinding.DialogSelectCategoryBinding
