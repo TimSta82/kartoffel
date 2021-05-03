@@ -1,18 +1,143 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/blue">
 
-    <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/setup_Rv"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_margin="@dimen/four_grid_unit"
-        tools:itemCount="7"
-        tools:listitem="@layout/grid_item_setup" />
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <com.wajahatkarim3.easyflipview.EasyFlipView
+            android:id="@+id/easy_flip_one_Efv"
+            android:layout_width="@dimen/ten_grid_unit"
+            android:layout_height="@dimen/ten_grid_unit"
+            android:layout_marginEnd="@dimen/one_grid_unit"
+            android:orientation="horizontal"
+            app:flipEnabled="true"
+            app:flipOnTouch="false"
+            app:layout_constraintEnd_toStartOf="@+id/easy_flip_two_Efv"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <include layout="@layout/easy_flip_front" />
+
+            <include layout="@layout/easy_flip_back" />
+        </com.wajahatkarim3.easyflipview.EasyFlipView>
+
+        <com.wajahatkarim3.easyflipview.EasyFlipView
+            android:id="@+id/easy_flip_two_Efv"
+            android:layout_width="@dimen/ten_grid_unit"
+            android:layout_height="@dimen/ten_grid_unit"
+            android:layout_marginStart="@dimen/one_grid_unit"
+            android:orientation="horizontal"
+            app:flipEnabled="true"
+            app:flipOnTouch="false"
+            app:layout_constraintBottom_toTopOf="@id/easy_flip_four_Efv"
+            app:layout_constraintStart_toEndOf="@+id/easy_flip_one_Efv"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <include layout="@layout/easy_flip_front" />
+
+            <include layout="@layout/easy_flip_back" />
+        </com.wajahatkarim3.easyflipview.EasyFlipView>
+
+        <com.wajahatkarim3.easyflipview.EasyFlipView
+            android:id="@+id/easy_flip_three_Efv"
+            android:layout_width="@dimen/ten_grid_unit"
+            android:layout_height="@dimen/ten_grid_unit"
+            android:layout_marginTop="@dimen/one_grid_unit"
+            android:layout_marginEnd="@dimen/one_grid_unit"
+            android:orientation="horizontal"
+            app:flipEnabled="true"
+            app:flipOnTouch="false"
+            app:layout_constraintBottom_toTopOf="@id/easy_flip_five_Efv"
+            app:layout_constraintEnd_toStartOf="@id/easy_flip_four_Efv"
+            app:layout_constraintTop_toBottomOf="@+id/easy_flip_two_Efv">
+
+            <include layout="@layout/easy_flip_front" />
+
+            <include layout="@layout/easy_flip_back" />
+        </com.wajahatkarim3.easyflipview.EasyFlipView>
+
+        <com.wajahatkarim3.easyflipview.EasyFlipView
+            android:id="@+id/easy_flip_four_Efv"
+            android:layout_width="@dimen/ten_grid_unit"
+            android:layout_height="@dimen/ten_grid_unit"
+            android:layout_marginStart="@dimen/one_grid_unit"
+            android:layout_marginTop="@dimen/one_grid_unit"
+            android:orientation="horizontal"
+            app:flipEnabled="true"
+            app:flipOnTouch="false"
+            app:layout_constraintBottom_toTopOf="@id/easy_flip_six_Efv"
+            app:layout_constraintStart_toEndOf="@+id/easy_flip_three_Efv"
+            app:layout_constraintTop_toBottomOf="@+id/easy_flip_two_Efv">
+
+            <include layout="@layout/easy_flip_front" />
+
+            <include layout="@layout/easy_flip_back" />
+        </com.wajahatkarim3.easyflipview.EasyFlipView>
+
+        <com.wajahatkarim3.easyflipview.EasyFlipView
+            android:id="@+id/easy_flip_five_Efv"
+            android:layout_width="@dimen/ten_grid_unit"
+            android:layout_height="@dimen/ten_grid_unit"
+            android:layout_marginTop="@dimen/one_grid_unit"
+            android:layout_marginEnd="@dimen/one_grid_unit"
+            android:layout_marginBottom="@dimen/one_grid_unit"
+            android:orientation="horizontal"
+            app:flipEnabled="true"
+            app:flipOnTouch="false"
+            app:layout_constraintBottom_toTopOf="@id/easy_flip_seven_Efv"
+            app:layout_constraintEnd_toStartOf="@+id/easy_flip_six_Efv"
+            app:layout_constraintTop_toBottomOf="@+id/easy_flip_three_Efv">
+
+            <include layout="@layout/easy_flip_front" />
+
+            <include layout="@layout/easy_flip_back" />
+        </com.wajahatkarim3.easyflipview.EasyFlipView>
+
+        <com.wajahatkarim3.easyflipview.EasyFlipView
+            android:id="@+id/easy_flip_six_Efv"
+            android:layout_width="@dimen/ten_grid_unit"
+            android:layout_height="@dimen/ten_grid_unit"
+            android:layout_marginStart="@dimen/one_grid_unit"
+            android:layout_marginTop="@dimen/one_grid_unit"
+            android:orientation="horizontal"
+            app:flipEnabled="true"
+            app:flipOnTouch="false"
+            app:layout_constraintStart_toEndOf="@+id/easy_flip_five_Efv"
+            app:layout_constraintTop_toBottomOf="@+id/easy_flip_four_Efv">
+
+            <include layout="@layout/easy_flip_front" />
+
+            <include layout="@layout/easy_flip_back" />
+        </com.wajahatkarim3.easyflipview.EasyFlipView>
+
+        <com.wajahatkarim3.easyflipview.EasyFlipView
+            android:id="@+id/easy_flip_seven_Efv"
+            android:layout_width="@dimen/ten_grid_unit"
+            android:layout_height="@dimen/ten_grid_unit"
+            android:layout_marginTop="@dimen/one_grid_unit"
+            android:orientation="horizontal"
+            app:flipEnabled="true"
+            app:flipOnTouch="false"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/easy_flip_six_Efv">
+
+            <include layout="@layout/easy_flip_front" />
+
+            <include layout="@layout/easy_flip_back" />
+        </com.wajahatkarim3.easyflipview.EasyFlipView>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
 
     <com.google.android.material.floatingactionbutton.FloatingActionButton
         android:id="@+id/setup_menu_Fab"
