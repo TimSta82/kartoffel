@@ -16,4 +16,12 @@ class SetupViewModel : ViewModel() {
     fun initCategories() {
         _categories.value = defaultCategories
     }
+
+    fun applySelectedCategory(oldPosition: Int, selectedCategory: FoodCategory) {
+        val newList = _categories.value?.toMutableList() ?: emptyList<FoodCategory>().toMutableList()
+        newList.add(oldPosition, selectedCategory)
+        newList.removeAt(oldPosition -1 )
+        selectedCategory.isFrontSide = true
+        _categories.value = newList
+    }
 }

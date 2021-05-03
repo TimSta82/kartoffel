@@ -5,11 +5,23 @@
     android:layout_height="wrap_content"
     android:layout_margin="@dimen/half_grid_unit">
 
+    <View
+        android:id="@+id/grid_item_V"
+        android:background="@color/transparent"
+        android:layout_width="@dimen/ten_grid_unit"
+        android:layout_height="@dimen/ten_grid_unit"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
     <com.wajahatkarim3.easyflipview.EasyFlipView
         android:id="@+id/grid_item_setup_Efv"
         android:layout_width="@dimen/ten_grid_unit"
         android:layout_height="@dimen/ten_grid_unit"
         android:orientation="horizontal"
+        app:flipOnTouch="false"
+        app:flipEnabled="true"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -20,6 +32,5 @@
         <include layout="@layout/easy_flip_back" />
 
     </com.wajahatkarim3.easyflipview.EasyFlipView>
-
 
 </androidx.constraintlayout.widget.ConstraintLayout>

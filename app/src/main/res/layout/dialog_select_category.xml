@@ -3,6 +3,8 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:layout_margin="@dimen/two_grid_unit"
+    android:padding="@dimen/two_grid_unit"
     android:background="@color/yellow">
 
     <androidx.recyclerview.widget.RecyclerView
