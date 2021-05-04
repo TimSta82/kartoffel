@@ -15,9 +15,16 @@ abstract class BaseUseCase : KoinComponent {
         class Failure<T> : UseCaseResult<T>()
     }
 
-    fun <T> responseCall(result: ResponseEvaluator.Result<T>): UseCaseResult<T> {
+    protected fun <T : Any> simpleResponseCall(result: ResponseEvaluator.Result<T>): UseCaseResult<T> {
         return when (result) {
-            is ResponseEvaluator.Result.Success -> result.response.body()?.let { UseCaseResult.Success(it) } ?: UseCaseResult.Failure()
+            is ResponseEvaluator.Result.Success -> result.response.body()?.let { body -> UseCaseResult.Success(body) } ?: UseCaseResult.Failure()
+            else -> UseCaseResult.Failure()
+        }
+    }
+
+    protected suspend fun <T : Any, S : Any> simpleResponseCall(result: ResponseEvaluator.Result<T>, onSuccess: suspend (t: T) -> S): UseCaseResult<S> {
+        return when (result) {
+            is ResponseEvaluator.Result.Success -> result.response.body()?.let { body -> UseCaseResult.Success(onSuccess(body)) } ?: UseCaseResult.Failure()
             else -> UseCaseResult.Failure()
         }
     }

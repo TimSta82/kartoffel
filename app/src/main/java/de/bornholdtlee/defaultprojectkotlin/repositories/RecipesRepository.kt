@@ -4,5 +4,5 @@ class RecipesRepository : BaseRepository() {
 
     suspend fun getRecipes(query: Map<String, String>) = apiCall { getRecipes(query) }
 
-    suspend fun getRandomRecipes() = apiCall { getRandomRecipes() }
+    suspend fun getRandomRecipes(number: Int) = apiCall { getRandomRecipes(number) }
 }

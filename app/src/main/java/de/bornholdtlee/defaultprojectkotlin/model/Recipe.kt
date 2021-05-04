@@ -67,7 +67,7 @@ data class Recipe(
     )
 
     constructor(simpleDto: SimpleRecipesDto.SimpleRecipeDto) : this(
-        vegetarian = simpleDto.ve,
+        vegetarian = simpleDto.vegetarian,
         vegan = simpleDto.vegan,
         glutenFree = simpleDto.glutenFree,
         dairyFree = simpleDto.dairyFree,
@@ -93,5 +93,4 @@ data class Recipe(
         diets = simpleDto.diets,
         spoonacularSourceUrl = simpleDto.spoonacularSourceUrl
     )
-
 }

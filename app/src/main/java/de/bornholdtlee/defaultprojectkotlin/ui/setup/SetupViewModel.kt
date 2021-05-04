@@ -6,7 +6,9 @@ import androidx.lifecycle.ViewModel
 import de.bornholdtlee.defaultprojectkotlin.api.model.RandomRecipesDto
 import de.bornholdtlee.defaultprojectkotlin.api.model.SimpleRecipesDto
 import de.bornholdtlee.defaultprojectkotlin.extensions.launch
+import de.bornholdtlee.defaultprojectkotlin.model.Recipe
 import de.bornholdtlee.defaultprojectkotlin.model.data_types.FoodCategory
+import de.bornholdtlee.defaultprojectkotlin.usecases.GetCombinedRecipesUseCase
 import de.bornholdtlee.defaultprojectkotlin.usecases.GetRecipesUseCase
 import de.bornholdtlee.defaultprojectkotlin.utils.SingleLiveEvent
 import org.koin.core.component.KoinComponent
@@ -14,13 +16,18 @@ import org.koin.core.component.inject
 
 class SetupViewModel : ViewModel(), KoinComponent {
 
+//    private val getRecipesUseCase by inject<GetCombinedRecipesUseCase>()
+
+
+//    private val _simpleRecipes = MutableLiveData<List<SimpleRecipesDto.SimpleRecipeDto>>()
+//    val simpleRecipes: LiveData<List<SimpleRecipesDto.SimpleRecipeDto>> = _simpleRecipes
+//
+//    private val _randomRecipes = MutableLiveData<List<RandomRecipesDto.RandomRecipeDto>>()
+//    val randomRecipes: LiveData<List<RandomRecipesDto.RandomRecipeDto>> = _randomRecipes
     private val getRecipesUseCase by inject<GetRecipesUseCase>()
 
-    private val _simpleRecipes = MutableLiveData<List<SimpleRecipesDto.SimpleRecipeDto>>()
-    val simpleRecipes: LiveData<List<SimpleRecipesDto.SimpleRecipeDto>> = _simpleRecipes
-
-    private val _randomRecipes = MutableLiveData<List<RandomRecipesDto.RandomRecipeDto>>()
-    val randomRecipes: LiveData<List<RandomRecipesDto.RandomRecipeDto>> = _randomRecipes
+    private val _recipes = MutableLiveData<List<Recipe>>()
+    val recipes : LiveData<List<Recipe>> = _recipes
 
     private val _failure = SingleLiveEvent<Any>()
     val failure: LiveData<Any> = _failure
@@ -71,13 +78,14 @@ class SetupViewModel : ViewModel(), KoinComponent {
             _seven.value!!.queryMap,
         )
         launch {
-            when (val result = getRecipesUseCase.call(queries)) {
-                is GetRecipesUseCase.GetRecipesResult.Success -> {
-                    _simpleRecipes.postValue(result.simpleRecipes)
-                    _randomRecipes.postValue(result.randomRecipes)
-                }
-                else -> _failure.call()
-            }
+//            when (val result = getRecipesUseCase.call(queries)) {
+//                is GetCombinedRecipesUseCase.GetRecipesResult.Success -> {
+//                    _simpleRecipes.postValue(result.simpleRecipes)
+//                    _randomRecipes.postValue(result.randomRecipes)
+//                }
+//                else -> _failure.call()
+//            }
+            _recipes.postValue(getRecipesUseCase.call(queries))
         }
     }
 }
