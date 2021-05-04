@@ -68,7 +68,7 @@ class SetupViewModel : ViewModel(), KoinComponent {
             _four.value!!,
             _five.value!!,
             _six.value!!,
-            _seven.value!!,
+            _seven.value!!
         )
     }
 

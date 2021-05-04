@@ -6,20 +6,23 @@ import android.widget.ImageView
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
-import com.wajahatkarim3.easyflipview.EasyFlipView
 import de.bornholdtlee.defaultprojectkotlin.R
 import de.bornholdtlee.defaultprojectkotlin.databinding.GridItemSetupBinding
 import de.bornholdtlee.defaultprojectkotlin.model.data_types.FoodCategory
 
-class SetupAdapter(private val onClick: (FoodCategory, position: Int) -> Unit) : ListAdapter<FoodCategory, SetupAdapter.SetupViewHolder>(SetupDiffUtilCallback()) {
+class SetupAdapter(private val onClick: (FoodCategory, position: Int) -> Unit) :
+    ListAdapter<FoodCategory, SetupAdapter.SetupViewHolder>(SetupDiffUtilCallback()) {
 
 //    private var queries = emptyList<FoodCategory>()
 
-    inner class SetupViewHolder(private val itemBinding: GridItemSetupBinding) : RecyclerView.ViewHolder(itemBinding.root) {
+    inner class SetupViewHolder(private val itemBinding: GridItemSetupBinding) :
+        RecyclerView.ViewHolder(itemBinding.root) {
         fun bind(category: FoodCategory, position: Int) {
             itemBinding.gridItemSetupEfv.setToHorizontalType()
-            val imageFront = itemBinding.gridItemSetupEfv.findViewById<ImageView>(R.id.easy_flip_front_Iv)
-            val imageBack = itemBinding.gridItemSetupEfv.findViewById<ImageView>(R.id.easy_flip_back_Iv)
+            val imageFront =
+                itemBinding.gridItemSetupEfv.findViewById<ImageView>(R.id.easy_flip_front_Iv)
+            val imageBack =
+                itemBinding.gridItemSetupEfv.findViewById<ImageView>(R.id.easy_flip_back_Iv)
             imageFront.setImageResource(category.imageResId)
             imageBack.setImageResource(category.imageResId)
 
@@ -30,7 +33,13 @@ class SetupAdapter(private val onClick: (FoodCategory, position: Int) -> Unit) :
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): SetupViewHolder {
-        return SetupViewHolder(GridItemSetupBinding.inflate(LayoutInflater.from(parent.context), parent, false))
+        return SetupViewHolder(
+            GridItemSetupBinding.inflate(
+                LayoutInflater.from(parent.context),
+                parent,
+                false
+            )
+        )
     }
 
     override fun onBindViewHolder(holder: SetupViewHolder, position: Int) {

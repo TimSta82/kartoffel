@@ -2,7 +2,12 @@ package de.bornholdtlee.defaultprojectkotlin.model.data_types
 
 import de.bornholdtlee.defaultprojectkotlin.R
 
-enum class FoodCategory(val id: Int, val queryMap: Map<String, String>, val imageResId: Int, val isRandomEndpoint: Boolean) {
+enum class FoodCategory(
+    val id: Int,
+    val queryMap: Map<String, String>,
+    val imageResId: Int,
+    val isRandomEndpoint: Boolean
+) {
     FISH(0, mapOf("diet" to "pescetarian"), R.drawable.ic_fish, false),
     CHICKEN(1, mapOf("includeIngredients" to "chicken"), R.drawable.ic_hen, false),
     MEAT(2, mapOf("includeIngredients" to "meat"), R.drawable.ic_meat, false),

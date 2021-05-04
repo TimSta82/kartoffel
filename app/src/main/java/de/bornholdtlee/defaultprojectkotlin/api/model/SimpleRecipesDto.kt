@@ -1,6 +1,5 @@
 package de.bornholdtlee.defaultprojectkotlin.api.model
 
-
 import com.google.gson.annotations.SerializedName
 
 data class SimpleRecipesDto(

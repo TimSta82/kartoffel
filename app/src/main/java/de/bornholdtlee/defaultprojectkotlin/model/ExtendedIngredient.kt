@@ -35,7 +35,7 @@ data class ExtendedIngredient(
     val metaInformation: @RawValue List<Any?>?, // TODO ANY?
     @SerializedName("measures")
     val measures: @RawValue Measures?
-):Parcelable {
+) : Parcelable {
     data class Measures(
         @SerializedName("us")
         val us: Us?,

@@ -4,12 +4,15 @@
     <color name="colorPrimaryDark">#00574B</color>
     <color name="colorAccent">#D81B60</color>
     <color name="blue">#284198</color>
-    <color name="green">#09670D</color>
+    <color name="green">#67094F</color>
     <color name="yellow">#E4E232</color>
     <color name="transparent">#00000000</color>
 
     <color name="easy_flip_front">#D1176E</color>
     <color name="easy_flip_back">#03A9F4</color>
+
+    <color name="favorites_front">#FF67094F</color>
+    <color name="favorites_back">#5D8A75</color>
 
     <color name="white">#FFFFFF</color>
     <color name="black_10">#1A000000</color>

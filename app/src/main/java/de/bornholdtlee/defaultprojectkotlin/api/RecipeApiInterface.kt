@@ -15,9 +15,9 @@ interface RecipeApiInterface {
         const val NUMBER_RANDOM = 1
     }
 
-    @GET("/recipes/complexSearch?apiKey=${API_KEY}&number=$NUMBER_SIMPLE&fillIngredients=true&addRecipeInformation=true")
+    @GET("/recipes/complexSearch?apiKey=$API_KEY&number=$NUMBER_SIMPLE&fillIngredients=true&addRecipeInformation=true")
     suspend fun getRecipes(@QueryMap query: Map<String, String>, @Query ("offset") offset: Int): Response<SimpleRecipesDto>
 
-    @GET("/recipes/random?apiKey=${API_KEY}&number=$NUMBER_RANDOM")
+    @GET("/recipes/random?apiKey=$API_KEY&number=$NUMBER_RANDOM")
     suspend fun getRandomRecipes(@QueryMap query: Map<String, String>): Response<RandomRecipesDto>
 }

@@ -21,4 +21,14 @@
         android:name="de.bornholdtlee.defaultprojectkotlin.ui.current.CurrentFragment"
         android:label="fragment_current"
         tools:layout="@layout/fragment_current" />
+    <fragment
+        android:id="@+id/favoritesFrontFragment"
+        android:name="de.bornholdtlee.defaultprojectkotlin.FavoritesFrontFragment"
+        android:label="fragment_favorites_front"
+        tools:layout="@layout/fragment_favorites_front" />
+    <fragment
+        android:id="@+id/favoritesBackFragment"
+        android:name="de.bornholdtlee.defaultprojectkotlin.FavoritesBackFragment"
+        android:label="fragment_favorites_back"
+        tools:layout="@layout/fragment_favorites_back" />
 </navigation>
