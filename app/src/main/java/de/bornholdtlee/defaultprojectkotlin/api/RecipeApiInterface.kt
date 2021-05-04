@@ -17,5 +17,5 @@ interface RecipeApiInterface {
     suspend fun getRecipes(@QueryMap query: Map<String, String>): Response<SimpleRecipesDto>
 
     @GET("/recipes/random?apiKey=${API_KEY}&number=$NUMBER")
-    suspend fun getRandomRecipes(@QueryMap query: Map<String, String>): Response<RandomRecipesDto>
+    suspend fun getRandomRecipes(): Response<RandomRecipesDto>
 }

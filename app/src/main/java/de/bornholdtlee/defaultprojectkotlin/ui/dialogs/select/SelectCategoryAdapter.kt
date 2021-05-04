@@ -13,7 +13,7 @@ class SelectCategoryAdapter(private val onClick: (FoodCategory) -> Unit) : Recyc
     inner class SelectCategoryViewHolder(private val itemBinding: ListItemCategoryBinding) : RecyclerView.ViewHolder(itemBinding.root) {
         fun bind(category: FoodCategory) {
             itemBinding.listItemCategoryIv.setImageResource(category.imageResId)
-            itemBinding.listItemCategoryTv.text = category.query
+            itemBinding.listItemCategoryTv.text = category.queryMap.getValue(category.queryMap.keys.first())
             itemBinding.root.setOnClickListener {
                 onClick(category)
             }

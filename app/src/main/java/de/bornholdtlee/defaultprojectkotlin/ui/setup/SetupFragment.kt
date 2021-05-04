@@ -7,6 +7,8 @@ import android.widget.Toast
 import androidx.fragment.app.viewModels
 import com.wajahatkarim3.easyflipview.EasyFlipView
 import de.bornholdtlee.defaultprojectkotlin.R
+import de.bornholdtlee.defaultprojectkotlin.api.model.RandomRecipesDto
+import de.bornholdtlee.defaultprojectkotlin.api.model.SimpleRecipesDto
 import de.bornholdtlee.defaultprojectkotlin.databinding.FragmentSetupBinding
 import de.bornholdtlee.defaultprojectkotlin.model.data_types.FoodCategory
 import de.bornholdtlee.defaultprojectkotlin.ui.BaseFragment
@@ -27,6 +29,34 @@ class SetupFragment : BaseFragment(R.layout.fragment_setup) {
 
         setObservers()
         setClickListeners()
+    }
+
+    private fun setObservers() {
+        viewModel.one.observe(viewLifecycleOwner) { prepareFlipView(binding.easyFlipOneEfv, it) }
+        viewModel.two.observe(viewLifecycleOwner) { prepareFlipView(binding.easyFlipTwoEfv, it) }
+        viewModel.three.observe(viewLifecycleOwner) { prepareFlipView(binding.easyFlipThreeEfv, it) }
+        viewModel.four.observe(viewLifecycleOwner) { prepareFlipView(binding.easyFlipFourEfv, it) }
+        viewModel.five.observe(viewLifecycleOwner) { prepareFlipView(binding.easyFlipFiveEfv, it) }
+        viewModel.six.observe(viewLifecycleOwner) { prepareFlipView(binding.easyFlipSixEfv, it) }
+        viewModel.seven.observe(viewLifecycleOwner) { prepareFlipView(binding.easyFlipSevenEfv, it) }
+        viewModel.simpleRecipes.observe(viewLifecycleOwner) { showSimpleRecipes(it) }
+        viewModel.randomRecipes.observe(viewLifecycleOwner) { showRandomRecipes(it) }
+    }
+
+    private fun showRandomRecipes(recipes: List<RandomRecipesDto.RandomRecipeDto>?) {
+        recipes?.let {
+            it.forEach { recipe ->
+                Logger.debug("RandomRecipeName: ${recipe.title}")
+            }
+        }
+    }
+
+    private fun showSimpleRecipes(recipes: List<SimpleRecipesDto.SimpleRecipeDto>?) {
+        recipes?.let {
+            it.forEach { recipe ->
+                Logger.debug("SimpleRecipeName: ${recipe.title}")
+            }
+        }
     }
 
     private fun setClickListeners() {
@@ -60,16 +90,6 @@ class SetupFragment : BaseFragment(R.layout.fragment_setup) {
 
     private fun showDialog(index: Int) {
         SelectCategoryDialog.show(childFragmentManager) { selectedCategory -> onCategorySelected(index, selectedCategory) }
-    }
-
-    private fun setObservers() {
-        viewModel.one.observe(viewLifecycleOwner) { prepareFlipView(binding.easyFlipOneEfv, it) }
-        viewModel.two.observe(viewLifecycleOwner) { prepareFlipView(binding.easyFlipTwoEfv, it) }
-        viewModel.three.observe(viewLifecycleOwner) { prepareFlipView(binding.easyFlipThreeEfv, it) }
-        viewModel.four.observe(viewLifecycleOwner) { prepareFlipView(binding.easyFlipFourEfv, it) }
-        viewModel.five.observe(viewLifecycleOwner) { prepareFlipView(binding.easyFlipFiveEfv, it) }
-        viewModel.six.observe(viewLifecycleOwner) { prepareFlipView(binding.easyFlipSixEfv, it) }
-        viewModel.seven.observe(viewLifecycleOwner) { prepareFlipView(binding.easyFlipSevenEfv, it) }
     }
 
     private fun prepareFlipView(flipView: EasyFlipView, foodCategory: FoodCategory) {

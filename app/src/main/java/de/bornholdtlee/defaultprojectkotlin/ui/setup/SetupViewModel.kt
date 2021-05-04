@@ -3,9 +3,27 @@ package de.bornholdtlee.defaultprojectkotlin.ui.setup
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
+import de.bornholdtlee.defaultprojectkotlin.api.model.RandomRecipesDto
+import de.bornholdtlee.defaultprojectkotlin.api.model.SimpleRecipesDto
+import de.bornholdtlee.defaultprojectkotlin.extensions.launch
 import de.bornholdtlee.defaultprojectkotlin.model.data_types.FoodCategory
+import de.bornholdtlee.defaultprojectkotlin.usecases.GetRecipesUseCase
+import de.bornholdtlee.defaultprojectkotlin.utils.SingleLiveEvent
+import org.koin.core.component.KoinComponent
+import org.koin.core.component.inject
 
-class SetupViewModel : ViewModel() {
+class SetupViewModel : ViewModel(), KoinComponent {
+
+    private val getRecipesUseCase by inject<GetRecipesUseCase>()
+
+    private val _simpleRecipes = MutableLiveData<List<SimpleRecipesDto.SimpleRecipeDto>>()
+    val simpleRecipes: LiveData<List<SimpleRecipesDto.SimpleRecipeDto>> = _simpleRecipes
+
+    private val _randomRecipes = MutableLiveData<List<RandomRecipesDto.RandomRecipeDto>>()
+    val randomRecipes: LiveData<List<RandomRecipesDto.RandomRecipeDto>> = _randomRecipes
+
+    private val _failure = SingleLiveEvent<Any>()
+    val failure: LiveData<Any> = _failure
 
     private val _one = MutableLiveData(FoodCategory.RANDOM)
     val one: LiveData<FoodCategory> = _one
@@ -43,7 +61,7 @@ class SetupViewModel : ViewModel() {
     }
 
     fun submitSetup() {
-        val list = listOf(
+        val queries = listOf(
             _one.value!!.queryMap,
             _two.value!!.queryMap,
             _three.value!!.queryMap,
@@ -52,6 +70,14 @@ class SetupViewModel : ViewModel() {
             _six.value!!.queryMap,
             _seven.value!!.queryMap,
         )
-
+        launch {
+            when (val result = getRecipesUseCase.call(queries)) {
+                is GetRecipesUseCase.GetRecipesResult.Success -> {
+                    _simpleRecipes.postValue(result.simpleRecipes)
+                    _randomRecipes.postValue(result.randomRecipes)
+                }
+                else -> _failure.call()
+            }
+        }
     }
 }

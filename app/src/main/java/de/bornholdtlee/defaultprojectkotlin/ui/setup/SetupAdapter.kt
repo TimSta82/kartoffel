@@ -23,7 +23,7 @@ class SetupAdapter(private val onClick: (FoodCategory, position: Int) -> Unit) :
             imageFront.setImageResource(category.imageResId)
             imageBack.setImageResource(category.imageResId)
 
-            if (category.isFrontSide && itemBinding.gridItemSetupEfv.currentFlipState != EasyFlipView.FlipState.FRONT_SIDE) itemBinding.gridItemSetupEfv.flipTheView()
+//            if (category.isFrontSide && itemBinding.gridItemSetupEfv.currentFlipState != EasyFlipView.FlipState.FRONT_SIDE) itemBinding.gridItemSetupEfv.flipTheView()
 
             itemBinding.root.setOnClickListener { onClick(category, position) }
         }
@@ -53,6 +53,6 @@ private class SetupDiffUtilCallback : DiffUtil.ItemCallback<FoodCategory>() {
     }
 
     override fun areContentsTheSame(oldItem: FoodCategory, newItem: FoodCategory): Boolean {
-        return oldItem.isFrontSide == newItem.isFrontSide && oldItem.imageResId == newItem.imageResId
+        return /*oldItem.isFrontSide == newItem.isFrontSide && */oldItem.imageResId == newItem.imageResId
     }
 }
