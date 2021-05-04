@@ -4,10 +4,12 @@ import android.os.Bundle
 import android.view.View
 import android.widget.ImageView
 import android.widget.Toast
+import androidx.core.view.isVisible
 import androidx.fragment.app.viewModels
 import com.wajahatkarim3.easyflipview.EasyFlipView
 import de.bornholdtlee.defaultprojectkotlin.R
 import de.bornholdtlee.defaultprojectkotlin.databinding.FragmentSetupBinding
+import de.bornholdtlee.defaultprojectkotlin.extensions.showSnackBar
 import de.bornholdtlee.defaultprojectkotlin.model.Recipe
 import de.bornholdtlee.defaultprojectkotlin.model.data_types.FoodCategory
 import de.bornholdtlee.defaultprojectkotlin.ui.BaseFragment
@@ -39,8 +41,16 @@ class SetupFragment : BaseFragment(R.layout.fragment_setup) {
         viewModel.six.observe(viewLifecycleOwner) { prepareFlipView(binding.easyFlipSixEfv, it) }
         viewModel.seven.observe(viewLifecycleOwner) { prepareFlipView(binding.easyFlipSevenEfv, it) }
         viewModel.recipes.observe(viewLifecycleOwner) { recipes -> showRecipes(recipes) }
-//        viewModel.simpleRecipes.observe(viewLifecycleOwner) { showSimpleRecipes(it) }
-//        viewModel.randomRecipes.observe(viewLifecycleOwner) { showRandomRecipes(it) }
+        viewModel.failure.observe(viewLifecycleOwner) { showErrorMessage() }
+        viewModel.isLoading.observe(viewLifecycleOwner, ::showLoadingIndicator)
+    }
+
+    private fun showErrorMessage() {
+        showSnackBar("Faily McFailface")
+    }
+
+    private fun showLoadingIndicator(isLoading: Boolean) {
+        binding.setupLoadingRl.isVisible = isLoading
     }
 
     private fun showRecipes(recipes: List<Recipe>) {
@@ -61,23 +71,29 @@ class SetupFragment : BaseFragment(R.layout.fragment_setup) {
         binding.easyFlipSevenEfv.setOnClickListener { showDialog(7) }
 
         binding.setupMenuFab.setOnClickListener { toggleFabMenu() }
-        binding.setupProceedFab.setOnClickListener { viewModel.submitSetup() }
+        binding.setupProceedFab.setOnClickListener { proceed() }
         binding.setupSaveFab.setOnClickListener { Toast.makeText(requireContext(), "TODO -> save", Toast.LENGTH_SHORT).show() }
+    }
+
+    private fun proceed() {
+        viewModel.submitSetup()
+        toggleFabMenu()
     }
 
     private fun toggleFabMenu() {
         if (!isFabMenuOpen) showFabMenu() else hideFabMenu()
-        isFabMenuOpen = isFabMenuOpen.not()
     }
 
     private fun hideFabMenu() {
-        binding.setupProceedFab.animate().translationY(-resources.getDimension(R.dimen.fab_menu_proceed_distance))
-        binding.setupSaveFab.animate().translationY(-resources.getDimension(R.dimen.fab_menu_save_distance))
+        binding.setupProceedFab.animate().translationY(0F)
+        binding.setupSaveFab.animate().translationY(0F)
+        isFabMenuOpen = isFabMenuOpen.not()
     }
 
     private fun showFabMenu() {
-        binding.setupProceedFab.animate().translationY(0F)
-        binding.setupSaveFab.animate().translationY(0F)
+        binding.setupProceedFab.animate().translationY(-resources.getDimension(R.dimen.fab_menu_proceed_distance))
+        binding.setupSaveFab.animate().translationY(-resources.getDimension(R.dimen.fab_menu_save_distance))
+        isFabMenuOpen = isFabMenuOpen.not()
     }
 
     private fun showDialog(index: Int) {
@@ -94,6 +110,5 @@ class SetupFragment : BaseFragment(R.layout.fragment_setup) {
 
     private fun onCategorySelected(oldPosition: Int, selectedCategory: FoodCategory) {
         viewModel.applySelectedCategory(oldPosition, selectedCategory)
-//        Toast.makeText(requireContext(), "oldPosition: $oldPosition, selectedCat: ${selectedCategory.name}", Toast.LENGTH_SHORT).show()
     }
 }

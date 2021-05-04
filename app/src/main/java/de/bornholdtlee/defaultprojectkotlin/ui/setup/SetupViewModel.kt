@@ -3,12 +3,10 @@ package de.bornholdtlee.defaultprojectkotlin.ui.setup
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
-import de.bornholdtlee.defaultprojectkotlin.api.model.RandomRecipesDto
-import de.bornholdtlee.defaultprojectkotlin.api.model.SimpleRecipesDto
 import de.bornholdtlee.defaultprojectkotlin.extensions.launch
 import de.bornholdtlee.defaultprojectkotlin.model.Recipe
 import de.bornholdtlee.defaultprojectkotlin.model.data_types.FoodCategory
-import de.bornholdtlee.defaultprojectkotlin.usecases.GetCombinedRecipesUseCase
+import de.bornholdtlee.defaultprojectkotlin.usecases.BaseUseCase
 import de.bornholdtlee.defaultprojectkotlin.usecases.GetRecipesUseCase
 import de.bornholdtlee.defaultprojectkotlin.utils.SingleLiveEvent
 import org.koin.core.component.KoinComponent
@@ -16,21 +14,16 @@ import org.koin.core.component.inject
 
 class SetupViewModel : ViewModel(), KoinComponent {
 
-//    private val getRecipesUseCase by inject<GetCombinedRecipesUseCase>()
-
-
-//    private val _simpleRecipes = MutableLiveData<List<SimpleRecipesDto.SimpleRecipeDto>>()
-//    val simpleRecipes: LiveData<List<SimpleRecipesDto.SimpleRecipeDto>> = _simpleRecipes
-//
-//    private val _randomRecipes = MutableLiveData<List<RandomRecipesDto.RandomRecipeDto>>()
-//    val randomRecipes: LiveData<List<RandomRecipesDto.RandomRecipeDto>> = _randomRecipes
     private val getRecipesUseCase by inject<GetRecipesUseCase>()
 
     private val _recipes = MutableLiveData<List<Recipe>>()
-    val recipes : LiveData<List<Recipe>> = _recipes
+    val recipes: LiveData<List<Recipe>> = _recipes
 
     private val _failure = SingleLiveEvent<Any>()
     val failure: LiveData<Any> = _failure
+
+    private val _isLoading = SingleLiveEvent<Boolean>()
+    val isLoading: LiveData<Boolean> = _isLoading
 
     private val _one = MutableLiveData(FoodCategory.RANDOM)
     val one: LiveData<FoodCategory> = _one
@@ -67,25 +60,26 @@ class SetupViewModel : ViewModel(), KoinComponent {
         }
     }
 
-    fun submitSetup() {
-        val queries = listOf(
-            _one.value!!.queryMap,
-            _two.value!!.queryMap,
-            _three.value!!.queryMap,
-            _four.value!!.queryMap,
-            _five.value!!.queryMap,
-            _six.value!!.queryMap,
-            _seven.value!!.queryMap,
+    private fun collectCategories(): List<FoodCategory> {
+        return listOf(
+            _one.value!!,
+            _two.value!!,
+            _three.value!!,
+            _four.value!!,
+            _five.value!!,
+            _six.value!!,
+            _seven.value!!,
         )
+    }
+
+    fun submitSetup() {
+        _isLoading.value = true
         launch {
-//            when (val result = getRecipesUseCase.call(queries)) {
-//                is GetCombinedRecipesUseCase.GetRecipesResult.Success -> {
-//                    _simpleRecipes.postValue(result.simpleRecipes)
-//                    _randomRecipes.postValue(result.randomRecipes)
-//                }
-//                else -> _failure.call()
-//            }
-            _recipes.postValue(getRecipesUseCase.call(queries))
+            when (val result = getRecipesUseCase.call(collectCategories())) {
+                is BaseUseCase.UseCaseResult.Success -> _recipes.postValue(result.resultObject!!)
+                else -> _failure.callAsync()
+            }
+            _isLoading.postValue(false)
         }
     }
 }

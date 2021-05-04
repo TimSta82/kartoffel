@@ -5,6 +5,17 @@
     android:layout_height="match_parent"
     android:background="@color/blue">
 
+    <TextView
+        android:id="@+id/textView2"
+        style="@style/Text.Headline"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/eight_grid_unit"
+        android:text="me sooo hungry!"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -170,6 +181,25 @@
             android:layout_centerInParent="true"
             android:src="@drawable/ic_placeholde"
             app:fabCustomSize="@dimen/eight_grid_unit" />
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:id="@+id/setup_loading_Rl"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:background="@color/black_40"
+        android:visibility="gone"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <ProgressBar
+            android:layout_width="@dimen/eight_grid_unit"
+            android:layout_height="@dimen/eight_grid_unit"
+            android:layout_centerInParent="true"
+            android:visibility="visible" />
+
     </RelativeLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

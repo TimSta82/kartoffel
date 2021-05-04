@@ -2,66 +2,55 @@ package de.bornholdtlee.defaultprojectkotlin.usecases
 
 import de.bornholdtlee.defaultprojectkotlin.api.ResponseEvaluator
 import de.bornholdtlee.defaultprojectkotlin.model.Recipe
+import de.bornholdtlee.defaultprojectkotlin.model.data_types.FoodCategory
 import de.bornholdtlee.defaultprojectkotlin.repositories.RecipesRepository
 import de.bornholdtlee.defaultprojectkotlin.utils.DefaultRecipe
+import de.bornholdtlee.defaultprojectkotlin.utils.Logger
 import kotlinx.coroutines.async
 import kotlinx.coroutines.coroutineScope
 import org.koin.core.component.inject
+import kotlin.random.Random
 
 class GetRecipesUseCase : BaseUseCase() {
 
     private val recipesRepository by inject<RecipesRepository>()
-    private val getRandomRecipesUseCase by inject<GetRandomRecipesUseCase>()
 
-//    suspend fun call(queries: List<Map<String, String>>): UseCaseResult<List<Recipe>> = coroutineScope {
-//        val totalSize = queries.size
-//        val randomQueriesCount = queries.filter { query -> query.containsKey("random") }.size
-//        val simpleQueries = queries.filterNot { query -> query.containsKey("random") }
-//
-//        val list = mutableListOf<Recipe>()
-//
-//        val one = async(start = CoroutineStart.LAZY) { getRandomRecipesUseCase.call(randomQueriesCount) }.await()
-//        when (one) {
-//            is UseCaseResult.Success -> list.addAll(one.resultObject)
-////            is UseCaseResult.Success -> UseCaseResult.Success(one.resultObject)
-//            else -> UseCaseResult.Failure()
-//        }
-//    }
-
-    suspend fun call(queries: List<Map<String, String>>): List<Recipe> {
+    suspend fun call(selectedCategories: List<FoodCategory>): UseCaseResult<List<Recipe>> {
         val combinedRecipes = mutableListOf<Recipe>()
         coroutineScope {
-            queries.map { query ->
-                if (query.containsKey("random")) {
+            selectedCategories.map { category ->
+                if (category.isRandomEndpoint) {
                     async {
-                        when (val result = recipesRepository.getRandomRecipes(1)) {
+                        when (val result = recipesRepository.getRandomRecipes(category.queryMap)) {
                             is ResponseEvaluator.Result.Success -> {
                                 result.response.body()?.randomRecipes?.let { recipesDto ->
-                                    val randomRecipes = recipesDto.map { if (it != null) Recipe(it) else DefaultRecipe.recipe }
+                                    val randomRecipes = recipesDto.map { dto -> if (dto != null) Recipe(dto) else DefaultRecipe.recipe }
                                     combinedRecipes.addAll(randomRecipes)
                                 }
                             }
-                            else -> {
-                            }
+                            else -> Logger.debug("No randomRecipes available")
                         }
                     }
                 } else {
                     async {
-                        when (val result = recipesRepository.getRecipes(query)) {
+                        val randomOffset = Random.nextInt(5)
+                        when (val result = recipesRepository.getRecipes(category.queryMap, randomOffset)) {
                             is ResponseEvaluator.Result.Success -> {
                                 result.response.body()?.simpleRecipes?.let { recipesDto ->
-                                    val simpleRecipes = recipesDto.map { if (it != null) Recipe(it) else DefaultRecipe.recipe }
+                                    val simpleRecipes = recipesDto.map { dto -> if (dto != null) Recipe(dto) else DefaultRecipe.recipe }
                                     combinedRecipes.addAll(simpleRecipes)
                                 }
                             }
-                            else -> {
-                            }
+                            else -> Logger.debug("No simpleRecipes available")
                         }
                     }
                 }
             }
                 .map { it -> it.await() }
         }
-        return combinedRecipes
+        return when (combinedRecipes.size) {
+            7 -> UseCaseResult.Success(combinedRecipes)
+            else -> UseCaseResult.Failure()
+        }
     }
 }

@@ -28,8 +28,9 @@
                         </option>
                         <option name="values">
                           <map>
-                            <entry key="outputName" value="ic_proceed" />
-                            <entry key="sourceFile" value="$PROJECT_DIR$/flaticons/vegetarian.svg" />
+                            <entry key="assetSourceType" value="FILE" />
+                            <entry key="outputName" value="ic_random" />
+                            <entry key="sourceFile" value="$PROJECT_DIR$/flaticons/dice.svg" />
                           </map>
                         </option>
                       </PersistentState>
