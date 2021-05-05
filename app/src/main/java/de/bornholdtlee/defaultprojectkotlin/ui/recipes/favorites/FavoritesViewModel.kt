@@ -14,7 +14,7 @@ class FavoritesViewModel : BaseViewModel() {
     val proceed: LiveData<Any> = _proceed
 
     fun resetRecipes() {
-        setRecipesSelectedUseCase.call(false)
+        setRecipesSelectedUseCase.reset()
         _proceed.call()
     }
 }

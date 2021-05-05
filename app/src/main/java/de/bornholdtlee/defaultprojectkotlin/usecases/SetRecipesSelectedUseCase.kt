@@ -10,4 +10,8 @@ class SetRecipesSelectedUseCase : BaseUseCase() {
     fun call(hasSelected: Boolean) {
         appKeyValueStore.hasRecipes = hasSelected
     }
+
+    fun reset() {
+        appKeyValueStore.hasRecipes = false
+    }
 }

@@ -86,7 +86,6 @@ class SetupViewModel : BaseViewModel() {
                     setRecipesUseCase.call(true)
                     _success.callAsync()
                 }
-//                is BaseUseCase.UseCaseResult.Success -> _recipes.postValue(result.resultObject!!)
                 else -> _failure.callAsync()
             }
             _isLoading.postValue(false)

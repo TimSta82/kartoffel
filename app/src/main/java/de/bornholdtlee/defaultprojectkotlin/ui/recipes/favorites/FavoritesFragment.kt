@@ -7,7 +7,7 @@ import androidx.fragment.app.viewModels
 import de.bornholdtlee.defaultprojectkotlin.R
 import de.bornholdtlee.defaultprojectkotlin.databinding.FragmentFavoritesBinding
 import de.bornholdtlee.defaultprojectkotlin.ui.BaseFragment
-import de.bornholdtlee.defaultprojectkotlin.ui.setup.SetupActivity
+import de.bornholdtlee.defaultprojectkotlin.ui.MainActivity
 import de.bornholdtlee.defaultprojectkotlin.utils.Logger
 import de.bornholdtlee.defaultprojectkotlin.utils.viewBinding
 
@@ -27,7 +27,7 @@ class FavoritesFragment : BaseFragment(R.layout.fragment_favorites) {
 
     private fun setObservers() {
         viewModel.proceed.observe(viewLifecycleOwner) {
-            SetupActivity.startActivity(requireContext())
+            MainActivity.startActivity(requireContext())
             requireActivity().finish()
         }
     }

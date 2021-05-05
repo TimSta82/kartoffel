@@ -20,6 +20,7 @@
             android:id="@+id/easy_flip_back_Iv"
             android:layout_width="@dimen/ten_grid_unit"
             android:layout_height="@dimen/ten_grid_unit"
+            android:padding="@dimen/half_grid_unit"
             android:src="@drawable/ic_placeholde" />
 
     </com.google.android.material.card.MaterialCardView>
