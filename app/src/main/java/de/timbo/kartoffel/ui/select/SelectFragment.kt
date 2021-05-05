@@ -1,14 +1,11 @@
-package de.bornholdtlee.defaultprojectkotlin.ui.select
+package de.timbo.kartoffel.ui.select
 
 import android.os.Bundle
-import androidx.fragment.app.Fragment
-import android.view.LayoutInflater
 import android.view.View
-import android.view.ViewGroup
-import de.bornholdtlee.defaultprojectkotlin.R
-import de.bornholdtlee.defaultprojectkotlin.databinding.FragmentSelectBinding
-import de.bornholdtlee.defaultprojectkotlin.ui.BaseFragment
-import de.bornholdtlee.defaultprojectkotlin.utils.viewBinding
+import de.timbo.kartoffel.R
+import de.timbo.kartoffel.databinding.FragmentSelectBinding
+import de.timbo.kartoffel.ui.BaseFragment
+import de.timbo.kartoffel.utils.viewBinding
 
 class SelectFragment : BaseFragment(R.layout.fragment_select) {
 
@@ -16,7 +13,6 @@ class SelectFragment : BaseFragment(R.layout.fragment_select) {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-
 
 
     }

@@ -1,10 +1,10 @@
-package de.bornholdtlee.defaultprojectkotlin.ui.select
+package de.timbo.kartoffel.ui.select
 
 import android.content.Context
 import android.content.Intent
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
-import de.bornholdtlee.defaultprojectkotlin.R
+import de.timbo.kartoffel.R
 
 class SelectActivity : AppCompatActivity() {
 
