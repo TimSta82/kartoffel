@@ -29,4 +29,7 @@ class SingleLiveEvent<T> : MutableLiveData<T>() {
     fun call() {
         value = null
     }
+
+    @MainThread
+    fun callAsync() = postValue(null)
 }

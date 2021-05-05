@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:padding="@dimen/half_grid_unit">
+
+    <ImageView
+        android:id="@+id/list_item_category_Iv"
+        android:layout_width="@dimen/five_grid_unit"
+        android:layout_height="@dimen/five_grid_unit"
+        android:src="@drawable/ic_fish"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/list_item_category_Tv"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/two_grid_unit"
+        android:text="Fish"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/list_item_category_Iv"
+        app:layout_constraintTop_toTopOf="@+id/list_item_category_Iv" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

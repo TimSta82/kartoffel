@@ -80,3 +80,5 @@ fun Context.isNetworkConnected(): Boolean {
         } ?: false
     }
 }
+
+fun String.toMcFace() = "${this}y Mc${this}Face"
