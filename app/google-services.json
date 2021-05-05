@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "13924908744",
+    "project_id": "kartoffel-bf76a",
+    "storage_bucket": "kartoffel-bf76a.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:13924908744:android:2d1c6f041b8b1dcaad6ffd",
+        "android_client_info": {
+          "package_name": "dev.de.timbo.kartoffel"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "13924908744-j7t3g9ij6uk9g55onm7bi4nhakcn5c7o.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCqMnSsKfy8nSR4WGbO1BGLbKeJYmbnSVA"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "13924908744-j7t3g9ij6uk9g55onm7bi4nhakcn5c7o.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

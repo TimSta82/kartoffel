@@ -22,6 +22,7 @@ import de.timbo.kartoffel.ui.recipes.RecipesActivity
 import de.timbo.kartoffel.utils.BalloonUtils
 import de.timbo.kartoffel.utils.Logger
 import de.timbo.kartoffel.utils.viewBinding
+import java.lang.RuntimeException
 
 class SetupFragment : BaseFragment(R.layout.fragment_setup), OnBalloonClickListener {
 
@@ -86,7 +87,7 @@ class SetupFragment : BaseFragment(R.layout.fragment_setup), OnBalloonClickListe
 
         binding.setupMenuFab.setOnClickListener { toggleFabMenu() }
         binding.setupProceedFab.setOnClickListener { proceed() }
-        binding.setupSaveFab.setOnClickListener { Toast.makeText(requireContext(), "TODO -> save", Toast.LENGTH_SHORT).show() }
+        binding.setupSaveFab.setOnClickListener { throw RuntimeException("Test Crash".toMcFace()) }
         binding.setupExplainTv.setOnClickListener { showExplainBalloon() }
     }
 
