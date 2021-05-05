@@ -1,15 +1,15 @@
-package de.bornholdtlee.defaultprojectkotlin.ui.recipes.favorites
+package de.timbo.kartoffel.ui.recipes.favorites
 
 import android.os.Bundle
 import android.view.View
 import android.widget.TextView
 import androidx.fragment.app.viewModels
-import de.bornholdtlee.defaultprojectkotlin.R
-import de.bornholdtlee.defaultprojectkotlin.databinding.FragmentFavoritesBinding
-import de.bornholdtlee.defaultprojectkotlin.ui.BaseFragment
-import de.bornholdtlee.defaultprojectkotlin.ui.MainActivity
-import de.bornholdtlee.defaultprojectkotlin.utils.Logger
-import de.bornholdtlee.defaultprojectkotlin.utils.viewBinding
+import de.timbo.kartoffel.R
+import de.timbo.kartoffel.databinding.FragmentFavoritesBinding
+import de.timbo.kartoffel.ui.BaseFragment
+import de.timbo.kartoffel.ui.MainActivity
+import de.timbo.kartoffel.utils.Logger
+import de.timbo.kartoffel.utils.viewBinding
 
 class FavoritesFragment : BaseFragment(R.layout.fragment_favorites) {
 

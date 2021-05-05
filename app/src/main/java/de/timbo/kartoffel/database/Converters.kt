@@ -1,9 +1,9 @@
-package de.bornholdtlee.defaultprojectkotlin.database
+package de.timbo.kartoffel.database
 
 import androidx.room.TypeConverter
 import com.google.gson.Gson
 import com.google.gson.reflect.TypeToken
-import de.bornholdtlee.defaultprojectkotlin.database.model.RecipeEntity
+import de.timbo.kartoffel.database.model.RecipeEntity
 
 class Converters {
 

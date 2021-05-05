@@ -1,4 +1,4 @@
-package de.bornholdtlee.defaultprojectkotlin.android
+package de.timbo.kartoffel.android
 
 import androidx.core.content.FileProvider
 

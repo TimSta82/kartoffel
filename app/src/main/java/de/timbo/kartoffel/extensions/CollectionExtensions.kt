@@ -1,4 +1,4 @@
-package de.bornholdtlee.defaultprojectkotlin.extensions
+package de.timbo.kartoffel.extensions
 
 fun <T> List<T>.second(): T {
     if (isEmpty())

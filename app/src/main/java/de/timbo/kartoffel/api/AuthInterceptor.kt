@@ -1,6 +1,6 @@
-package de.bornholdtlee.defaultprojectkotlin.api
+package de.timbo.kartoffel.api
 
-import de.bornholdtlee.defaultprojectkotlin.database.AppKeyValueStore
+import de.timbo.kartoffel.database.AppKeyValueStore
 import okhttp3.Interceptor
 import okhttp3.Response
 import org.koin.core.component.KoinComponent

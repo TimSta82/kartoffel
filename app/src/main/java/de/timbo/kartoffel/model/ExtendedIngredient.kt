@@ -1,4 +1,4 @@
-package de.bornholdtlee.defaultprojectkotlin.model
+package de.timbo.kartoffel.model
 
 import android.os.Parcelable
 import com.google.gson.annotations.SerializedName

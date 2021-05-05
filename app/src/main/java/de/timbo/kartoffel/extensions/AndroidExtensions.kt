@@ -1,4 +1,4 @@
-package de.bornholdtlee.defaultprojectkotlin.extensions
+package de.timbo.kartoffel.extensions
 
 import android.app.Activity
 import android.content.Context

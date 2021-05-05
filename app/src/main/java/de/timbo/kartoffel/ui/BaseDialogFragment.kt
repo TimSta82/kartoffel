@@ -1,4 +1,4 @@
-package de.bornholdtlee.defaultprojectkotlin.ui
+package de.timbo.kartoffel.ui
 
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -9,7 +9,7 @@ import androidx.annotation.DrawableRes
 import androidx.constraintlayout.widget.ConstraintLayout
 import androidx.fragment.app.DialogFragment
 import androidx.viewbinding.ViewBinding
-import de.bornholdtlee.defaultprojectkotlin.R
+import de.timbo.kartoffel.R
 
 open class BaseDialogFragment<T : ViewBinding>(
     protected val binding: T,

@@ -1,4 +1,4 @@
-package de.bornholdtlee.defaultprojectkotlin.ui.dialogs
+package de.timbo.kartoffel.ui.dialogs
 
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -9,7 +9,7 @@ import androidx.annotation.DrawableRes
 import androidx.annotation.LayoutRes
 import androidx.constraintlayout.widget.ConstraintLayout
 import androidx.fragment.app.DialogFragment
-import de.bornholdtlee.defaultprojectkotlin.R
+import de.timbo.kartoffel.R
 
 open class BaseDialogFragment(
     @LayoutRes private val layoutResId: Int,

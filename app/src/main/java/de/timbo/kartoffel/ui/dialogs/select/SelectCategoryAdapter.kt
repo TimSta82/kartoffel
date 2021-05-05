@@ -1,10 +1,10 @@
-package de.bornholdtlee.defaultprojectkotlin.ui.dialogs.select
+package de.timbo.kartoffel.ui.dialogs.select
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
-import de.bornholdtlee.defaultprojectkotlin.databinding.ListItemCategoryBinding
-import de.bornholdtlee.defaultprojectkotlin.model.data_types.FoodCategory
+import de.timbo.kartoffel.databinding.ListItemCategoryBinding
+import de.timbo.kartoffel.model.data_types.FoodCategory
 
 class SelectCategoryAdapter(private val onClick: (FoodCategory) -> Unit) : RecyclerView.Adapter<SelectCategoryAdapter.SelectCategoryViewHolder>() {
 

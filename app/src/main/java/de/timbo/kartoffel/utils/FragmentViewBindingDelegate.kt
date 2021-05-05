@@ -1,4 +1,4 @@
-package de.bornholdtlee.defaultprojectkotlin.utils
+package de.timbo.kartoffel.utils
 
 import android.view.View
 import androidx.fragment.app.Fragment

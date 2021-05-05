@@ -1,9 +1,9 @@
-package de.bornholdtlee.defaultprojectkotlin.usecases
+package de.timbo.kartoffel.usecases
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.Transformations
-import de.bornholdtlee.defaultprojectkotlin.model.Recipe
-import de.bornholdtlee.defaultprojectkotlin.repositories.RecipeRepository
+import de.timbo.kartoffel.model.Recipe
+import de.timbo.kartoffel.repositories.RecipeRepository
 import org.koin.core.component.inject
 
 class GetRecipesFromDbAsLiveDataUseCase : BaseUseCase() {

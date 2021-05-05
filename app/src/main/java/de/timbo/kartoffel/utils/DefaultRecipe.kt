@@ -1,6 +1,6 @@
-package de.bornholdtlee.defaultprojectkotlin.utils
+package de.timbo.kartoffel.utils
 
-import de.bornholdtlee.defaultprojectkotlin.model.Recipe
+import de.timbo.kartoffel.model.Recipe
 
 object DefaultRecipe {
     val recipe = Recipe(

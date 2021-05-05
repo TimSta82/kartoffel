@@ -1,13 +1,13 @@
-package de.bornholdtlee.defaultprojectkotlin.ui.dialogs.select
+package de.timbo.kartoffel.ui.dialogs.select
 
 import android.os.Bundle
 import android.view.View
 import androidx.fragment.app.FragmentManager
-import de.bornholdtlee.defaultprojectkotlin.R
-import de.bornholdtlee.defaultprojectkotlin.databinding.DialogSelectCategoryBinding
-import de.bornholdtlee.defaultprojectkotlin.model.data_types.FoodCategory
-import de.bornholdtlee.defaultprojectkotlin.ui.dialogs.BaseDialogFragment
-import de.bornholdtlee.defaultprojectkotlin.utils.viewBinding
+import de.timbo.kartoffel.R
+import de.timbo.kartoffel.databinding.DialogSelectCategoryBinding
+import de.timbo.kartoffel.model.data_types.FoodCategory
+import de.timbo.kartoffel.ui.dialogs.BaseDialogFragment
+import de.timbo.kartoffel.utils.viewBinding
 
 class SelectCategoryDialog(private val onClickSelectNewCategory: (FoodCategory) -> Unit) : BaseDialogFragment(
     layoutResId = R.layout.dialog_select_category,

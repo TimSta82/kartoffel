@@ -1,9 +1,9 @@
-package de.bornholdtlee.defaultprojectkotlin.injection
+package de.timbo.kartoffel.injection
 
 import com.jakewharton.retrofit2.adapter.kotlin.coroutines.CoroutineCallAdapterFactory
-import de.bornholdtlee.defaultprojectkotlin.BuildConfig
-import de.bornholdtlee.defaultprojectkotlin.api.AuthInterceptor
-import de.bornholdtlee.defaultprojectkotlin.api.RecipeApiInterface
+import de.timbo.kartoffel.BuildConfig
+import de.timbo.kartoffel.api.AuthInterceptor
+import de.timbo.kartoffel.api.RecipeApiInterface
 import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
 import org.koin.dsl.module

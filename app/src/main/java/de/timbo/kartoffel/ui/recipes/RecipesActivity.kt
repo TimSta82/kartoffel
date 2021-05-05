@@ -1,4 +1,4 @@
-package de.bornholdtlee.defaultprojectkotlin.ui.recipes
+package de.timbo.kartoffel.ui.recipes
 
 import android.content.Context
 import android.content.Intent
@@ -8,7 +8,7 @@ import androidx.navigation.NavController
 import androidx.navigation.findNavController
 import androidx.navigation.ui.setupWithNavController
 import com.google.android.material.bottomnavigation.BottomNavigationView
-import de.bornholdtlee.defaultprojectkotlin.R
+import de.timbo.kartoffel.R
 
 class RecipesActivity : AppCompatActivity() {
 

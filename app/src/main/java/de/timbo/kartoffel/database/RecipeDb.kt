@@ -1,10 +1,10 @@
-package de.bornholdtlee.defaultprojectkotlin.database
+package de.timbo.kartoffel.database
 
 import androidx.room.Database
 import androidx.room.RoomDatabase
 import androidx.room.TypeConverters
-import de.bornholdtlee.defaultprojectkotlin.database.dao.RecipeDao
-import de.bornholdtlee.defaultprojectkotlin.database.model.RecipeEntity
+import de.timbo.kartoffel.database.dao.RecipeDao
+import de.timbo.kartoffel.database.model.RecipeEntity
 
 @Database(entities = [RecipeEntity::class], version = 1)
 @TypeConverters(Converters::class)

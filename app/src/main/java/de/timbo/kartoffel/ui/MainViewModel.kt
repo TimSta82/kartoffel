@@ -1,8 +1,8 @@
-package de.bornholdtlee.defaultprojectkotlin.ui
+package de.timbo.kartoffel.ui
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
-import de.bornholdtlee.defaultprojectkotlin.usecases.HasRecipesSelectedUseCase
+import de.timbo.kartoffel.usecases.HasRecipesSelectedUseCase
 import org.koin.core.component.inject
 
 class MainViewModel : BaseViewModel() {

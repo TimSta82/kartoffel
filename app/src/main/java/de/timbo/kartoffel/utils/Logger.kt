@@ -1,7 +1,7 @@
-package de.bornholdtlee.defaultprojectkotlin.utils
+package de.timbo.kartoffel.utils
 
 import android.util.Log
-import de.bornholdtlee.defaultprojectkotlin.BuildConfig.DEBUG
+import de.timbo.kartoffel.BuildConfig.DEBUG
 
 object Logger {
 

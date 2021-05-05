@@ -9,7 +9,7 @@ apply plugin: 'kotlin-parcelize'
 android {
     compileSdkVersion 30
     defaultConfig {
-        applicationId "de.bornholdtlee.defaultprojectkotlin"
+        applicationId "de.timbo.kartoffel"
         minSdkVersion 23
         targetSdkVersion 30
         versionCode System.getenv("CI_PIPELINE_ID") as Integer ?: 1
@@ -71,13 +71,13 @@ android {
     productFlavors {
         dev {
             dimension = "app"
-            applicationId "dev.de.bornholdtlee.defaultproject"
+            applicationId "dev.de.timbo.kartoffel"
             buildConfigField 'String', 'BASE_URL', '"https://api.spoonacular.com"'
         }
 
         prod {
             dimension = "app"
-            applicationId "de.bornholdtlee.defaultproject"
+            applicationId "de.timbo.kartoffel"
             buildConfigField 'String', 'BASE_URL', '"https://api.spoonacular.com"'
         }
     }

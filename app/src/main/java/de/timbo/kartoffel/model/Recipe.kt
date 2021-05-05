@@ -1,10 +1,10 @@
-package de.bornholdtlee.defaultprojectkotlin.model
+package de.timbo.kartoffel.model
 
 import android.os.Parcelable
-import de.bornholdtlee.defaultprojectkotlin.api.model.RandomRecipesDto
-import de.bornholdtlee.defaultprojectkotlin.api.model.SimpleRecipesDto
-import de.bornholdtlee.defaultprojectkotlin.database.model.RecipeEntity
-import de.bornholdtlee.defaultprojectkotlin.extensions.toMcFace
+import de.timbo.kartoffel.api.model.RandomRecipesDto
+import de.timbo.kartoffel.api.model.SimpleRecipesDto
+import de.timbo.kartoffel.database.model.RecipeEntity
+import de.timbo.kartoffel.extensions.toMcFace
 import kotlinx.parcelize.Parcelize
 
 @Parcelize

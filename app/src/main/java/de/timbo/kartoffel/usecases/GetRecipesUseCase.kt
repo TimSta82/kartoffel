@@ -1,11 +1,11 @@
-package de.bornholdtlee.defaultprojectkotlin.usecases
+package de.timbo.kartoffel.usecases
 
-import de.bornholdtlee.defaultprojectkotlin.api.ResponseEvaluator
-import de.bornholdtlee.defaultprojectkotlin.model.Recipe
-import de.bornholdtlee.defaultprojectkotlin.model.data_types.FoodCategory
-import de.bornholdtlee.defaultprojectkotlin.repositories.RecipeRepository
-import de.bornholdtlee.defaultprojectkotlin.utils.DefaultRecipe
-import de.bornholdtlee.defaultprojectkotlin.utils.Logger
+import de.timbo.kartoffel.api.ResponseEvaluator
+import de.timbo.kartoffel.model.Recipe
+import de.timbo.kartoffel.model.data_types.FoodCategory
+import de.timbo.kartoffel.repositories.RecipeRepository
+import de.timbo.kartoffel.utils.DefaultRecipe
+import de.timbo.kartoffel.utils.Logger
 import kotlinx.coroutines.async
 import kotlinx.coroutines.coroutineScope
 import org.koin.core.component.inject

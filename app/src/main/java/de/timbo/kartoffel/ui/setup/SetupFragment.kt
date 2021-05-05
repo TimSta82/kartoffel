@@ -1,4 +1,4 @@
-package de.bornholdtlee.defaultprojectkotlin.ui.setup
+package de.timbo.kartoffel.ui.setup
 
 import android.os.Bundle
 import android.view.View
@@ -9,19 +9,19 @@ import androidx.fragment.app.viewModels
 import com.skydoves.balloon.OnBalloonClickListener
 import com.skydoves.balloon.balloon
 import com.wajahatkarim3.easyflipview.EasyFlipView
-import de.bornholdtlee.defaultprojectkotlin.R
-import de.bornholdtlee.defaultprojectkotlin.databinding.FragmentSetupBinding
-import de.bornholdtlee.defaultprojectkotlin.extensions.showSnackBar
-import de.bornholdtlee.defaultprojectkotlin.extensions.toMcFace
-import de.bornholdtlee.defaultprojectkotlin.model.Recipe
-import de.bornholdtlee.defaultprojectkotlin.model.data_types.FoodCategory
-import de.bornholdtlee.defaultprojectkotlin.ui.BaseFragment
-import de.bornholdtlee.defaultprojectkotlin.ui.balloons.ExplainBalloonFactory
-import de.bornholdtlee.defaultprojectkotlin.ui.dialogs.select.SelectCategoryDialog
-import de.bornholdtlee.defaultprojectkotlin.ui.recipes.RecipesActivity
-import de.bornholdtlee.defaultprojectkotlin.utils.BalloonUtils
-import de.bornholdtlee.defaultprojectkotlin.utils.Logger
-import de.bornholdtlee.defaultprojectkotlin.utils.viewBinding
+import de.timbo.kartoffel.R
+import de.timbo.kartoffel.databinding.FragmentSetupBinding
+import de.timbo.kartoffel.extensions.showSnackBar
+import de.timbo.kartoffel.extensions.toMcFace
+import de.timbo.kartoffel.model.Recipe
+import de.timbo.kartoffel.model.data_types.FoodCategory
+import de.timbo.kartoffel.ui.BaseFragment
+import de.timbo.kartoffel.ui.balloons.ExplainBalloonFactory
+import de.timbo.kartoffel.ui.dialogs.select.SelectCategoryDialog
+import de.timbo.kartoffel.ui.recipes.RecipesActivity
+import de.timbo.kartoffel.utils.BalloonUtils
+import de.timbo.kartoffel.utils.Logger
+import de.timbo.kartoffel.utils.viewBinding
 
 class SetupFragment : BaseFragment(R.layout.fragment_setup), OnBalloonClickListener {
 

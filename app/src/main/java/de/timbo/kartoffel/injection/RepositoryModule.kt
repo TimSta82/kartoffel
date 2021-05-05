@@ -1,7 +1,7 @@
-package de.bornholdtlee.defaultprojectkotlin.injection
+package de.timbo.kartoffel.injection
 
-import de.bornholdtlee.defaultprojectkotlin.repositories.QuestionRepository
-import de.bornholdtlee.defaultprojectkotlin.repositories.RecipeRepository
+import de.timbo.kartoffel.repositories.QuestionRepository
+import de.timbo.kartoffel.repositories.RecipeRepository
 import org.koin.dsl.module
 
 val repositoryModule = module {

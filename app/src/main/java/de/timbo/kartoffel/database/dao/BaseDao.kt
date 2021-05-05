@@ -1,4 +1,4 @@
-package de.bornholdtlee.defaultprojectkotlin.database.dao
+package de.timbo.kartoffel.database.dao
 
 import androidx.room.*
 

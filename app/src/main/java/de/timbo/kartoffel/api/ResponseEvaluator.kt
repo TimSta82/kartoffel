@@ -1,10 +1,10 @@
-package de.bornholdtlee.defaultprojectkotlin.api
+package de.timbo.kartoffel.api
 
-import de.bornholdtlee.defaultprojectkotlin.api.ResponseEvaluator.Result.Failure.*
-import de.bornholdtlee.defaultprojectkotlin.api.ResponseEvaluator.Result.Failure.ClientError.*
-import de.bornholdtlee.defaultprojectkotlin.api.ResponseEvaluator.Result.Failure.ServerError.*
-import de.bornholdtlee.defaultprojectkotlin.api.ResponseEvaluator.Result.Success
-import de.bornholdtlee.defaultprojectkotlin.api.ResponseEvaluator.Result.Success.*
+import de.timbo.kartoffel.api.ResponseEvaluator.Result.Failure.*
+import de.timbo.kartoffel.api.ResponseEvaluator.Result.Failure.ClientError.*
+import de.timbo.kartoffel.api.ResponseEvaluator.Result.Failure.ServerError.*
+import de.timbo.kartoffel.api.ResponseEvaluator.Result.Success
+import de.timbo.kartoffel.api.ResponseEvaluator.Result.Success.*
 import okhttp3.MediaType.Companion.toMediaTypeOrNull
 import okhttp3.ResponseBody.Companion.toResponseBody
 import retrofit2.Response

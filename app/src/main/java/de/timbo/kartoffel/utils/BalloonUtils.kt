@@ -1,10 +1,10 @@
-package de.bornholdtlee.defaultprojectkotlin.utils
+package de.timbo.kartoffel.utils
 
 import android.content.Context
 import android.widget.Toast
 import androidx.lifecycle.LifecycleOwner
 import com.skydoves.balloon.*
-import de.bornholdtlee.defaultprojectkotlin.R
+import de.timbo.kartoffel.R
 
 object BalloonUtils {
 

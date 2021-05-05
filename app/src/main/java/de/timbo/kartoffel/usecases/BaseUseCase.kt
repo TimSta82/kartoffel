@@ -1,6 +1,6 @@
-package de.bornholdtlee.defaultprojectkotlin.usecases
+package de.timbo.kartoffel.usecases
 
-import de.bornholdtlee.defaultprojectkotlin.api.ResponseEvaluator
+import de.timbo.kartoffel.api.ResponseEvaluator
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.SupervisorJob

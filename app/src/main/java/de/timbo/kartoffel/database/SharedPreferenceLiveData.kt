@@ -1,4 +1,4 @@
-package de.bornholdtlee.defaultprojectkotlin.database
+package de.timbo.kartoffel.database
 
 import android.content.SharedPreferences
 import androidx.lifecycle.LiveData

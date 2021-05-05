@@ -1,4 +1,4 @@
-package de.bornholdtlee.defaultprojectkotlin.database.model
+package de.timbo.kartoffel.database.model
 
 import androidx.room.ColumnInfo
 import androidx.room.Entity

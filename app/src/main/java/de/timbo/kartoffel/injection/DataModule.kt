@@ -1,9 +1,9 @@
-package de.bornholdtlee.defaultprojectkotlin.injection
+package de.timbo.kartoffel.injection
 
 import androidx.room.Room
-import de.bornholdtlee.defaultprojectkotlin.database.AppKeyValueStore
-import de.bornholdtlee.defaultprojectkotlin.database.QuestionDb
-import de.bornholdtlee.defaultprojectkotlin.database.RecipeDb
+import de.timbo.kartoffel.database.AppKeyValueStore
+import de.timbo.kartoffel.database.QuestionDb
+import de.timbo.kartoffel.database.RecipeDb
 import org.koin.android.ext.koin.androidContext
 import org.koin.dsl.module
 

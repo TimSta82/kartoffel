@@ -1,4 +1,4 @@
-package de.bornholdtlee.defaultprojectkotlin.api.model
+package de.timbo.kartoffel.api.model
 
 import com.google.gson.annotations.SerializedName
 

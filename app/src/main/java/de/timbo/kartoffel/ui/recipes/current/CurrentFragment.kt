@@ -1,14 +1,14 @@
-package de.bornholdtlee.defaultprojectkotlin.ui.recipes.current
+package de.timbo.kartoffel.ui.recipes.current
 
 import android.os.Bundle
 import android.view.View
 import androidx.fragment.app.viewModels
-import de.bornholdtlee.defaultprojectkotlin.R
-import de.bornholdtlee.defaultprojectkotlin.databinding.FragmentCurrentBinding
-import de.bornholdtlee.defaultprojectkotlin.model.Recipe
-import de.bornholdtlee.defaultprojectkotlin.ui.BaseFragment
-import de.bornholdtlee.defaultprojectkotlin.utils.Logger
-import de.bornholdtlee.defaultprojectkotlin.utils.viewBinding
+import de.timbo.kartoffel.R
+import de.timbo.kartoffel.databinding.FragmentCurrentBinding
+import de.timbo.kartoffel.model.Recipe
+import de.timbo.kartoffel.ui.BaseFragment
+import de.timbo.kartoffel.utils.Logger
+import de.timbo.kartoffel.utils.viewBinding
 
 class CurrentFragment : BaseFragment(R.layout.fragment_current) {
 

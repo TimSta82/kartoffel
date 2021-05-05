@@ -1,6 +1,6 @@
-package de.bornholdtlee.defaultprojectkotlin.usecases
+package de.timbo.kartoffel.usecases
 
-import de.bornholdtlee.defaultprojectkotlin.repositories.QuestionRepository
+import de.timbo.kartoffel.repositories.QuestionRepository
 import org.koin.core.component.inject
 
 class GetQuestionUseCase : BaseUseCase() {

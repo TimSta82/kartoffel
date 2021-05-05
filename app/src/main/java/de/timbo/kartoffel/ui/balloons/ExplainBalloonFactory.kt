@@ -1,9 +1,9 @@
-package de.bornholdtlee.defaultprojectkotlin.ui.balloons
+package de.timbo.kartoffel.ui.balloons
 
 import android.content.Context
 import androidx.lifecycle.LifecycleOwner
 import com.skydoves.balloon.*
-import de.bornholdtlee.defaultprojectkotlin.R
+import de.timbo.kartoffel.R
 
 class ExplainBalloonFactory : Balloon.Factory() {
     override fun create(context: Context, lifecycle: LifecycleOwner?): Balloon {

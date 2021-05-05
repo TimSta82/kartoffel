@@ -1,4 +1,4 @@
-package de.bornholdtlee.defaultprojectkotlin.ui
+package de.timbo.kartoffel.ui
 
 import androidx.annotation.LayoutRes
 import androidx.fragment.app.Fragment

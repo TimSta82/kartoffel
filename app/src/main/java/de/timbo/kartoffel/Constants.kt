@@ -1,4 +1,4 @@
-package de.bornholdtlee.defaultprojectkotlin
+package de.timbo.kartoffel
 
 const val CLIENT_ID = "assistantApp"
 

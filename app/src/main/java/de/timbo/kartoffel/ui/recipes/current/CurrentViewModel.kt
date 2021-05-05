@@ -1,10 +1,10 @@
-package de.bornholdtlee.defaultprojectkotlin.ui.recipes.current
+package de.timbo.kartoffel.ui.recipes.current
 
 import androidx.lifecycle.LiveData
-import de.bornholdtlee.defaultprojectkotlin.model.Recipe
-import de.bornholdtlee.defaultprojectkotlin.ui.BaseViewModel
-import de.bornholdtlee.defaultprojectkotlin.usecases.GetRecipesFromDbAsLiveDataUseCase
-import de.bornholdtlee.defaultprojectkotlin.utils.SingleLiveEvent
+import de.timbo.kartoffel.model.Recipe
+import de.timbo.kartoffel.ui.BaseViewModel
+import de.timbo.kartoffel.usecases.GetRecipesFromDbAsLiveDataUseCase
+import de.timbo.kartoffel.utils.SingleLiveEvent
 import org.koin.core.component.inject
 
 class CurrentViewModel : BaseViewModel() {

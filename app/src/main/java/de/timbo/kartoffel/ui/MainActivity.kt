@@ -1,18 +1,14 @@
-package de.bornholdtlee.defaultprojectkotlin.ui
+package de.timbo.kartoffel.ui
 
 import android.content.Context
 import android.content.Intent
 import android.os.Bundle
 import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
-import androidx.navigation.NavController
-import androidx.navigation.findNavController
-import androidx.navigation.ui.setupWithNavController
-import com.google.android.material.bottomnavigation.BottomNavigationView
-import de.bornholdtlee.defaultprojectkotlin.R
-import de.bornholdtlee.defaultprojectkotlin.ui.recipes.RecipesActivity
-import de.bornholdtlee.defaultprojectkotlin.ui.setup.SetupActivity
-import de.bornholdtlee.defaultprojectkotlin.utils.Logger
+import de.timbo.kartoffel.R
+import de.timbo.kartoffel.ui.recipes.RecipesActivity
+import de.timbo.kartoffel.ui.setup.SetupActivity
+import de.timbo.kartoffel.utils.Logger
 
 class MainActivity : AppCompatActivity() {
 

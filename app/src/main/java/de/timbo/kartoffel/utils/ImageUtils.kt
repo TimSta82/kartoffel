@@ -1,4 +1,4 @@
-package de.bornholdtlee.defaultprojectkotlin.utils
+package de.timbo.kartoffel.utils
 
 import android.content.Context
 import android.graphics.Bitmap

@@ -1,6 +1,6 @@
-package de.bornholdtlee.defaultprojectkotlin.model.data_types
+package de.timbo.kartoffel.model.data_types
 
-import de.bornholdtlee.defaultprojectkotlin.R
+import de.timbo.kartoffel.R
 
 enum class FoodCategory(
     val id: Int,

@@ -1,6 +1,6 @@
-package de.bornholdtlee.defaultprojectkotlin.usecases
+package de.timbo.kartoffel.usecases
 
-import de.bornholdtlee.defaultprojectkotlin.database.AppKeyValueStore
+import de.timbo.kartoffel.database.AppKeyValueStore
 import org.koin.core.component.inject
 
 class SetRecipesSelectedUseCase : BaseUseCase() {

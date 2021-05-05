@@ -1,6 +1,6 @@
-package de.bornholdtlee.defaultprojectkotlin.repositories
+package de.timbo.kartoffel.repositories
 
-import de.bornholdtlee.defaultprojectkotlin.database.dao.QuestionDao
+import de.timbo.kartoffel.database.dao.QuestionDao
 import org.koin.core.component.inject
 
 class QuestionRepository : BaseRepository() {

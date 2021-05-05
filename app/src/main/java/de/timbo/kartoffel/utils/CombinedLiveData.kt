@@ -1,4 +1,4 @@
-package de.bornholdtlee.defaultprojectkotlin.utils
+package de.timbo.kartoffel.utils
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MediatorLiveData

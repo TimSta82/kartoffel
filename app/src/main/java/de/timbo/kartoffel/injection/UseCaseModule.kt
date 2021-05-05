@@ -1,6 +1,6 @@
-package de.bornholdtlee.defaultprojectkotlin.injection
+package de.timbo.kartoffel.injection
 
-import de.bornholdtlee.defaultprojectkotlin.usecases.*
+import de.timbo.kartoffel.usecases.*
 import org.koin.dsl.module
 
 val useCaseModule = module {

@@ -1,4 +1,4 @@
-package de.bornholdtlee.defaultprojectkotlin.utils
+package de.timbo.kartoffel.utils
 
 import androidx.annotation.MainThread
 import androidx.lifecycle.LifecycleOwner

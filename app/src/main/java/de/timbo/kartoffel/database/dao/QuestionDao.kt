@@ -1,9 +1,9 @@
-package de.bornholdtlee.defaultprojectkotlin.database.dao
+package de.timbo.kartoffel.database.dao
 
 import androidx.lifecycle.LiveData
 import androidx.room.Dao
 import androidx.room.Query
-import de.bornholdtlee.defaultprojectkotlin.database.model.Question
+import de.timbo.kartoffel.database.model.Question
 
 @Dao
 abstract class QuestionDao : BaseDao<Question>() {

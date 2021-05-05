@@ -1,4 +1,4 @@
-package de.bornholdtlee.defaultprojectkotlin.ui.setup
+package de.timbo.kartoffel.ui.setup
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
@@ -6,9 +6,9 @@ import android.widget.ImageView
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
-import de.bornholdtlee.defaultprojectkotlin.R
-import de.bornholdtlee.defaultprojectkotlin.databinding.GridItemSetupBinding
-import de.bornholdtlee.defaultprojectkotlin.model.data_types.FoodCategory
+import de.timbo.kartoffel.R
+import de.timbo.kartoffel.databinding.GridItemSetupBinding
+import de.timbo.kartoffel.model.data_types.FoodCategory
 
 class SetupAdapter(private val onClick: (FoodCategory, position: Int) -> Unit) :
     ListAdapter<FoodCategory, SetupAdapter.SetupViewHolder>(SetupDiffUtilCallback()) {

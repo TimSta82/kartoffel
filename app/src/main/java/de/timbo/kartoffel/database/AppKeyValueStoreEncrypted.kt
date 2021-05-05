@@ -1,10 +1,10 @@
-package de.bornholdtlee.defaultprojectkotlin.database
+package de.timbo.kartoffel.database
 
 import android.content.Context
 import android.content.SharedPreferences
 import androidx.security.crypto.EncryptedSharedPreferences
 import androidx.security.crypto.MasterKey
-import de.bornholdtlee.defaultprojectkotlin.R
+import de.timbo.kartoffel.R
 
 class AppKeyValueStoreEncrypted(context: Context) {
 

@@ -1,7 +1,7 @@
-package de.bornholdtlee.defaultprojectkotlin.api
+package de.timbo.kartoffel.api
 
-import de.bornholdtlee.defaultprojectkotlin.api.model.RandomRecipesDto
-import de.bornholdtlee.defaultprojectkotlin.api.model.SimpleRecipesDto
+import de.timbo.kartoffel.api.model.RandomRecipesDto
+import de.timbo.kartoffel.api.model.SimpleRecipesDto
 import retrofit2.Response
 import retrofit2.http.GET
 import retrofit2.http.Query

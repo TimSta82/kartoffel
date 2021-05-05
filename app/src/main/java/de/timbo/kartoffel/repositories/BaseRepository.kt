@@ -1,8 +1,8 @@
-package de.bornholdtlee.defaultprojectkotlin.repositories
+package de.timbo.kartoffel.repositories
 
-import de.bornholdtlee.defaultprojectkotlin.api.RecipeApiInterface
-import de.bornholdtlee.defaultprojectkotlin.api.ResponseEvaluator
-import de.bornholdtlee.defaultprojectkotlin.utils.Logger
+import de.timbo.kartoffel.api.RecipeApiInterface
+import de.timbo.kartoffel.api.ResponseEvaluator
+import de.timbo.kartoffel.utils.Logger
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.SupervisorJob

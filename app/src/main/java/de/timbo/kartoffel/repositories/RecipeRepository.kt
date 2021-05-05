@@ -1,9 +1,9 @@
-package de.bornholdtlee.defaultprojectkotlin.repositories
+package de.timbo.kartoffel.repositories
 
 import androidx.lifecycle.LiveData
-import de.bornholdtlee.defaultprojectkotlin.database.dao.RecipeDao
-import de.bornholdtlee.defaultprojectkotlin.database.model.RecipeEntity
-import de.bornholdtlee.defaultprojectkotlin.model.Recipe
+import de.timbo.kartoffel.database.dao.RecipeDao
+import de.timbo.kartoffel.database.model.RecipeEntity
+import de.timbo.kartoffel.model.Recipe
 import kotlinx.coroutines.launch
 import org.koin.core.component.inject
 

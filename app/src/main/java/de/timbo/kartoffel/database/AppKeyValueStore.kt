@@ -1,8 +1,8 @@
-package de.bornholdtlee.defaultprojectkotlin.database
+package de.timbo.kartoffel.database
 
 import android.content.Context
 import android.content.SharedPreferences
-import de.bornholdtlee.defaultprojectkotlin.R
+import de.timbo.kartoffel.R
 import java.util.*
 
 class AppKeyValueStore(context: Context) {

@@ -1,9 +1,9 @@
-package de.bornholdtlee.defaultprojectkotlin.ui.recipes.favorites
+package de.timbo.kartoffel.ui.recipes.favorites
 
 import androidx.lifecycle.LiveData
-import de.bornholdtlee.defaultprojectkotlin.ui.BaseViewModel
-import de.bornholdtlee.defaultprojectkotlin.usecases.SetRecipesSelectedUseCase
-import de.bornholdtlee.defaultprojectkotlin.utils.SingleLiveEvent
+import de.timbo.kartoffel.ui.BaseViewModel
+import de.timbo.kartoffel.usecases.SetRecipesSelectedUseCase
+import de.timbo.kartoffel.utils.SingleLiveEvent
 import org.koin.core.component.inject
 
 class FavoritesViewModel : BaseViewModel() {

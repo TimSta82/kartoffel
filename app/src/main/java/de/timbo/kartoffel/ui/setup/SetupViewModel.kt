@@ -1,17 +1,15 @@
-package de.bornholdtlee.defaultprojectkotlin.ui.setup
+package de.timbo.kartoffel.ui.setup
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
-import androidx.lifecycle.ViewModel
-import de.bornholdtlee.defaultprojectkotlin.extensions.launch
-import de.bornholdtlee.defaultprojectkotlin.model.Recipe
-import de.bornholdtlee.defaultprojectkotlin.model.data_types.FoodCategory
-import de.bornholdtlee.defaultprojectkotlin.ui.BaseViewModel
-import de.bornholdtlee.defaultprojectkotlin.usecases.BaseUseCase
-import de.bornholdtlee.defaultprojectkotlin.usecases.GetRecipesUseCase
-import de.bornholdtlee.defaultprojectkotlin.usecases.SetRecipesSelectedUseCase
-import de.bornholdtlee.defaultprojectkotlin.utils.SingleLiveEvent
-import org.koin.core.component.KoinComponent
+import de.timbo.kartoffel.extensions.launch
+import de.timbo.kartoffel.model.Recipe
+import de.timbo.kartoffel.model.data_types.FoodCategory
+import de.timbo.kartoffel.ui.BaseViewModel
+import de.timbo.kartoffel.usecases.BaseUseCase
+import de.timbo.kartoffel.usecases.GetRecipesUseCase
+import de.timbo.kartoffel.usecases.SetRecipesSelectedUseCase
+import de.timbo.kartoffel.utils.SingleLiveEvent
 import org.koin.core.component.inject
 
 class SetupViewModel : BaseViewModel() {
