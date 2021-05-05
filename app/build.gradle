@@ -172,6 +172,8 @@ dependencies {
         exclude group: 'com.jakewharton.threetenabp', module: 'threetenabp'
     }
 
-    // Flipcards
+    // Fancy Stuff
     implementation 'com.wajahatkarim3.EasyFlipView:EasyFlipView:3.0.0'
+    implementation "com.github.skydoves:balloon:1.3.4"
+
 }

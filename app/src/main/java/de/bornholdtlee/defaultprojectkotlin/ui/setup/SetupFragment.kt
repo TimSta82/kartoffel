@@ -6,6 +6,8 @@ import android.widget.ImageView
 import android.widget.Toast
 import androidx.core.view.isVisible
 import androidx.fragment.app.viewModels
+import com.skydoves.balloon.OnBalloonClickListener
+import com.skydoves.balloon.balloon
 import com.wajahatkarim3.easyflipview.EasyFlipView
 import de.bornholdtlee.defaultprojectkotlin.R
 import de.bornholdtlee.defaultprojectkotlin.databinding.FragmentSetupBinding
@@ -13,14 +15,18 @@ import de.bornholdtlee.defaultprojectkotlin.extensions.showSnackBar
 import de.bornholdtlee.defaultprojectkotlin.model.Recipe
 import de.bornholdtlee.defaultprojectkotlin.model.data_types.FoodCategory
 import de.bornholdtlee.defaultprojectkotlin.ui.BaseFragment
+import de.bornholdtlee.defaultprojectkotlin.ui.balloons.ExplainBalloonFactory
 import de.bornholdtlee.defaultprojectkotlin.ui.dialogs.select.SelectCategoryDialog
+import de.bornholdtlee.defaultprojectkotlin.utils.BalloonUtils
 import de.bornholdtlee.defaultprojectkotlin.utils.Logger
 import de.bornholdtlee.defaultprojectkotlin.utils.viewBinding
 
-class SetupFragment : BaseFragment(R.layout.fragment_setup) {
+class SetupFragment : BaseFragment(R.layout.fragment_setup), OnBalloonClickListener {
 
     private val binding by viewBinding(FragmentSetupBinding::bind)
     private val viewModel by viewModels<SetupViewModel>()
+    private val navigationBalloon by lazy { BalloonUtils.getNavigationBalloon(requireContext(), this, this) }
+    private val explainBalloon by balloon<ExplainBalloonFactory>()
 
     private var isFabMenuOpen = false
 
@@ -73,6 +79,15 @@ class SetupFragment : BaseFragment(R.layout.fragment_setup) {
         binding.setupMenuFab.setOnClickListener { toggleFabMenu() }
         binding.setupProceedFab.setOnClickListener { proceed() }
         binding.setupSaveFab.setOnClickListener { Toast.makeText(requireContext(), "TODO -> save", Toast.LENGTH_SHORT).show() }
+        binding.setupExplainTv.setOnClickListener { showExplainBalloon() }
+    }
+
+    private fun showExplainBalloon() {
+        if (explainBalloon.isShowing) {
+            explainBalloon.dismiss()
+        } else {
+            explainBalloon.showAlignBottom(binding.setupExplainTv)
+        }
     }
 
     private fun proceed() {
@@ -110,5 +125,9 @@ class SetupFragment : BaseFragment(R.layout.fragment_setup) {
 
     private fun onCategorySelected(oldPosition: Int, selectedCategory: FoodCategory) {
         viewModel.applySelectedCategory(oldPosition, selectedCategory)
+    }
+
+    override fun onBalloonClick(view: View) {
+        navigationBalloon.dismiss()
     }
 }

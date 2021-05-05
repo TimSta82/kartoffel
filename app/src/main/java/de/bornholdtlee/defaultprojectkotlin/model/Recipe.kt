@@ -3,6 +3,8 @@ package de.bornholdtlee.defaultprojectkotlin.model
 import android.os.Parcelable
 import de.bornholdtlee.defaultprojectkotlin.api.model.RandomRecipesDto
 import de.bornholdtlee.defaultprojectkotlin.api.model.SimpleRecipesDto
+import de.bornholdtlee.defaultprojectkotlin.database.model.RecipeEntity
+import de.bornholdtlee.defaultprojectkotlin.extensions.toMcFace
 import kotlinx.parcelize.Parcelize
 
 @Parcelize
@@ -29,7 +31,7 @@ data class Recipe(
     val image: String?,
     val summary: String?,
     val cuisines: List<String?>?,
-    val dishTypes: List<String?>?,
+    val dishTypes: List<String?>? ,
     val diets: List<String?>?,
     val spoonacularSourceUrl: String?
 //    @SerializedName("instructions")
@@ -61,6 +63,10 @@ data class Recipe(
         image = randomDto.image,
         summary = randomDto.summary,
         cuisines = randomDto.cuisines,
+//        cuisines = randomDto.cuisines?.let { cuisines ->
+//            cuisines.map{ cuisine ->
+//                cuisine ?: "".toMcFace()
+//            } },
         dishTypes = randomDto.dishTypes,
         diets = randomDto.diets,
         spoonacularSourceUrl = randomDto.spoonacularSourceUrl
@@ -92,5 +98,61 @@ data class Recipe(
         dishTypes = simpleDto.dishTypes,
         diets = simpleDto.diets,
         spoonacularSourceUrl = simpleDto.spoonacularSourceUrl
+    )
+
+    constructor(entity: RecipeEntity) : this(
+        vegetarian = entity.vegetarian,
+        vegan = entity.vegan,
+        glutenFree = entity.glutenFree,
+        dairyFree = entity.dairyFree,
+        veryHealthy = entity.veryHealthy,
+        cheap = entity.cheap,
+        veryPopular = entity.veryPopular,
+        sustainable = entity.sustainable,
+        aggregateLikes = entity.aggregateLikes,
+        spoonacularScore = entity.spoonacularScore,
+        healthScore = entity.healthScore,
+        creditsText = entity.creditsText,
+        license = entity.license,
+        sourceName = entity.sourceName,
+//        extendedIngredients = entity.extendedIngredients, // TODO
+        id = entity.recipeId,
+        title = entity.title,
+        readyInMinutes = entity.readyInMinutes,
+        sourceUrl = entity.sourceUrl,
+        image = entity.image,
+        summary = entity.summary,
+        cuisines = entity.cuisines,
+        dishTypes = entity.dishTypes,
+        diets = entity.diets,
+        spoonacularSourceUrl = entity.spoonacularSourceUrl
+    )
+
+    fun toEntity() = RecipeEntity(
+        recipeId = id ?: -1,
+        title = title ?: "".toMcFace(),
+        vegetarian = vegetarian ?: false,
+        vegan = vegan ?: false,
+        glutenFree = glutenFree ?: false,
+        dairyFree = dairyFree ?: false,
+        veryHealthy = veryHealthy ?: false,
+        cheap = cheap ?: false,
+        veryPopular = veryPopular ?: false,
+        sustainable = sustainable ?: false,
+        aggregateLikes = aggregateLikes ?: -1,
+        spoonacularScore = spoonacularScore ?: -1.0,
+        healthScore = healthScore ?: -1.0,
+        creditsText = creditsText ?: "".toMcFace(),
+        license = license ?: "".toMcFace(),
+        sourceName = sourceName ?: "".toMcFace(),
+//        extendedIngredients = extendedIngredients, // TODO
+        readyInMinutes = readyInMinutes ?: -1,
+        sourceUrl = sourceUrl ?: "".toMcFace(),
+        image = image ?: "".toMcFace(),
+        summary = summary ?: "".toMcFace(),
+        cuisines = cuisines ?: emptyList(),
+        dishTypes = dishTypes ?: emptyList(),
+        diets = diets ?: emptyList(),
+        spoonacularSourceUrl = spoonacularSourceUrl ?: "".toMcFace()
     )
 }

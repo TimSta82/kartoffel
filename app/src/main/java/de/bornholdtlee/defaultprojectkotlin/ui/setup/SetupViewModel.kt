@@ -6,13 +6,14 @@ import androidx.lifecycle.ViewModel
 import de.bornholdtlee.defaultprojectkotlin.extensions.launch
 import de.bornholdtlee.defaultprojectkotlin.model.Recipe
 import de.bornholdtlee.defaultprojectkotlin.model.data_types.FoodCategory
+import de.bornholdtlee.defaultprojectkotlin.ui.BaseViewModel
 import de.bornholdtlee.defaultprojectkotlin.usecases.BaseUseCase
 import de.bornholdtlee.defaultprojectkotlin.usecases.GetRecipesUseCase
 import de.bornholdtlee.defaultprojectkotlin.utils.SingleLiveEvent
 import org.koin.core.component.KoinComponent
 import org.koin.core.component.inject
 
-class SetupViewModel : ViewModel(), KoinComponent {
+class SetupViewModel : BaseViewModel() {
 
     private val getRecipesUseCase by inject<GetRecipesUseCase>()
 

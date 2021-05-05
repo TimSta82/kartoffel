@@ -3,7 +3,7 @@ package de.bornholdtlee.defaultprojectkotlin.usecases
 import de.bornholdtlee.defaultprojectkotlin.api.ResponseEvaluator
 import de.bornholdtlee.defaultprojectkotlin.model.Recipe
 import de.bornholdtlee.defaultprojectkotlin.model.data_types.FoodCategory
-import de.bornholdtlee.defaultprojectkotlin.repositories.RecipesRepository
+import de.bornholdtlee.defaultprojectkotlin.repositories.RecipeRepository
 import de.bornholdtlee.defaultprojectkotlin.utils.DefaultRecipe
 import de.bornholdtlee.defaultprojectkotlin.utils.Logger
 import kotlinx.coroutines.async
@@ -13,7 +13,7 @@ import kotlin.random.Random
 
 class GetRecipesUseCase : BaseUseCase() {
 
-    private val recipesRepository by inject<RecipesRepository>()
+    private val recipesRepository by inject<RecipeRepository>()
 
     suspend fun call(selectedCategories: List<FoodCategory>): UseCaseResult<List<Recipe>> {
         val combinedRecipes = mutableListOf<Recipe>()
@@ -33,7 +33,7 @@ class GetRecipesUseCase : BaseUseCase() {
                     }
                 } else {
                     async {
-                        val randomOffset = Random.nextInt(5)
+                        val randomOffset = Random.nextInt(category.totalResults)
                         when (val result = recipesRepository.getRecipes(category.queryMap, randomOffset)) {
                             is ResponseEvaluator.Result.Success -> {
                                 result.response.body()?.simpleRecipes?.let { recipesDto ->
@@ -49,8 +49,13 @@ class GetRecipesUseCase : BaseUseCase() {
                 .map { it -> it.await() }
         }
         return when (combinedRecipes.size) {
-            7 -> UseCaseResult.Success(combinedRecipes)
+            7 -> handleRecipes(UseCaseResult.Success(combinedRecipes))
             else -> UseCaseResult.Failure()
         }
+    }
+
+    private fun handleRecipes(successResponse: UseCaseResult.Success<List<Recipe>>): UseCaseResult<List<Recipe>> {
+        recipesRepository.saveRecipes(successResponse.resultObject)
+        return successResponse
     }
 }
