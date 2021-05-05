@@ -21,8 +21,5 @@ enum class FoodCategory(
     VEGETARIAN(7, mapOf("diet" to "vegetarian"), "Vegetarian", R.drawable.ic_vegetarian, true, -1),
     RANDOM(8, mapOf("random" to "random"), "Random", R.drawable.ic_random, true, -1),
     ITALIAN(10, mapOf("tags" to "italian"), "Italian", R.drawable.ic_italian, true, -1),
-    GREEK(11, mapOf("tags" to "greek"), "Greek", R.drawable.ic_greece, true, -1),
-    CHEAP(12, mapOf("cheap" to "true"), "Cheap", R.drawable.ic_cheap, false, 5076),
-    TOP_RATED(13, mapOf("veryPopular" to "true"), "Popular", R.drawable.ic_spotlight, false, 5076),
-    HEALTHY(14, mapOf("veryHealthy" to "true"), "Healthy", R.drawable.ic_healthy, false, -1)
+    GREEK(11, mapOf("tags" to "greek"), "Greek", R.drawable.ic_greece, true, -1)
 }

@@ -9,6 +9,7 @@ import de.bornholdtlee.defaultprojectkotlin.model.data_types.FoodCategory
 import de.bornholdtlee.defaultprojectkotlin.ui.BaseViewModel
 import de.bornholdtlee.defaultprojectkotlin.usecases.BaseUseCase
 import de.bornholdtlee.defaultprojectkotlin.usecases.GetRecipesUseCase
+import de.bornholdtlee.defaultprojectkotlin.usecases.SetRecipesSelectedUseCase
 import de.bornholdtlee.defaultprojectkotlin.utils.SingleLiveEvent
 import org.koin.core.component.KoinComponent
 import org.koin.core.component.inject
@@ -16,9 +17,13 @@ import org.koin.core.component.inject
 class SetupViewModel : BaseViewModel() {
 
     private val getRecipesUseCase by inject<GetRecipesUseCase>()
+    private val setRecipesUseCase by inject<SetRecipesSelectedUseCase>()
 
     private val _recipes = MutableLiveData<List<Recipe>>()
     val recipes: LiveData<List<Recipe>> = _recipes
+
+    private val _success = SingleLiveEvent<Any>()
+    val success: LiveData<Any> = _success
 
     private val _failure = SingleLiveEvent<Any>()
     val failure: LiveData<Any> = _failure
@@ -77,7 +82,10 @@ class SetupViewModel : BaseViewModel() {
         _isLoading.value = true
         launch {
             when (val result = getRecipesUseCase.call(collectCategories())) {
-                is BaseUseCase.UseCaseResult.Success -> _recipes.postValue(result.resultObject!!)
+                is BaseUseCase.UseCaseResult.Success -> {
+                    setRecipesUseCase.call(true)
+                    _success.callAsync()
+                }
                 else -> _failure.callAsync()
             }
             _isLoading.postValue(false)

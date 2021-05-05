@@ -9,10 +9,15 @@ class AppKeyValueStore(context: Context) {
 
     private companion object {
         const val EXAMPLE = "EXAMPLE"
+        const val KEY_HAS_RECIPES = "KEY_HAS_RECIPES"
     }
 
     private val sharedPreferencesReader: SharedPreferences = context.getSharedPreferences(context.getString(R.string.app_name), Context.MODE_PRIVATE)
     private val sharedPreferencesWriter: SharedPreferences.Editor = sharedPreferencesReader.edit()
+
+    var hasRecipes: Boolean
+        get() = getBoolean(KEY_HAS_RECIPES, false)
+        set(value) = putBoolean(KEY_HAS_RECIPES, value)
 
     var example: Boolean
         get() = getBoolean(EXAMPLE, false)
