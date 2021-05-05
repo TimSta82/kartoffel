@@ -12,11 +12,13 @@ import com.wajahatkarim3.easyflipview.EasyFlipView
 import de.bornholdtlee.defaultprojectkotlin.R
 import de.bornholdtlee.defaultprojectkotlin.databinding.FragmentSetupBinding
 import de.bornholdtlee.defaultprojectkotlin.extensions.showSnackBar
+import de.bornholdtlee.defaultprojectkotlin.extensions.toMcFace
 import de.bornholdtlee.defaultprojectkotlin.model.Recipe
 import de.bornholdtlee.defaultprojectkotlin.model.data_types.FoodCategory
 import de.bornholdtlee.defaultprojectkotlin.ui.BaseFragment
 import de.bornholdtlee.defaultprojectkotlin.ui.balloons.ExplainBalloonFactory
 import de.bornholdtlee.defaultprojectkotlin.ui.dialogs.select.SelectCategoryDialog
+import de.bornholdtlee.defaultprojectkotlin.ui.recipes.RecipesActivity
 import de.bornholdtlee.defaultprojectkotlin.utils.BalloonUtils
 import de.bornholdtlee.defaultprojectkotlin.utils.Logger
 import de.bornholdtlee.defaultprojectkotlin.utils.viewBinding
@@ -47,12 +49,18 @@ class SetupFragment : BaseFragment(R.layout.fragment_setup), OnBalloonClickListe
         viewModel.six.observe(viewLifecycleOwner) { prepareFlipView(binding.easyFlipSixEfv, it) }
         viewModel.seven.observe(viewLifecycleOwner) { prepareFlipView(binding.easyFlipSevenEfv, it) }
         viewModel.recipes.observe(viewLifecycleOwner) { recipes -> showRecipes(recipes) }
+        viewModel.success.observe(viewLifecycleOwner) { openRecipesActivity()}
         viewModel.failure.observe(viewLifecycleOwner) { showErrorMessage() }
         viewModel.isLoading.observe(viewLifecycleOwner, ::showLoadingIndicator)
     }
 
+    private fun openRecipesActivity() {
+        RecipesActivity.startActivity(requireContext())
+        requireActivity().finish()
+    }
+
     private fun showErrorMessage() {
-        showSnackBar("Faily McFailface")
+        showSnackBar("Fail".toMcFace())
     }
 
     private fun showLoadingIndicator(isLoading: Boolean) {

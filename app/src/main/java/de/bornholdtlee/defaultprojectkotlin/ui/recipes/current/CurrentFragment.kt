@@ -1,4 +1,4 @@
-package de.bornholdtlee.defaultprojectkotlin.ui.current
+package de.bornholdtlee.defaultprojectkotlin.ui.recipes.current
 
 import android.os.Bundle
 import android.view.View

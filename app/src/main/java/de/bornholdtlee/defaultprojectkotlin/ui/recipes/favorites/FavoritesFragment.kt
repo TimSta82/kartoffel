@@ -1,4 +1,4 @@
-package de.bornholdtlee.defaultprojectkotlin.ui.favorites
+package de.bornholdtlee.defaultprojectkotlin.ui.recipes.favorites
 
 import android.os.Bundle
 import android.view.View
