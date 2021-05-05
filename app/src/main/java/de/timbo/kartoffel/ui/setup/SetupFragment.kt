@@ -19,6 +19,7 @@ import de.timbo.kartoffel.ui.BaseFragment
 import de.timbo.kartoffel.ui.balloons.ExplainBalloonFactory
 import de.timbo.kartoffel.ui.dialogs.select.SelectCategoryDialog
 import de.timbo.kartoffel.ui.recipes.RecipesActivity
+import de.timbo.kartoffel.ui.select.SelectActivity
 import de.timbo.kartoffel.utils.BalloonUtils
 import de.timbo.kartoffel.utils.Logger
 import de.timbo.kartoffel.utils.viewBinding
@@ -50,9 +51,15 @@ class SetupFragment : BaseFragment(R.layout.fragment_setup), OnBalloonClickListe
         viewModel.six.observe(viewLifecycleOwner) { prepareFlipView(binding.easyFlipSixEfv, it) }
         viewModel.seven.observe(viewLifecycleOwner) { prepareFlipView(binding.easyFlipSevenEfv, it) }
         viewModel.recipes.observe(viewLifecycleOwner) { recipes -> showRecipes(recipes) }
-        viewModel.success.observe(viewLifecycleOwner) { openRecipesActivity()}
-        viewModel.failure.observe(viewLifecycleOwner) { showErrorMessage() }
+        viewModel.success.observe(viewLifecycleOwner) { openSelectActivity()}
+//        viewModel.success.observe(viewLifecycleOwner) { openRecipesActivity()}
+        viewModel.failure.observe(viewLifecycleOwner) { openSelectActivity() }
+//        viewModel.failure.observe(viewLifecycleOwner) { showErrorMessage() } TODO uncomment tomorrow
         viewModel.isLoading.observe(viewLifecycleOwner, ::showLoadingIndicator)
+    }
+
+    private fun openSelectActivity() {
+        SelectActivity.startActivity(requireContext())
     }
 
     private fun openRecipesActivity() {

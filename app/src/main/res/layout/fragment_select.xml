@@ -65,17 +65,16 @@
 
         </RelativeLayout>
 
-        <com.wajahatkarim3.easyflipview.EasyFlipView
+        <com.yuyakaido.android.cardstackview.CardStackView
+            android:id="@+id/card_stack_view"
             android:layout_width="match_parent"
-            android:layout_height="match_parent" >
-
-            <include
-                layout="@layout/include_card_stack_front" />
-
-            <include
-                layout="@layout/include_card_stack_back" />
-
-        </com.wajahatkarim3.easyflipview.EasyFlipView>
+            android:layout_height="match_parent"
+            android:clipToPadding="false"
+            android:padding="4dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
 
     </RelativeLayout>
 
