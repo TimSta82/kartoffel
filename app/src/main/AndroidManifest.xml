@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="de.bornholdtlee.defaultprojectkotlin">
+    package="de.timbo.kartoffel">
 
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
     <uses-permission android:name="android.permission.INTERNET" />
 
     <application
-        android:name=".BaseApplication"
+        android:name="de.timbo.kartoffel.BaseApplication"
         android:allowBackup="false"
         android:icon="@mipmap/ic_launcher_potato"
         android:label="@string/app_name"
@@ -15,15 +15,15 @@
         android:theme="@style/AppTheme">
 
         <activity
-            android:name=".ui.setup.SetupActivity"
+            android:name="de.timbo.kartoffel.ui.setup.SetupActivity"
             android:theme="@style/AppTheme.NoActionBar" />
 
         <activity
-            android:name=".ui.recipes.RecipesActivity"
+            android:name="de.timbo.kartoffel.ui.recipes.RecipesActivity"
             android:theme="@style/AppTheme.NoActionBar" />
 
         <activity
-            android:name=".ui.MainActivity"
+            android:name="de.timbo.kartoffel.ui.MainActivity"
             android:label="@string/app_name"
             android:screenOrientation="portrait"
             android:theme="@style/AppTheme.NoActionBar">
@@ -36,7 +36,7 @@
         </activity>
 
         <provider
-            android:name=".android.GenericFileProvider"
+            android:name="de.timbo.kartoffel.android.GenericFileProvider"
             android:authorities="${applicationId}.provider"
             android:exported="false"
             android:grantUriPermissions="true">

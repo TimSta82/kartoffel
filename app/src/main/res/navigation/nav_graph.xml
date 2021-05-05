@@ -8,12 +8,12 @@
 
     <fragment
         android:id="@+id/favoritesFragment"
-        android:name="de.bornholdtlee.defaultprojectkotlin.ui.recipes.favorites.FavoritesFragment"
+        android:name="de.timbo.kartoffel.ui.recipes.favorites.FavoritesFragment"
         android:label="fragment_favorites"
         tools:layout="@layout/fragment_favorites" />
     <fragment
         android:id="@+id/currentFragment"
-        android:name="de.bornholdtlee.defaultprojectkotlin.ui.recipes.current.CurrentFragment"
+        android:name="de.timbo.kartoffel.ui.recipes.current.CurrentFragment"
         android:label="fragment_current"
         tools:layout="@layout/fragment_current" />
 </navigation>
