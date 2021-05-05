@@ -1,16 +1,16 @@
-package de.timbo.kartoffel.ui.setup
+package de.bornholdtlee.defaultprojectkotlin.ui.select
 
 import android.content.Context
 import android.content.Intent
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
-import de.timbo.kartoffel.R
+import de.bornholdtlee.defaultprojectkotlin.R
 
-class SetupActivity: AppCompatActivity() {
+class SelectActivity : AppCompatActivity() {
 
     companion object {
         fun startActivity(context: Context) {
-            val intent = Intent(context, SetupActivity::class.java)
+            val intent = Intent(context, SelectActivity::class.java)
             context.startActivity(intent)
         }
     }
@@ -18,9 +18,10 @@ class SetupActivity: AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
-        setContentView(R.layout.activity_setup)
+        setContentView(R.layout.activity_select)
+
         supportFragmentManager.beginTransaction()
-            .replace(R.id.setup_container_Fcv, SetupFragment())
+            .replace(R.id.select_container_Fcv, SelectFragment())
             .commit()
     }
 }
