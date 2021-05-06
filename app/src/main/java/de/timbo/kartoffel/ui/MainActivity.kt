@@ -49,3 +49,9 @@ class MainActivity : AppCompatActivity() {
         finish()
     }
 }
+
+/**
+ * TODO substitute loading with confetti
+ * https://github.com/DanielMartinus/Konfetti
+ * attention: see license
+ */
