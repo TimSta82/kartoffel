@@ -3,15 +3,13 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:layout_margin="2dp"
     android:id="@+id/swipe_flip_container"
-    android:elevation="@dimen/half_grid_unit"
     app:cardCornerRadius="@dimen/card_corner_radius">
 
     <include
-        layout="@layout/swipe_list_item_front" />
+        layout="@layout/swipe_list_item_back" />
 
     <include
-        layout="@layout/swipe_list_item_back" />
+        layout="@layout/swipe_list_item_front" />
 
 </com.wajahatkarim3.easyflipview.EasyFlipView>

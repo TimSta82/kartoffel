@@ -77,16 +77,20 @@ class SetupViewModel : BaseViewModel() {
     }
 
     fun submitSetup() {
-        _isLoading.value = true
-        launch {
-            when (val result = getRecipesUseCase.call(collectCategories())) {
-                is BaseUseCase.UseCaseResult.Success -> {
-                    setRecipesUseCase.call(true)
-                    _success.callAsync()
-                }
-                else -> _failure.callAsync()
-            }
-            _isLoading.postValue(false)
-        }
+        _success.callAsync() // TODO remove
+        /**
+         * TODO uncomment when select screen looks good
+         */
+//        _isLoading.value = true
+//        launch {
+//            when (val result = getRecipesUseCase.call(collectCategories())) {
+//                is BaseUseCase.UseCaseResult.Success -> {
+//                    setRecipesUseCase.call(true)
+//                    _success.callAsync()
+//                }
+//                else -> _failure.callAsync()
+//            }
+//            _isLoading.postValue(false)
+//        }
     }
 }

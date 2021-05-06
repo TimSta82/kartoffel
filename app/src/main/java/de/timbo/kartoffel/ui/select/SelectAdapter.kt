@@ -21,7 +21,7 @@ class SelectAdapter(private val recipes: List<List<Recipe>>, private val onClick
         holder.bind(recipes[position])
     }
 
-    override fun getItemCount() = recipes[0].size
+    override fun getItemCount() = recipes.size
 
     inner class SelectViewHolder(private val ib: SwipeListItemBinding) : RecyclerView.ViewHolder(ib.root) {
         fun bind(recipes: List<Recipe>) {

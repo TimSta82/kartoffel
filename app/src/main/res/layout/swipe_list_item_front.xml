@@ -7,193 +7,227 @@
     android:elevation="@dimen/half_grid_unit"
     app:cardCornerRadius="@dimen/card_corner_radius">
 
-    <androidx.constraintlayout.widget.ConstraintLayout
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:background="@color/blue_10">
+        android:background="@color/blue_10"
+        android:orientation="vertical"
+        android:padding="@dimen/half_grid_unit">
 
-        <RelativeLayout
-            android:id="@+id/relativeLayout1"
+        <com.google.android.material.card.MaterialCardView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent">
+            android:layout_weight="1"
+            app:cardCornerRadius="@dimen/one_grid_unit">
 
-            <ImageView
-                android:id="@+id/first_Iv"
-                android:layout_width="@dimen/four_grid_unit"
-                android:layout_height="@dimen/four_grid_unit"
-                android:layout_centerVertical="true"
-                android:src="@drawable/ic_cheap" />
+            <RelativeLayout
+                android:id="@+id/relativeLayout1"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
 
-            <TextView
-                android:id="@+id/first_Tv"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_centerVertical="true"
-                android:layout_marginStart="@dimen/two_grid_unit"
-                android:layout_toEndOf="@+id/first_Iv"
-                android:text="lksandlk" />
-        </RelativeLayout>
+                <ImageView
+                    android:id="@+id/first_Iv"
+                    android:layout_width="@dimen/four_grid_unit"
+                    android:layout_height="@dimen/four_grid_unit"
+                    android:layout_centerVertical="true"
+                    android:src="@drawable/ic_cheap" />
 
-        <RelativeLayout
-            android:id="@+id/relativeLayout2"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="@dimen/one_grid_unit"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/relativeLayout1">
+                <TextView
+                    android:id="@+id/first_Tv"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:layout_marginStart="@dimen/two_grid_unit"
+                    android:layout_toEndOf="@+id/first_Iv"
+                    android:text="lksandlk" />
+            </RelativeLayout>
 
-            <ImageView
-                android:id="@+id/second_Iv"
-                android:layout_width="@dimen/four_grid_unit"
-                android:layout_height="@dimen/four_grid_unit"
-                android:layout_centerVertical="true"
-                android:src="@drawable/ic_cheap" />
+        </com.google.android.material.card.MaterialCardView>
 
-            <TextView
-                android:id="@+id/second_Tv"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_centerVertical="true"
-                android:layout_marginStart="@dimen/two_grid_unit"
-                android:layout_toEndOf="@+id/second_Iv"
-                android:text="lksandlk" />
-        </RelativeLayout>
-
-        <RelativeLayout
-            android:id="@+id/relativeLayout3"
+        <com.google.android.material.card.MaterialCardView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="@dimen/one_grid_unit"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/relativeLayout2">
+            android:layout_weight="1"
+            app:cardCornerRadius="@dimen/one_grid_unit">
 
-            <ImageView
-                android:id="@+id/third_Iv"
-                android:layout_width="@dimen/four_grid_unit"
-                android:layout_height="@dimen/four_grid_unit"
-                android:layout_centerVertical="true"
-                android:src="@drawable/ic_cheap" />
+            <RelativeLayout
+                android:id="@+id/relativeLayout2"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
 
-            <TextView
-                android:id="@+id/third_Tv"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_centerVertical="true"
-                android:layout_marginStart="@dimen/two_grid_unit"
-                android:layout_toEndOf="@+id/third_Iv"
-                android:text="lksandlk" />
-        </RelativeLayout>
+                <ImageView
+                    android:id="@+id/second_Iv"
+                    android:layout_width="@dimen/four_grid_unit"
+                    android:layout_height="@dimen/four_grid_unit"
+                    android:layout_centerVertical="true"
+                    android:src="@drawable/ic_cheap" />
 
-        <RelativeLayout
-            android:id="@+id/relativeLayout4"
+                <TextView
+                    android:id="@+id/second_Tv"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:layout_marginStart="@dimen/two_grid_unit"
+                    android:layout_toEndOf="@+id/second_Iv"
+                    android:text="lksandlk" />
+            </RelativeLayout>
+
+        </com.google.android.material.card.MaterialCardView>
+
+        <com.google.android.material.card.MaterialCardView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="@dimen/one_grid_unit"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/relativeLayout3">
+            android:layout_weight="1"
+            app:cardCornerRadius="@dimen/one_grid_unit">
 
-            <ImageView
-                android:id="@+id/fourth_Iv"
-                android:layout_width="@dimen/four_grid_unit"
-                android:layout_height="@dimen/four_grid_unit"
-                android:layout_centerVertical="true"
-                android:src="@drawable/ic_cheap" />
+            <RelativeLayout
+                android:id="@+id/relativeLayout3"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
 
-            <TextView
-                android:id="@+id/fourth_Tv"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_centerVertical="true"
-                android:layout_marginStart="@dimen/two_grid_unit"
-                android:layout_toEndOf="@+id/fourth_Iv"
-                android:text="lksandlk" />
-        </RelativeLayout>
+                <ImageView
+                    android:id="@+id/third_Iv"
+                    android:layout_width="@dimen/four_grid_unit"
+                    android:layout_height="@dimen/four_grid_unit"
+                    android:layout_centerVertical="true"
+                    android:src="@drawable/ic_cheap" />
 
-        <RelativeLayout
-            android:id="@+id/relativeLayout5"
+                <TextView
+                    android:id="@+id/third_Tv"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:layout_marginStart="@dimen/two_grid_unit"
+                    android:layout_toEndOf="@+id/third_Iv"
+                    android:text="lksandlk" />
+            </RelativeLayout>
+
+        </com.google.android.material.card.MaterialCardView>
+
+        <com.google.android.material.card.MaterialCardView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="@dimen/one_grid_unit"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/relativeLayout4">
+            android:layout_weight="1"
+            app:cardCornerRadius="@dimen/one_grid_unit">
 
-            <ImageView
-                android:id="@+id/fifth_Iv"
-                android:layout_width="@dimen/four_grid_unit"
-                android:layout_height="@dimen/four_grid_unit"
-                android:layout_centerVertical="true"
-                android:src="@drawable/ic_cheap" />
+            <RelativeLayout
+                android:id="@+id/relativeLayout4"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
 
-            <TextView
-                android:id="@+id/fifth_Tv"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_centerVertical="true"
-                android:layout_marginStart="@dimen/two_grid_unit"
-                android:layout_toEndOf="@+id/fifth_Iv"
-                android:text="lksandlk" />
-        </RelativeLayout>
+                <ImageView
+                    android:id="@+id/fourth_Iv"
+                    android:layout_width="@dimen/four_grid_unit"
+                    android:layout_height="@dimen/four_grid_unit"
+                    android:layout_centerVertical="true"
+                    android:src="@drawable/ic_cheap" />
 
-        <RelativeLayout
-            android:id="@+id/relativeLayout6"
+                <TextView
+                    android:id="@+id/fourth_Tv"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:layout_marginStart="@dimen/two_grid_unit"
+                    android:layout_toEndOf="@+id/fourth_Iv"
+                    android:text="lksandlk" />
+            </RelativeLayout>
+        </com.google.android.material.card.MaterialCardView>
+
+        <com.google.android.material.card.MaterialCardView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="@dimen/one_grid_unit"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/relativeLayout5">
+            android:layout_weight="1"
+            app:cardCornerRadius="@dimen/one_grid_unit">
 
-            <ImageView
-                android:id="@+id/six_Iv"
-                android:layout_width="@dimen/four_grid_unit"
-                android:layout_height="@dimen/four_grid_unit"
-                android:layout_centerVertical="true"
-                android:src="@drawable/ic_cheap" />
+            <RelativeLayout
+                android:id="@+id/relativeLayout5"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
 
-            <TextView
-                android:id="@+id/six_Tv"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_centerVertical="true"
-                android:layout_marginStart="@dimen/two_grid_unit"
-                android:layout_toEndOf="@+id/six_Iv"
-                android:text="lksandlk" />
-        </RelativeLayout>
+                <ImageView
+                    android:id="@+id/fifth_Iv"
+                    android:layout_width="@dimen/four_grid_unit"
+                    android:layout_height="@dimen/four_grid_unit"
+                    android:layout_centerVertical="true"
+                    android:src="@drawable/ic_cheap" />
 
-        <RelativeLayout
-            android:id="@+id/relativeLayout7"
+                <TextView
+                    android:id="@+id/fifth_Tv"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:layout_marginStart="@dimen/two_grid_unit"
+                    android:layout_toEndOf="@+id/fifth_Iv"
+                    android:text="lksandlk" />
+            </RelativeLayout>
+        </com.google.android.material.card.MaterialCardView>
+
+        <com.google.android.material.card.MaterialCardView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="@dimen/one_grid_unit"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/relativeLayout6">
+            android:layout_weight="1"
+            app:cardCornerRadius="@dimen/one_grid_unit">
 
-            <ImageView
-                android:id="@+id/seven_Iv"
-                android:layout_width="@dimen/four_grid_unit"
-                android:layout_height="@dimen/four_grid_unit"
-                android:layout_centerVertical="true"
-                android:src="@drawable/ic_cheap" />
+            <RelativeLayout
+                android:id="@+id/relativeLayout6"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
 
-            <TextView
-                android:id="@+id/seven_Tv"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_centerVertical="true"
-                android:layout_marginStart="@dimen/two_grid_unit"
-                android:layout_toEndOf="@+id/seven_Iv"
-                android:text="lksandlk" />
-        </RelativeLayout>
+                <ImageView
+                    android:id="@+id/six_Iv"
+                    android:layout_width="@dimen/four_grid_unit"
+                    android:layout_height="@dimen/four_grid_unit"
+                    android:layout_centerVertical="true"
+                    android:src="@drawable/ic_cheap" />
 
+                <TextView
+                    android:id="@+id/six_Tv"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:layout_marginStart="@dimen/two_grid_unit"
+                    android:layout_toEndOf="@+id/six_Iv"
+                    android:text="lksandlk" />
 
-    </androidx.constraintlayout.widget.ConstraintLayout>
+            </RelativeLayout>
+        </com.google.android.material.card.MaterialCardView>
+
+        <com.google.android.material.card.MaterialCardView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/one_grid_unit"
+            android:layout_weight="1"
+            app:cardCornerRadius="@dimen/one_grid_unit">
+
+            <RelativeLayout
+                android:id="@+id/relativeLayout7"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+                <ImageView
+                    android:id="@+id/seven_Iv"
+                    android:layout_width="@dimen/four_grid_unit"
+                    android:layout_height="@dimen/four_grid_unit"
+                    android:layout_centerVertical="true"
+                    android:src="@drawable/ic_cheap" />
+
+                <TextView
+                    android:id="@+id/seven_Tv"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:layout_marginStart="@dimen/two_grid_unit"
+                    android:layout_toEndOf="@+id/seven_Iv"
+                    android:text="lksandlk" />
+            </RelativeLayout>
+
+        </com.google.android.material.card.MaterialCardView>
+
+    </LinearLayout>
 
 </com.google.android.material.card.MaterialCardView>

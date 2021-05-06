@@ -4,7 +4,6 @@ import android.os.Bundle
 import android.view.View
 import android.view.animation.LinearInterpolator
 import android.widget.TextView
-import android.widget.Toast
 import androidx.recyclerview.widget.DefaultItemAnimator
 import com.yuyakaido.android.cardstackview.*
 import de.timbo.kartoffel.R
@@ -34,12 +33,21 @@ class SelectFragment : BaseFragment(R.layout.fragment_select), CardStackListener
         initViews()
         setClickListeners()
         setupCardStackView()
-
-
     }
 
     private fun setClickListeners() {
-//        if (binding.selectEasyFlipContainer.isBackSide) binding.selectEasyFlipContainer.flipTheView()
+        binding.likeButton.setOnClickListener { onStartRecipesActivity() }
+        binding.skipButton.setOnClickListener { onStartSetupActivity() }
+    }
+
+    private fun onStartSetupActivity() {
+        SetupActivity.startActivity(requireContext())
+        requireActivity().finish()
+    }
+
+    private fun onStartRecipesActivity() {
+        RecipesActivity.startActivity(requireContext())
+        requireActivity().finish()
     }
 
     private fun setupCardStackView() {
@@ -72,26 +80,25 @@ class SelectFragment : BaseFragment(R.layout.fragment_select), CardStackListener
     }
 
     private fun onClick(recipe: Recipe) {
-        Toast.makeText(requireContext(), "recipeName: ${recipe.title}", Toast.LENGTH_SHORT).show()
 //        binding.selectEasyFlipContainer.flipTheView()
 //        if (binding.selectEasyFlipContainer.isBackSide) tvBack.text = recipe.title
     }
 
 
     override fun onCardDragging(direction: Direction?, ratio: Float) {
-
+        Logger.debug("onCardDragging -> direction: $direction")
     }
 
     override fun onCardSwiped(direction: Direction?) {
+        Logger.debug("onCardSwiped -> direction: $direction")
         when (direction) {
             Direction.Right -> {
-                RecipesActivity.startActivity(requireContext())
-                requireActivity().finish()
+                onStartRecipesActivity()
             }
             Direction.Left -> {
-                SetupActivity.startActivity(requireContext())
-                requireActivity().finish()
+                onStartSetupActivity()
             }
+            else -> Logger.debug("onCardSwiped: unsupported direction: $direction")
         }
     }
 
@@ -102,11 +109,13 @@ class SelectFragment : BaseFragment(R.layout.fragment_select), CardStackListener
     }
 
     override fun onCardAppeared(view: View?, position: Int) {
+        Logger.debug("onCardAppeared() called")
 //        val textView = binding.selectEasyFlipContainer.findViewById<TextView>(R.id.item_name)
 //        Logger.debug("CardStackView - onCardAppeared: ($position) ${textView.text}")
     }
 
     override fun onCardDisappeared(view: View?, position: Int) {
+        Logger.debug("onCardDisappeared() called")
     }
 
     private fun createRecipes(): List<List<Recipe>> {
