@@ -15,10 +15,6 @@
         android:theme="@style/AppTheme">
 
         <activity
-            android:name="de.timbo.kartoffel.ui.select.SelectActivity"
-            android:theme="@style/AppTheme.NoActionBar" />
-
-        <activity
             android:name="de.timbo.kartoffel.ui.setup.SetupActivity"
             android:theme="@style/AppTheme.NoActionBar" />
 

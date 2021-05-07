@@ -1,4 +1,4 @@
-package de.timbo.kartoffel.ui.setup.categories
+package de.timbo.kartoffel.ui.setup
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
@@ -12,7 +12,7 @@ import de.timbo.kartoffel.usecases.SetRecipesSelectedUseCase
 import de.timbo.kartoffel.utils.SingleLiveEvent
 import org.koin.core.component.inject
 
-class CategoriesViewModel : BaseViewModel() {
+class SetupViewModel : BaseViewModel() {
 
     private val getRecipesUseCase by inject<GetRecipesUseCase>()
     private val setRecipesUseCase by inject<SetRecipesSelectedUseCase>()
@@ -20,7 +20,7 @@ class CategoriesViewModel : BaseViewModel() {
     private val _recipes = MutableLiveData<List<Recipe>>()
     val recipes: LiveData<List<Recipe>> = _recipes
 
-    private val _success = SingleLiveEvent<Any>()
+    private val _success = SingleLiveEvent<Any>() // TODO rename precisely when flow is considered e.g. _showPreview,
     val success: LiveData<Any> = _success
 
     private val _failure = SingleLiveEvent<Any>()

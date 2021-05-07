@@ -11,7 +11,7 @@ import de.timbo.kartoffel.databinding.FragmentSelectBinding
 import de.timbo.kartoffel.model.Recipe
 import de.timbo.kartoffel.ui.BaseFragment
 import de.timbo.kartoffel.ui.recipes.RecipesActivity
-import de.timbo.kartoffel.ui.setup.SetupActivity
+import de.timbo.kartoffel.ui.setup.SetupFragment
 import de.timbo.kartoffel.utils.DefaultRecipe
 import de.timbo.kartoffel.utils.Logger
 import de.timbo.kartoffel.utils.viewBinding
@@ -30,6 +30,8 @@ class SelectFragment : BaseFragment(R.layout.fragment_select), CardStackListener
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
+        Logger.debug("onViewCreated() called")
+
         initViews()
         setClickListeners()
         setupCardStackView()
@@ -37,12 +39,7 @@ class SelectFragment : BaseFragment(R.layout.fragment_select), CardStackListener
 
     private fun setClickListeners() {
         binding.likeButton.setOnClickListener { onStartRecipesActivity() }
-        binding.skipButton.setOnClickListener { onStartSetupActivity() }
-    }
-
-    private fun onStartSetupActivity() {
-        SetupActivity.startActivity(requireContext())
-        requireActivity().finish()
+        binding.skipButton.setOnClickListener { (parentFragment as SetupFragment).flipTheView() }
     }
 
     private fun onStartRecipesActivity() {
@@ -96,7 +93,7 @@ class SelectFragment : BaseFragment(R.layout.fragment_select), CardStackListener
                 onStartRecipesActivity()
             }
             Direction.Left -> {
-                onStartSetupActivity()
+                (parentFragment as SetupFragment).flipTheView()
             }
             else -> Logger.debug("onCardSwiped: unsupported direction: $direction")
         }

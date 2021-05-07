@@ -3,6 +3,7 @@ package de.timbo.kartoffel.ui.setup.categories
 import android.os.Bundle
 import android.view.View
 import android.widget.ImageView
+import android.widget.Toast
 import androidx.core.view.isVisible
 import androidx.fragment.app.viewModels
 import com.skydoves.balloon.OnBalloonClickListener
@@ -17,8 +18,8 @@ import de.timbo.kartoffel.model.data_types.FoodCategory
 import de.timbo.kartoffel.ui.BaseFragment
 import de.timbo.kartoffel.ui.balloons.ExplainBalloonFactory
 import de.timbo.kartoffel.ui.dialogs.select.SelectCategoryDialog
-import de.timbo.kartoffel.ui.recipes.RecipesActivity
-import de.timbo.kartoffel.ui.select.SelectActivity
+import de.timbo.kartoffel.ui.setup.SetupFragment
+import de.timbo.kartoffel.ui.setup.SetupViewModel
 import de.timbo.kartoffel.utils.BalloonUtils
 import de.timbo.kartoffel.utils.Logger
 import de.timbo.kartoffel.utils.viewBinding
@@ -26,7 +27,7 @@ import de.timbo.kartoffel.utils.viewBinding
 class CategoriesFragment : BaseFragment(R.layout.fragment_categories), OnBalloonClickListener {
 
     private val binding by viewBinding(FragmentCategoriesBinding::bind)
-    private val viewModel by viewModels<CategoriesViewModel>()
+    private val viewModel by viewModels<SetupViewModel>()
     private val navigationBalloon by lazy { BalloonUtils.getNavigationBalloon(requireContext(), this, this) }
     private val explainBalloon by balloon<ExplainBalloonFactory>()
 
@@ -49,25 +50,20 @@ class CategoriesFragment : BaseFragment(R.layout.fragment_categories), OnBalloon
         viewModel.six.observe(viewLifecycleOwner) { prepareFlipView(binding.easyFlipSixEfv, it) }
         viewModel.seven.observe(viewLifecycleOwner) { prepareFlipView(binding.easyFlipSevenEfv, it) }
         viewModel.recipes.observe(viewLifecycleOwner) { recipes -> showRecipes(recipes) }
-        viewModel.success.observe(viewLifecycleOwner) { openSelectActivity() }
+        viewModel.success.observe(viewLifecycleOwner) { flipToSelectionPreview() } // TODO navigate with data, therefor save recipeIds in DB, then call
 //        viewModel.success.observe(viewLifecycleOwner) { openRecipesActivity()}
-        viewModel.failure.observe(viewLifecycleOwner) { openSelectActivity() }
-//        viewModel.failure.observe(viewLifecycleOwner) { showErrorMessage() } TODO uncomment tomorrow
+        viewModel.failure.observe(viewLifecycleOwner) { Toast.makeText(requireContext(), "failure", Toast.LENGTH_SHORT).show() } // TODO think about it
         viewModel.isLoading.observe(viewLifecycleOwner, ::showLoadingIndicator)
     }
 
-    private fun openSelectActivity() {
-        SelectActivity.startActivity(requireContext())
-    }
-
-    private fun openRecipesActivity() {
-        RecipesActivity.startActivity(requireContext())
-        requireActivity().finish()
+    private fun flipToSelectionPreview() {
+        (parentFragment as SetupFragment).flipTheView() // TODO
     }
 
     private fun showErrorMessage() {
         showSnackBar("Fail".toMcFace())
     }
+
 
     private fun showLoadingIndicator(isLoading: Boolean) {
         binding.categoriesLoadingRl.isVisible = isLoading
