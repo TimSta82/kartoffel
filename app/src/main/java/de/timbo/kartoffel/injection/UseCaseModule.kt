@@ -6,8 +6,13 @@ import org.koin.dsl.module
 val useCaseModule = module {
 
     single { GetQuestionUseCase() }
-    single { GetRecipesForCategoriesUseCase() }
+    single { GetRecipesForCategoriesFromApiAndSaveInDbUseCase() }
     single { GetRecipesFromDbAsLiveDataUseCase() }
     single { HasRecipesSelectedUseCase() }
-    single { SetRecipesSelectedUseCase() }
+    single { SetFlagForNavigationUseCase() }
+    single { SaveRecipesUseCase() }
+    single { SaveWeekSuggestionRecipeIdsUseCase() }
+    single { DiscardWeekSuggestionUseCase() }
+    single { DeleteRecipesByIdsUseCase() }
+    single { GetSuggestedWeekRecipesIdsUseCase() }
 }

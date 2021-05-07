@@ -42,7 +42,6 @@ class Converters {
     @TypeConverter
     fun jsonToIntList(value: String): List<Int> = Gson().fromJson(value, Array<Int>::class.java).toList()
 
-
 //    @TypeConverter
 //    fun extendedIngredientsToString(extendedIngredientEntities: List<ExtendedIngredientEntity>): String {
 //        return Gson().toJson(extendedIngredientEntities)

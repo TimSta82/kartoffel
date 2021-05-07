@@ -12,5 +12,8 @@ abstract class RecipeDao : BaseDao<RecipeEntity>() {
     abstract fun getAll(): LiveData<List<RecipeEntity>>
 
     @Query("SELECT * FROM RecipeEntity WHERE id IN (:ids)")
-    abstract suspend fun getRecipesByIds(ids: List<Int>) : List<RecipeEntity>
+    abstract suspend fun getRecipesByIds(ids: List<Int>): List<RecipeEntity>
+
+    @Query("DELETE FROM RecipeEntity WHERE id IN (:ids)")
+    abstract suspend fun deleteRecipesByIds(ids: List<Int>)
 }

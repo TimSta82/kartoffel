@@ -24,13 +24,12 @@ class SuggestionFragment : BaseFragment(R.layout.fragment_suggestion), CardStack
 
     private val binding by viewBinding(FragmentSuggestionBinding::bind)
     private val setupViewModel by viewModels<SetupViewModel>()
+    private val viewModel by viewModels<SuggestionViewModel>()
 
     private val cardStackView by lazy { binding.cardStackView.findViewById<CardStackView>(R.id.card_stack_view) }
     private val manager by lazy { CardStackLayoutManager(requireContext(), this) }
-
     private val adapter = SuggestionAdapter()
-    //    private val adapter by lazy { SuggestionAdapter() }
-//
+
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
@@ -42,6 +41,11 @@ class SuggestionFragment : BaseFragment(R.layout.fragment_suggestion), CardStack
 
     private fun setObservers() {
         setupViewModel.suggestedRecipes.observe(viewLifecycleOwner) { suggestedRecipes -> displayRecipes(suggestedRecipes) } // TODO attach within SelectionFragment
+        viewModel.discarded.observe(viewLifecycleOwner) { flipBackToCategories() }
+    }
+
+    private fun flipBackToCategories() {
+        (parentFragment as SetupFragment).flipTheView()
     }
 
     private fun displayRecipes(suggestedRecipes: List<List<Recipe>>) {
@@ -53,7 +57,8 @@ class SuggestionFragment : BaseFragment(R.layout.fragment_suggestion), CardStack
 
     private fun setClickListeners() {
         binding.likeButton.setOnClickListener { onStartRecipesActivity() }
-        binding.skipButton.setOnClickListener { (parentFragment as SetupFragment).flipTheView() }
+        binding.skipButton.setOnClickListener { discardSuggestion() }
+//        binding.skipButton.setOnClickListener { (parentFragment as SetupFragment).flipTheView() }
     }
 
     private fun onStartRecipesActivity() {
@@ -83,6 +88,10 @@ class SuggestionFragment : BaseFragment(R.layout.fragment_suggestion), CardStack
         }
     }
 
+    private fun discardSuggestion() {
+        viewModel.discardSuggestion()
+    }
+
     override fun onCardDragging(direction: Direction?, ratio: Float) {
         Logger.debug("onCardDragging -> direction: $direction")
     }
@@ -94,7 +103,7 @@ class SuggestionFragment : BaseFragment(R.layout.fragment_suggestion), CardStack
                 onStartRecipesActivity()
             }
             Direction.Left -> {
-                (parentFragment as SetupFragment).flipTheView()
+                discardSuggestion()
             }
             else -> Logger.debug("onCardSwiped: unsupported direction: $direction")
         }

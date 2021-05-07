@@ -2,7 +2,6 @@ package de.timbo.kartoffel.ui.recipes.favorites
 
 import android.os.Bundle
 import android.view.View
-import android.widget.Button
 import androidx.fragment.app.viewModels
 import de.timbo.kartoffel.R
 import de.timbo.kartoffel.databinding.FragmentFavoritesBinding

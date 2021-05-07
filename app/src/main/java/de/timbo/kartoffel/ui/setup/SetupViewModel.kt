@@ -2,22 +2,20 @@ package de.timbo.kartoffel.ui.setup
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
-import de.timbo.kartoffel.extensions.launch
 import de.timbo.kartoffel.model.Recipe
 import de.timbo.kartoffel.model.data_types.FoodCategory
 import de.timbo.kartoffel.ui.BaseViewModel
-import de.timbo.kartoffel.usecases.BaseUseCase
-import de.timbo.kartoffel.usecases.GetRecipesForCategoriesUseCase
+import de.timbo.kartoffel.usecases.GetRecipesForCategoriesFromApiAndSaveInDbUseCase
 import de.timbo.kartoffel.usecases.GetRecipesFromDbAsLiveDataUseCase
-import de.timbo.kartoffel.usecases.SetRecipesSelectedUseCase
+import de.timbo.kartoffel.usecases.SetFlagForNavigationUseCase
 import de.timbo.kartoffel.utils.SingleLiveEvent
 import org.koin.core.component.inject
 
 /** this viewModel is used by CategoriesFragment AND SuggestionFragment */
 class SetupViewModel : BaseViewModel() {
 
-    private val getRecipesForCategoriesUseCase by inject<GetRecipesForCategoriesUseCase>()
-    private val setRecipesUseCase by inject<SetRecipesSelectedUseCase>()
+    private val getRecipesForCategoriesUseCase by inject<GetRecipesForCategoriesFromApiAndSaveInDbUseCase>()
+    private val setFlagForNavigationUseCase by inject<SetFlagForNavigationUseCase>()
     private val getRecipesFromDbAsLiveDataUseCase by inject<GetRecipesFromDbAsLiveDataUseCase>()
 
     /** CATEGORIES_FRAGMENT */
@@ -55,7 +53,7 @@ class SetupViewModel : BaseViewModel() {
 
     private var tempList = listOf<Recipe>()
 
-//    private val _suggestedRecipes = MutableLiveData<List<List<Recipe>>>()
+    //    private val _suggestedRecipes = MutableLiveData<List<List<Recipe>>>()
     val suggestedRecipes: LiveData<List<List<Recipe>>> = getRecipesFromDbAsLiveDataUseCase.callForNestedList()
 
     fun applySelectedCategory(oldPosition: Int, selectedCategory: FoodCategory) {
@@ -85,24 +83,18 @@ class SetupViewModel : BaseViewModel() {
     }
 
     fun applyCategories() {
-        _isLoading.value = true
-        launch {
-            when (val result = getRecipesForCategoriesUseCase.call(collectCategories())) {
-                is BaseUseCase.UseCaseResult.Success -> {
-                    tempList = result.resultObject
-//                    prepareForSwipeablePreview(result.resultObject)
-//                    setRecipesUseCase.call(true) // TODO
-                    _categoriesResultSuccess.callAsync()
-                }
-                else -> _categoriesResultFailure.callAsync()
-            }
-            _isLoading.postValue(false)
-        }
-    }
+        _categoriesResultSuccess.callAsync()
 
-//    fun prepareForSwipeablePreview() {
-//        val nestedList = mutableListOf<List<Recipe>>()
-//        nestedList.add(tempList)
-//        _suggestedRecipes.value = nestedList
-//    }
+//        _isLoading.value = true
+//        launch {
+//            when (val result = getRecipesForCategoriesUseCase.call(collectCategories())) {
+//                is BaseUseCase.UseCaseResult.Success -> {
+//                    setRecipesUseCase.call(true) // TODO
+//                    _categoriesResultSuccess.callAsync()
+//                }
+//                else -> _categoriesResultFailure.callAsync()
+//            }
+//            _isLoading.postValue(false)
+//        }
+    }
 }

@@ -81,5 +81,4 @@ class SuggestionAdapter() : RecyclerView.Adapter<SuggestionAdapter.SelectViewHol
 //            onClick(recipe)
         }
     }
-
 }

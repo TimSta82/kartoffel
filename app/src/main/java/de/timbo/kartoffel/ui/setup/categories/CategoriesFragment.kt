@@ -65,7 +65,6 @@ class CategoriesFragment : BaseFragment(R.layout.fragment_categories), OnBalloon
         showSnackBar("Fail".toMcFace())
     }
 
-
     private fun showLoadingIndicator(isLoading: Boolean) {
         binding.categoriesLoadingRl.isVisible = isLoading
     }

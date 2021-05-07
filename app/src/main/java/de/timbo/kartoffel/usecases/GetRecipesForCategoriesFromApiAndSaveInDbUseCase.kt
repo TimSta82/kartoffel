@@ -11,9 +11,11 @@ import kotlinx.coroutines.coroutineScope
 import org.koin.core.component.inject
 import kotlin.random.Random
 
-class GetRecipesForCategoriesUseCase : BaseUseCase() {
+class GetRecipesForCategoriesFromApiAndSaveInDbUseCase : BaseUseCase() {
 
     private val recipesRepository by inject<RecipeRepository>()
+    private val saveWeekSuggestionRecipeIdsUseCase by inject<SaveWeekSuggestionRecipeIdsUseCase>()
+    private val saveRecipesUseCase by inject<SaveRecipesUseCase>()
 
     suspend fun call(selectedCategories: List<FoodCategory>): UseCaseResult<List<Recipe>> {
         val combinedRecipes = mutableListOf<Recipe>()
@@ -55,7 +57,9 @@ class GetRecipesForCategoriesUseCase : BaseUseCase() {
     }
 
     private fun handleRecipes(successResponse: UseCaseResult.Success<List<Recipe>>): UseCaseResult<List<Recipe>> {
-        recipesRepository.saveRecipes(successResponse.resultObject)
+//        recipesRepository.saveRecipes(successResponse.resultObject) // TODO check when rate limit is not blocked and remove this line then
+        saveRecipesUseCase.call(recipes = successResponse.resultObject) // TODO keep line above in mind
+        saveWeekSuggestionRecipeIdsUseCase.call(successResponse.resultObject.map { recipe -> recipe.id ?: -1 })
         return successResponse
     }
 }
