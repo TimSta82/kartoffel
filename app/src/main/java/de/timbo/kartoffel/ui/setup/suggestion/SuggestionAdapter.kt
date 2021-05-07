@@ -1,4 +1,4 @@
-package de.timbo.kartoffel.ui.setup.selection
+package de.timbo.kartoffel.ui.setup.suggestion
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
@@ -11,17 +11,24 @@ import de.timbo.kartoffel.R
 import de.timbo.kartoffel.databinding.SwipeListItemBinding
 import de.timbo.kartoffel.model.Recipe
 
-class SelectAdapter(private val recipes: List<List<Recipe>>, private val onClick: (Recipe) -> Unit) : RecyclerView.Adapter<SelectAdapter.SelectViewHolder>() {
+class SuggestionAdapter() : RecyclerView.Adapter<SuggestionAdapter.SelectViewHolder>() {
+
+    private var suggestedRecipes = emptyList<List<Recipe>>()
+
+    fun setData(recipes: List<List<Recipe>>) {
+        suggestedRecipes = recipes
+        notifyDataSetChanged()
+    }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): SelectViewHolder {
         return SelectViewHolder(SwipeListItemBinding.inflate(LayoutInflater.from(parent.context), parent, false))
     }
 
     override fun onBindViewHolder(holder: SelectViewHolder, position: Int) {
-        holder.bind(recipes[position])
+        holder.bind(suggestedRecipes[position])
     }
 
-    override fun getItemCount() = recipes.size
+    override fun getItemCount() = suggestedRecipes.size
 
     inner class SelectViewHolder(private val ib: SwipeListItemBinding) : RecyclerView.ViewHolder(ib.root) {
         fun bind(recipes: List<Recipe>) {
@@ -71,7 +78,7 @@ class SelectAdapter(private val recipes: List<List<Recipe>>, private val onClick
             binding.swipeFlipContainer.flipTheView()
             val textView = binding.swipeFlipContainer.findViewById<TextView>(R.id.swipe_list_item_back_Tv)
             textView.text = recipe.title
-            onClick(recipe)
+//            onClick(recipe)
         }
     }
 

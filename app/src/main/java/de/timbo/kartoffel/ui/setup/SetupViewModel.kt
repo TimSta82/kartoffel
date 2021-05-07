@@ -7,24 +7,25 @@ import de.timbo.kartoffel.model.Recipe
 import de.timbo.kartoffel.model.data_types.FoodCategory
 import de.timbo.kartoffel.ui.BaseViewModel
 import de.timbo.kartoffel.usecases.BaseUseCase
-import de.timbo.kartoffel.usecases.GetRecipesUseCase
+import de.timbo.kartoffel.usecases.GetRecipesForCategoriesUseCase
+import de.timbo.kartoffel.usecases.GetRecipesFromDbAsLiveDataUseCase
 import de.timbo.kartoffel.usecases.SetRecipesSelectedUseCase
 import de.timbo.kartoffel.utils.SingleLiveEvent
 import org.koin.core.component.inject
 
+/** this viewModel is used by CategoriesFragment AND SuggestionFragment */
 class SetupViewModel : BaseViewModel() {
 
-    private val getRecipesUseCase by inject<GetRecipesUseCase>()
+    private val getRecipesForCategoriesUseCase by inject<GetRecipesForCategoriesUseCase>()
     private val setRecipesUseCase by inject<SetRecipesSelectedUseCase>()
+    private val getRecipesFromDbAsLiveDataUseCase by inject<GetRecipesFromDbAsLiveDataUseCase>()
 
-    private val _recipes = MutableLiveData<List<Recipe>>()
-    val recipes: LiveData<List<Recipe>> = _recipes
+    /** CATEGORIES_FRAGMENT */
+    private val _categoriesResultSuccess = SingleLiveEvent<Any>() // TODO rename precisely when flow is considered e.g. _showPreview,
+    val categoriesResultSuccess: LiveData<Any> = _categoriesResultSuccess
 
-    private val _success = SingleLiveEvent<Any>() // TODO rename precisely when flow is considered e.g. _showPreview,
-    val success: LiveData<Any> = _success
-
-    private val _failure = SingleLiveEvent<Any>()
-    val failure: LiveData<Any> = _failure
+    private val _categoriesResultFailure = SingleLiveEvent<Any>()
+    val failure: LiveData<Any> = _categoriesResultFailure
 
     private val _isLoading = SingleLiveEvent<Boolean>()
     val isLoading: LiveData<Boolean> = _isLoading
@@ -49,6 +50,13 @@ class SetupViewModel : BaseViewModel() {
 
     private val _seven = MutableLiveData(FoodCategory.RANDOM)
     val seven: LiveData<FoodCategory> = _seven
+
+    /** SUGGESTION_FRAGMENT */
+
+    private var tempList = listOf<Recipe>()
+
+//    private val _suggestedRecipes = MutableLiveData<List<List<Recipe>>>()
+    val suggestedRecipes: LiveData<List<List<Recipe>>> = getRecipesFromDbAsLiveDataUseCase.callForNestedList()
 
     fun applySelectedCategory(oldPosition: Int, selectedCategory: FoodCategory) {
         when (oldPosition) {
@@ -76,21 +84,25 @@ class SetupViewModel : BaseViewModel() {
         )
     }
 
-    fun submitSetup() {
-        _success.callAsync() // TODO remove
-        /**
-         * TODO uncomment when select screen looks good
-         */
-//        _isLoading.value = true
-//        launch {
-//            when (val result = getRecipesUseCase.call(collectCategories())) {
-//                is BaseUseCase.UseCaseResult.Success -> {
-//                    setRecipesUseCase.call(true)
-//                    _success.callAsync()
-//                }
-//                else -> _failure.callAsync()
-//            }
-//            _isLoading.postValue(false)
-//        }
+    fun applyCategories() {
+        _isLoading.value = true
+        launch {
+            when (val result = getRecipesForCategoriesUseCase.call(collectCategories())) {
+                is BaseUseCase.UseCaseResult.Success -> {
+                    tempList = result.resultObject
+//                    prepareForSwipeablePreview(result.resultObject)
+//                    setRecipesUseCase.call(true) // TODO
+                    _categoriesResultSuccess.callAsync()
+                }
+                else -> _categoriesResultFailure.callAsync()
+            }
+            _isLoading.postValue(false)
+        }
     }
+
+//    fun prepareForSwipeablePreview() {
+//        val nestedList = mutableListOf<List<Recipe>>()
+//        nestedList.add(tempList)
+//        _suggestedRecipes.value = nestedList
+//    }
 }

@@ -9,12 +9,12 @@
         android:layout_height="match_parent">
 
         <androidx.fragment.app.FragmentContainerView
-            android:id="@+id/setup_back_categories"
+            android:id="@+id/setup_back_suggestion"
             android:layout_width="match_parent"
             android:layout_height="match_parent" />
 
         <androidx.fragment.app.FragmentContainerView
-            android:id="@+id/setup_front_selection"
+            android:id="@+id/setup_front_categories"
             android:layout_width="match_parent"
             android:layout_height="match_parent" />
 

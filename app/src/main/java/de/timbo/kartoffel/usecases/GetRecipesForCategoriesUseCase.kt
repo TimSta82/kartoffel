@@ -11,7 +11,7 @@ import kotlinx.coroutines.coroutineScope
 import org.koin.core.component.inject
 import kotlin.random.Random
 
-class GetRecipesUseCase : BaseUseCase() {
+class GetRecipesForCategoriesUseCase : BaseUseCase() {
 
     private val recipesRepository by inject<RecipeRepository>()
 

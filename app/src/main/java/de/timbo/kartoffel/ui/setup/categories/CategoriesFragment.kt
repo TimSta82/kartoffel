@@ -24,10 +24,13 @@ import de.timbo.kartoffel.utils.BalloonUtils
 import de.timbo.kartoffel.utils.Logger
 import de.timbo.kartoffel.utils.viewBinding
 
+/**
+ * this is a childFragment of SetupFragment
+ */
 class CategoriesFragment : BaseFragment(R.layout.fragment_categories), OnBalloonClickListener {
 
     private val binding by viewBinding(FragmentCategoriesBinding::bind)
-    private val viewModel by viewModels<SetupViewModel>()
+    private val setupViewModel by viewModels<SetupViewModel>()
     private val navigationBalloon by lazy { BalloonUtils.getNavigationBalloon(requireContext(), this, this) }
     private val explainBalloon by balloon<ExplainBalloonFactory>()
 
@@ -42,18 +45,16 @@ class CategoriesFragment : BaseFragment(R.layout.fragment_categories), OnBalloon
     }
 
     private fun setObservers() {
-        viewModel.one.observe(viewLifecycleOwner) { prepareFlipView(binding.easyFlipOneEfv, it) }
-        viewModel.two.observe(viewLifecycleOwner) { prepareFlipView(binding.easyFlipTwoEfv, it) }
-        viewModel.three.observe(viewLifecycleOwner) { prepareFlipView(binding.easyFlipThreeEfv, it) }
-        viewModel.four.observe(viewLifecycleOwner) { prepareFlipView(binding.easyFlipFourEfv, it) }
-        viewModel.five.observe(viewLifecycleOwner) { prepareFlipView(binding.easyFlipFiveEfv, it) }
-        viewModel.six.observe(viewLifecycleOwner) { prepareFlipView(binding.easyFlipSixEfv, it) }
-        viewModel.seven.observe(viewLifecycleOwner) { prepareFlipView(binding.easyFlipSevenEfv, it) }
-        viewModel.recipes.observe(viewLifecycleOwner) { recipes -> showRecipes(recipes) }
-        viewModel.success.observe(viewLifecycleOwner) { flipToSelectionPreview() } // TODO navigate with data, therefor save recipeIds in DB, then call
-//        viewModel.success.observe(viewLifecycleOwner) { openRecipesActivity()}
-        viewModel.failure.observe(viewLifecycleOwner) { Toast.makeText(requireContext(), "failure", Toast.LENGTH_SHORT).show() } // TODO think about it
-        viewModel.isLoading.observe(viewLifecycleOwner, ::showLoadingIndicator)
+        setupViewModel.one.observe(viewLifecycleOwner) { prepareFlipView(binding.easyFlipOneEfv, it) }
+        setupViewModel.two.observe(viewLifecycleOwner) { prepareFlipView(binding.easyFlipTwoEfv, it) }
+        setupViewModel.three.observe(viewLifecycleOwner) { prepareFlipView(binding.easyFlipThreeEfv, it) }
+        setupViewModel.four.observe(viewLifecycleOwner) { prepareFlipView(binding.easyFlipFourEfv, it) }
+        setupViewModel.five.observe(viewLifecycleOwner) { prepareFlipView(binding.easyFlipFiveEfv, it) }
+        setupViewModel.six.observe(viewLifecycleOwner) { prepareFlipView(binding.easyFlipSixEfv, it) }
+        setupViewModel.seven.observe(viewLifecycleOwner) { prepareFlipView(binding.easyFlipSevenEfv, it) }
+        setupViewModel.categoriesResultSuccess.observe(viewLifecycleOwner) { flipToSelectionPreview() } // TODO navigate with data, therefor save recipeIds in DB, then call
+        setupViewModel.failure.observe(viewLifecycleOwner) { Toast.makeText(requireContext(), "failure", Toast.LENGTH_SHORT).show() } // TODO think about it
+        setupViewModel.isLoading.observe(viewLifecycleOwner, ::showLoadingIndicator)
     }
 
     private fun flipToSelectionPreview() {
@@ -101,7 +102,7 @@ class CategoriesFragment : BaseFragment(R.layout.fragment_categories), OnBalloon
     }
 
     private fun proceed() {
-        viewModel.submitSetup()
+        setupViewModel.applyCategories()
         toggleFabMenu()
     }
 
@@ -134,7 +135,7 @@ class CategoriesFragment : BaseFragment(R.layout.fragment_categories), OnBalloon
     }
 
     private fun onCategorySelected(oldPosition: Int, selectedCategory: FoodCategory) {
-        viewModel.applySelectedCategory(oldPosition, selectedCategory)
+        setupViewModel.applySelectedCategory(oldPosition, selectedCategory)
     }
 
     override fun onBalloonClick(view: View) {

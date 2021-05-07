@@ -7,6 +7,8 @@ import androidx.room.PrimaryKey
 @Entity
 data class WeekSuggestionEntity(
     @PrimaryKey
+    @ColumnInfo(name = "week_id")
+    var weekId: Int,
     @ColumnInfo(name = "recipe_ids")
     var recipeIds: List<Int>
 //    @ColumnInfo(name = "first_id")

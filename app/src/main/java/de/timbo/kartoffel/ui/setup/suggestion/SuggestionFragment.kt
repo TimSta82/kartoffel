@@ -1,40 +1,54 @@
-package de.timbo.kartoffel.ui.setup.selection
+package de.timbo.kartoffel.ui.setup.suggestion
 
 import android.os.Bundle
 import android.view.View
 import android.view.animation.LinearInterpolator
-import android.widget.TextView
+import androidx.fragment.app.viewModels
 import androidx.recyclerview.widget.DefaultItemAnimator
 import com.yuyakaido.android.cardstackview.*
 import de.timbo.kartoffel.R
-import de.timbo.kartoffel.databinding.FragmentSelectBinding
+import de.timbo.kartoffel.databinding.FragmentSuggestionBinding
 import de.timbo.kartoffel.model.Recipe
 import de.timbo.kartoffel.ui.BaseFragment
 import de.timbo.kartoffel.ui.recipes.RecipesActivity
 import de.timbo.kartoffel.ui.setup.SetupFragment
+import de.timbo.kartoffel.ui.setup.SetupViewModel
 import de.timbo.kartoffel.utils.DefaultRecipe
 import de.timbo.kartoffel.utils.Logger
 import de.timbo.kartoffel.utils.viewBinding
 
-class SelectFragment : BaseFragment(R.layout.fragment_select), CardStackListener {
+/**
+ * this is a childFragment of SetupFragment
+ */
+class SuggestionFragment : BaseFragment(R.layout.fragment_suggestion), CardStackListener {
 
-    private val binding by viewBinding(FragmentSelectBinding::bind)
+    private val binding by viewBinding(FragmentSuggestionBinding::bind)
+    private val setupViewModel by viewModels<SetupViewModel>()
+
     private val cardStackView by lazy { binding.cardStackView.findViewById<CardStackView>(R.id.card_stack_view) }
     private val manager by lazy { CardStackLayoutManager(requireContext(), this) }
-    private val adapter by lazy { SelectAdapter(createRecipes(), ::onClick) }
 
-    private lateinit var tvBack: TextView
-
-//    private lateinit var cardStackView: CardStackView
-
+    private val adapter = SuggestionAdapter()
+    //    private val adapter by lazy { SuggestionAdapter() }
+//
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        Logger.debug("onViewCreated() called")
-
-        initViews()
+        Logger.debug("onViewCreated() called -> suggestion")
+        setObservers()
         setClickListeners()
         setupCardStackView()
+    }
+
+    private fun setObservers() {
+        setupViewModel.suggestedRecipes.observe(viewLifecycleOwner) { suggestedRecipes -> displayRecipes(suggestedRecipes) } // TODO attach within SelectionFragment
+    }
+
+    private fun displayRecipes(suggestedRecipes: List<List<Recipe>>) {
+        suggestedRecipes.first().forEach { recipe ->
+            Logger.debug("recipe: ${recipe.title}")
+        }
+        adapter.setData(suggestedRecipes)
     }
 
     private fun setClickListeners() {
@@ -59,6 +73,7 @@ class SelectFragment : BaseFragment(R.layout.fragment_select), CardStackListener
         manager.setCanScrollVertical(true)
         manager.setSwipeableMethod(SwipeableMethod.AutomaticAndManual)
         manager.setOverlayInterpolator(LinearInterpolator())
+
         cardStackView.layoutManager = manager
         cardStackView.adapter = adapter
         cardStackView.itemAnimator.apply {
@@ -67,20 +82,6 @@ class SelectFragment : BaseFragment(R.layout.fragment_select), CardStackListener
             }
         }
     }
-
-    private fun initViews() {
-//        binding.selectEasyFlipContainer.setToHorizontalType()
-        // front
-
-        // back
-//        tvBack = binding.selectEasyFlipContainer.findViewById<TextView>(R.id.card_stack_back_Tv)
-    }
-
-    private fun onClick(recipe: Recipe) {
-//        binding.selectEasyFlipContainer.flipTheView()
-//        if (binding.selectEasyFlipContainer.isBackSide) tvBack.text = recipe.title
-    }
-
 
     override fun onCardDragging(direction: Direction?, ratio: Float) {
         Logger.debug("onCardDragging -> direction: $direction")
