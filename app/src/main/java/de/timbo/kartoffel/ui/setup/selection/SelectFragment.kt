@@ -1,4 +1,4 @@
-package de.timbo.kartoffel.ui.select
+package de.timbo.kartoffel.ui.setup.selection
 
 import android.os.Bundle
 import android.view.View

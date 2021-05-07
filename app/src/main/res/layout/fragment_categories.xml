@@ -6,7 +6,7 @@
     android:background="@color/blue">
 
     <TextView
-        android:id="@+id/setup_explain_Tv"
+        android:id="@+id/categories_explain_Tv"
         style="@style/Text.Headline"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -163,21 +163,21 @@
         app:layout_constraintTop_toTopOf="parent">
 
         <com.google.android.material.floatingactionbutton.FloatingActionButton
-            android:id="@+id/setup_save_Fab"
+            android:id="@+id/categories_save_Fab"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_centerInParent="true"
             android:src="@drawable/ic_save" />
 
         <com.google.android.material.floatingactionbutton.FloatingActionButton
-            android:id="@+id/setup_proceed_Fab"
+            android:id="@+id/categories_proceed_Fab"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_centerInParent="true"
             android:src="@drawable/ic_proceed" />
 
         <com.google.android.material.floatingactionbutton.FloatingActionButton
-            android:id="@+id/setup_menu_Fab"
+            android:id="@+id/categories_menu_Fab"
             android:layout_width="@dimen/eight_grid_unit"
             android:layout_height="@dimen/eight_grid_unit"
             android:layout_centerInParent="true"
@@ -186,7 +186,7 @@
     </RelativeLayout>
 
     <RelativeLayout
-        android:id="@+id/setup_loading_Rl"
+        android:id="@+id/categories_loading_Rl"
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:background="@color/black_40"

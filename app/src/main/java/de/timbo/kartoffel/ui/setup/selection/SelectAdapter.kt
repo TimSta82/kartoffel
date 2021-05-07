@@ -1,4 +1,4 @@
-package de.timbo.kartoffel.ui.select
+package de.timbo.kartoffel.ui.setup.selection
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
@@ -13,11 +13,11 @@ import de.timbo.kartoffel.model.Recipe
 
 class SelectAdapter(private val recipes: List<List<Recipe>>, private val onClick: (Recipe) -> Unit) : RecyclerView.Adapter<SelectAdapter.SelectViewHolder>() {
 
-    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): SelectAdapter.SelectViewHolder {
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): SelectViewHolder {
         return SelectViewHolder(SwipeListItemBinding.inflate(LayoutInflater.from(parent.context), parent, false))
     }
 
-    override fun onBindViewHolder(holder: SelectAdapter.SelectViewHolder, position: Int) {
+    override fun onBindViewHolder(holder: SelectViewHolder, position: Int) {
         holder.bind(recipes[position])
     }
 

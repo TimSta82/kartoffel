@@ -5,6 +5,7 @@ import android.content.Intent
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import de.timbo.kartoffel.R
+import de.timbo.kartoffel.ui.setup.selection.SelectFragment
 
 class SelectActivity : AppCompatActivity() {
 

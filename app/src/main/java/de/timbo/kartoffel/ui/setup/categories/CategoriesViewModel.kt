@@ -1,4 +1,4 @@
-package de.timbo.kartoffel.ui.setup
+package de.timbo.kartoffel.ui.setup.categories
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
@@ -12,7 +12,7 @@ import de.timbo.kartoffel.usecases.SetRecipesSelectedUseCase
 import de.timbo.kartoffel.utils.SingleLiveEvent
 import org.koin.core.component.inject
 
-class SetupViewModel : BaseViewModel() {
+class CategoriesViewModel : BaseViewModel() {
 
     private val getRecipesUseCase by inject<GetRecipesUseCase>()
     private val setRecipesUseCase by inject<SetRecipesSelectedUseCase>()

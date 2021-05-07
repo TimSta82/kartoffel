@@ -1,16 +1,15 @@
-package de.timbo.kartoffel.ui.setup
+package de.timbo.kartoffel.ui.setup.categories
 
 import android.os.Bundle
 import android.view.View
 import android.widget.ImageView
-import android.widget.Toast
 import androidx.core.view.isVisible
 import androidx.fragment.app.viewModels
 import com.skydoves.balloon.OnBalloonClickListener
 import com.skydoves.balloon.balloon
 import com.wajahatkarim3.easyflipview.EasyFlipView
 import de.timbo.kartoffel.R
-import de.timbo.kartoffel.databinding.FragmentSetupBinding
+import de.timbo.kartoffel.databinding.FragmentCategoriesBinding
 import de.timbo.kartoffel.extensions.showSnackBar
 import de.timbo.kartoffel.extensions.toMcFace
 import de.timbo.kartoffel.model.Recipe
@@ -23,12 +22,11 @@ import de.timbo.kartoffel.ui.select.SelectActivity
 import de.timbo.kartoffel.utils.BalloonUtils
 import de.timbo.kartoffel.utils.Logger
 import de.timbo.kartoffel.utils.viewBinding
-import java.lang.RuntimeException
 
-class SetupFragment : BaseFragment(R.layout.fragment_setup), OnBalloonClickListener {
+class CategoriesFragment : BaseFragment(R.layout.fragment_categories), OnBalloonClickListener {
 
-    private val binding by viewBinding(FragmentSetupBinding::bind)
-    private val viewModel by viewModels<SetupViewModel>()
+    private val binding by viewBinding(FragmentCategoriesBinding::bind)
+    private val viewModel by viewModels<CategoriesViewModel>()
     private val navigationBalloon by lazy { BalloonUtils.getNavigationBalloon(requireContext(), this, this) }
     private val explainBalloon by balloon<ExplainBalloonFactory>()
 
@@ -36,7 +34,7 @@ class SetupFragment : BaseFragment(R.layout.fragment_setup), OnBalloonClickListe
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        Logger.debug("SetupFragment")
+        Logger.debug("CategoriesFragment")
 
         setObservers()
         setClickListeners()
@@ -51,7 +49,7 @@ class SetupFragment : BaseFragment(R.layout.fragment_setup), OnBalloonClickListe
         viewModel.six.observe(viewLifecycleOwner) { prepareFlipView(binding.easyFlipSixEfv, it) }
         viewModel.seven.observe(viewLifecycleOwner) { prepareFlipView(binding.easyFlipSevenEfv, it) }
         viewModel.recipes.observe(viewLifecycleOwner) { recipes -> showRecipes(recipes) }
-        viewModel.success.observe(viewLifecycleOwner) { openSelectActivity()}
+        viewModel.success.observe(viewLifecycleOwner) { openSelectActivity() }
 //        viewModel.success.observe(viewLifecycleOwner) { openRecipesActivity()}
         viewModel.failure.observe(viewLifecycleOwner) { openSelectActivity() }
 //        viewModel.failure.observe(viewLifecycleOwner) { showErrorMessage() } TODO uncomment tomorrow
@@ -72,7 +70,7 @@ class SetupFragment : BaseFragment(R.layout.fragment_setup), OnBalloonClickListe
     }
 
     private fun showLoadingIndicator(isLoading: Boolean) {
-        binding.setupLoadingRl.isVisible = isLoading
+        binding.categoriesLoadingRl.isVisible = isLoading
     }
 
     private fun showRecipes(recipes: List<Recipe>) {
@@ -92,17 +90,17 @@ class SetupFragment : BaseFragment(R.layout.fragment_setup), OnBalloonClickListe
         binding.easyFlipSixEfv.setOnClickListener { showDialog(6) }
         binding.easyFlipSevenEfv.setOnClickListener { showDialog(7) }
 
-        binding.setupMenuFab.setOnClickListener { toggleFabMenu() }
-        binding.setupProceedFab.setOnClickListener { proceed() }
-        binding.setupSaveFab.setOnClickListener { throw RuntimeException("Test Crash".toMcFace()) }
-        binding.setupExplainTv.setOnClickListener { showExplainBalloon() }
+        binding.categoriesMenuFab.setOnClickListener { toggleFabMenu() }
+        binding.categoriesProceedFab.setOnClickListener { proceed() }
+        binding.categoriesSaveFab.setOnClickListener { throw RuntimeException("Test Crash".toMcFace()) }
+        binding.categoriesExplainTv.setOnClickListener { showExplainBalloon() }
     }
 
     private fun showExplainBalloon() {
         if (explainBalloon.isShowing) {
             explainBalloon.dismiss()
         } else {
-            explainBalloon.showAlignBottom(binding.setupExplainTv)
+            explainBalloon.showAlignBottom(binding.categoriesExplainTv)
         }
     }
 
@@ -116,14 +114,14 @@ class SetupFragment : BaseFragment(R.layout.fragment_setup), OnBalloonClickListe
     }
 
     private fun hideFabMenu() {
-        binding.setupProceedFab.animate().translationY(0F)
-        binding.setupSaveFab.animate().translationY(0F)
+        binding.categoriesProceedFab.animate().translationY(0F)
+        binding.categoriesSaveFab.animate().translationY(0F)
         isFabMenuOpen = isFabMenuOpen.not()
     }
 
     private fun showFabMenu() {
-        binding.setupProceedFab.animate().translationY(-resources.getDimension(R.dimen.fab_menu_proceed_distance))
-        binding.setupSaveFab.animate().translationY(-resources.getDimension(R.dimen.fab_menu_save_distance))
+        binding.categoriesProceedFab.animate().translationY(-resources.getDimension(R.dimen.fab_menu_proceed_distance))
+        binding.categoriesSaveFab.animate().translationY(-resources.getDimension(R.dimen.fab_menu_save_distance))
         isFabMenuOpen = isFabMenuOpen.not()
     }
 

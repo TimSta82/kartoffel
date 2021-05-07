@@ -5,6 +5,7 @@ import android.content.Intent
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import de.timbo.kartoffel.R
+import de.timbo.kartoffel.ui.setup.categories.CategoriesFragment
 
 class SetupActivity: AppCompatActivity() {
 
@@ -20,7 +21,7 @@ class SetupActivity: AppCompatActivity() {
 
         setContentView(R.layout.activity_setup)
         supportFragmentManager.beginTransaction()
-            .replace(R.id.setup_container_Fcv, SetupFragment())
+            .replace(R.id.setup_container_Fcv, CategoriesFragment())
             .commit()
     }
 }
