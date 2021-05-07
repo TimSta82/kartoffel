@@ -61,13 +61,15 @@ class SuggestionAdapter() : RecyclerView.Adapter<SuggestionAdapter.SelectViewHol
             val iv7 = ib.swipeFlipContainer.findViewById<ImageView>(R.id.seven_Iv)
             val rl7 = ib.swipeFlipContainer.findViewById<RelativeLayout>(R.id.relativeLayout7)
 
-            prepareItem(tv1, iv1, rl1, recipes[0], ib)
-            prepareItem(tv2, iv2, rl2, recipes[1], ib)
-            prepareItem(tv3, iv3, rl3, recipes[2], ib)
-            prepareItem(tv4, iv4, rl4, recipes[3], ib)
-            prepareItem(tv5, iv5, rl5, recipes[4], ib)
-            prepareItem(tv6, iv6, rl6, recipes[5], ib)
-            prepareItem(tv7, iv7, rl7, recipes[6], ib)
+            if (recipes.isNotEmpty()) {
+                prepareItem(tv1, iv1, rl1, recipes[0], ib)
+                prepareItem(tv2, iv2, rl2, recipes[1], ib)
+                prepareItem(tv3, iv3, rl3, recipes[2], ib)
+                prepareItem(tv4, iv4, rl4, recipes[3], ib)
+                prepareItem(tv5, iv5, rl5, recipes[4], ib)
+                prepareItem(tv6, iv6, rl6, recipes[5], ib)
+                prepareItem(tv7, iv7, rl7, recipes[6], ib)
+            }
         }
     }
 
