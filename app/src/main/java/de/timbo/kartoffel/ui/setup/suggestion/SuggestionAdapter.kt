@@ -75,7 +75,7 @@ class SuggestionAdapter() : RecyclerView.Adapter<SuggestionAdapter.SelectViewHol
 
     private fun prepareItem(tv: TextView, iv: ImageView, rl: RelativeLayout, recipe: Recipe, binding: SwipeListItemBinding) {
         tv.text = recipe.title
-        iv.load(R.drawable.ic_cheap)
+        iv.load(recipe.image)
         rl.setOnClickListener {
             binding.swipeFlipContainer.flipTheView()
             val textView = binding.swipeFlipContainer.findViewById<TextView>(R.id.swipe_list_item_back_Tv)

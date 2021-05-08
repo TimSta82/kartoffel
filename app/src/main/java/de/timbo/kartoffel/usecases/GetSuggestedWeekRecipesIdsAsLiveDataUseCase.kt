@@ -1,13 +1,18 @@
 package de.timbo.kartoffel.usecases
 
+import androidx.lifecycle.LiveData
+import androidx.lifecycle.Transformations
 import de.timbo.kartoffel.repositories.WeekSuggestionRepository
 import org.koin.core.component.inject
 
-class GetSuggestedWeekRecipesIdsUseCase : BaseUseCase() {
+class GetSuggestedWeekRecipesIdsAsLiveDataUseCase : BaseUseCase() {
 
     private val weekSuggestionRepository by inject<WeekSuggestionRepository>()
 
-    suspend fun call(): List<Int> {
-        return weekSuggestionRepository.getSuggestedWeekIds()
+    fun call(): LiveData<List<Int>> {
+        val entity = weekSuggestionRepository.getWeekSuggestionEntityAsLiveData()
+        return Transformations.map(entity) { weekSuggestionEntity ->
+            return@map weekSuggestionEntity.recipeIds
+        }
     }
 }

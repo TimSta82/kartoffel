@@ -38,8 +38,7 @@
                     android:layout_height="wrap_content"
                     android:layout_centerVertical="true"
                     android:layout_marginStart="@dimen/two_grid_unit"
-                    android:layout_toEndOf="@+id/first_Iv"
-                    android:text="lksandlk" />
+                    android:layout_toEndOf="@+id/first_Iv" />
             </RelativeLayout>
 
         </com.google.android.material.card.MaterialCardView>
@@ -69,8 +68,7 @@
                     android:layout_height="wrap_content"
                     android:layout_centerVertical="true"
                     android:layout_marginStart="@dimen/two_grid_unit"
-                    android:layout_toEndOf="@+id/second_Iv"
-                    android:text="lksandlk" />
+                    android:layout_toEndOf="@+id/second_Iv" />
             </RelativeLayout>
 
         </com.google.android.material.card.MaterialCardView>
@@ -100,8 +98,7 @@
                     android:layout_height="wrap_content"
                     android:layout_centerVertical="true"
                     android:layout_marginStart="@dimen/two_grid_unit"
-                    android:layout_toEndOf="@+id/third_Iv"
-                    android:text="lksandlk" />
+                    android:layout_toEndOf="@+id/third_Iv" />
             </RelativeLayout>
 
         </com.google.android.material.card.MaterialCardView>
@@ -131,8 +128,7 @@
                     android:layout_height="wrap_content"
                     android:layout_centerVertical="true"
                     android:layout_marginStart="@dimen/two_grid_unit"
-                    android:layout_toEndOf="@+id/fourth_Iv"
-                    android:text="lksandlk" />
+                    android:layout_toEndOf="@+id/fourth_Iv" />
             </RelativeLayout>
         </com.google.android.material.card.MaterialCardView>
 
@@ -161,8 +157,7 @@
                     android:layout_height="wrap_content"
                     android:layout_centerVertical="true"
                     android:layout_marginStart="@dimen/two_grid_unit"
-                    android:layout_toEndOf="@+id/fifth_Iv"
-                    android:text="lksandlk" />
+                    android:layout_toEndOf="@+id/fifth_Iv" />
             </RelativeLayout>
         </com.google.android.material.card.MaterialCardView>
 
@@ -191,8 +186,7 @@
                     android:layout_height="wrap_content"
                     android:layout_centerVertical="true"
                     android:layout_marginStart="@dimen/two_grid_unit"
-                    android:layout_toEndOf="@+id/six_Iv"
-                    android:text="lksandlk" />
+                    android:layout_toEndOf="@+id/six_Iv" />
 
             </RelativeLayout>
         </com.google.android.material.card.MaterialCardView>
@@ -222,8 +216,7 @@
                     android:layout_height="wrap_content"
                     android:layout_centerVertical="true"
                     android:layout_marginStart="@dimen/two_grid_unit"
-                    android:layout_toEndOf="@+id/seven_Iv"
-                    android:text="lksandlk" />
+                    android:layout_toEndOf="@+id/seven_Iv" />
             </RelativeLayout>
 
         </com.google.android.material.card.MaterialCardView>

@@ -2,19 +2,23 @@ package de.timbo.kartoffel.ui.setup
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
+import de.timbo.kartoffel.extensions.launch
+import de.timbo.kartoffel.extensions.toMcFace
 import de.timbo.kartoffel.model.Recipe
 import de.timbo.kartoffel.model.data_types.FoodCategory
 import de.timbo.kartoffel.ui.BaseViewModel
+import de.timbo.kartoffel.usecases.BaseUseCase
 import de.timbo.kartoffel.usecases.GetRecipesForCategoriesFromApiAndSaveInDbUseCase
 import de.timbo.kartoffel.usecases.GetRecipesFromDbAsLiveDataUseCase
 import de.timbo.kartoffel.usecases.SetFlagForNavigationUseCase
+import de.timbo.kartoffel.utils.DefaultRecipe
 import de.timbo.kartoffel.utils.SingleLiveEvent
 import org.koin.core.component.inject
 
 /** this viewModel is used by CategoriesFragment AND SuggestionFragment */
 class SetupViewModel : BaseViewModel() {
 
-    private val getRecipesForCategoriesUseCase by inject<GetRecipesForCategoriesFromApiAndSaveInDbUseCase>()
+    private val getRecipesForCategoriesFromApiAndSaveInDbUseCase by inject<GetRecipesForCategoriesFromApiAndSaveInDbUseCase>()
     private val setFlagForNavigationUseCase by inject<SetFlagForNavigationUseCase>()
     private val getRecipesFromDbAsLiveDataUseCase by inject<GetRecipesFromDbAsLiveDataUseCase>()
 
@@ -83,18 +87,19 @@ class SetupViewModel : BaseViewModel() {
     }
 
     fun applyCategories() {
-        _categoriesResultSuccess.callAsync()
+//        _categoriesResultSuccess.callAsync() // TODO uncomment if API limit is reached
 
-//        _isLoading.value = true
-//        launch {
-//            when (val result = getRecipesForCategoriesUseCase.call(collectCategories())) {
-//                is BaseUseCase.UseCaseResult.Success -> {
-//                    setRecipesUseCase.call(true) // TODO
-//                    _categoriesResultSuccess.callAsync()
-//                }
-//                else -> _categoriesResultFailure.callAsync()
-//            }
-//            _isLoading.postValue(false)
-//        }
+        _isLoading.value = true
+        launch {
+            when (val result = getRecipesForCategoriesFromApiAndSaveInDbUseCase.mockCall()) { // TODO remove when DB handling is working
+//            when (val result = getRecipesForCategoriesFromApiAndSaveInDbUseCase.call(collectCategories())) {
+                is BaseUseCase.UseCaseResult.Success -> {
+//                    setFlagForNavigationUseCase.call(true) // TODO
+                    _categoriesResultSuccess.callAsync()
+                }
+                else -> _categoriesResultFailure.callAsync()
+            }
+            _isLoading.postValue(false)
+        }
     }
 }

@@ -14,5 +14,5 @@ val useCaseModule = module {
     single { SaveWeekSuggestionRecipeIdsUseCase() }
     single { DiscardWeekSuggestionUseCase() }
     single { DeleteRecipesByIdsUseCase() }
-    single { GetSuggestedWeekRecipesIdsUseCase() }
+    single { GetSuggestedWeekRecipesIdsAsLiveDataUseCase() }
 }

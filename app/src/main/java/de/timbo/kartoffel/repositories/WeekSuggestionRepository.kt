@@ -1,6 +1,8 @@
 package de.timbo.kartoffel.repositories
 
+import androidx.lifecycle.LiveData
 import de.timbo.kartoffel.database.dao.WeekSuggestionDao
+import de.timbo.kartoffel.database.model.RecipeEntity
 import de.timbo.kartoffel.database.model.WeekSuggestionEntity
 import kotlinx.coroutines.launch
 import org.koin.core.component.inject
@@ -20,5 +22,9 @@ class WeekSuggestionRepository : BaseRepository() {
         }
     }
 
-    suspend fun getSuggestedWeekIds(): List<Int> = dao.getSuggestedWeekIds()
+    fun getWeekSuggestionEntityAsLiveData(): LiveData<WeekSuggestionEntity> = dao.getWeekSuggestion()
+
+    suspend fun getSuggestedWeekIds(): List<Int> {
+        return dao.getSuggestedWeekIds()
+    }
 }
