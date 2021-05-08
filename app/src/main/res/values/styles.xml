@@ -22,4 +22,9 @@
         <item name="android:textStyle">bold</item>
     </style>
 
+    <style name="Text.Normal">
+        <item name="android:textSize">@dimen/text_size_normal_fixed</item>
+        <item name="android:textStyle">bold</item>
+    </style>
+
 </resources>

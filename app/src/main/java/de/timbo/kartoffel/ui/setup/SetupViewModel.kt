@@ -91,8 +91,8 @@ class SetupViewModel : BaseViewModel() {
 
         _isLoading.value = true
         launch {
-            when (val result = getRecipesForCategoriesFromApiAndSaveInDbUseCase.mockCall()) { // TODO remove when DB handling is working
-//            when (val result = getRecipesForCategoriesFromApiAndSaveInDbUseCase.call(collectCategories())) {
+//            when (val result = getRecipesForCategoriesFromApiAndSaveInDbUseCase.mockCall()) { // TODO remove when DB handling is working
+            when (val result = getRecipesForCategoriesFromApiAndSaveInDbUseCase.call(collectCategories())) {
                 is BaseUseCase.UseCaseResult.Success -> {
 //                    setFlagForNavigationUseCase.call(true) // TODO
                     _categoriesResultSuccess.callAsync()

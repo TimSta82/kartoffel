@@ -63,22 +63,22 @@ class GetRecipesForCategoriesFromApiAndSaveInDbUseCase : BaseUseCase() {
         return successResponse
     }
 
-    suspend fun mockCall(): UseCaseResult<List<Recipe>> {
-        val list = createRecipes()
-        return handleRecipes(UseCaseResult.Success(list.first()))
-    }
-
-    private fun createRecipes(): List<List<Recipe>> {
-        return listOf(
-            listOf(
-                DefaultRecipe.recipe.copy(title = "Ozelot".toMcFace(), id = Random.nextInt(5000), image = "https://www.thispersondoesnotexist.com/"),
-                DefaultRecipe.recipe.copy(title = "Nasenbär".toMcFace(), id = Random.nextInt(5000), image = "https://www.thispersondoesnotexist.com/"),
-                DefaultRecipe.recipe.copy(title = "Egon".toMcFace(), id = Random.nextInt(5000), image = "https://www.thispersondoesnotexist.com/"),
-                DefaultRecipe.recipe.copy(title = "Grütze".toMcFace(), id = Random.nextInt(5000), image = "https://www.thispersondoesnotexist.com/"),
-                DefaultRecipe.recipe.copy(title = "Suppe".toMcFace(), id = Random.nextInt(5000), image = "https://www.thispersondoesnotexist.com/"),
-                DefaultRecipe.recipe.copy(title = "Döner".toMcFace(), id = Random.nextInt(5000), image = "https://www.thispersondoesnotexist.com/"),
-                DefaultRecipe.recipe.copy(title = "Pizza".toMcFace(), id = Random.nextInt(5000), image = "https://www.thispersondoesnotexist.com/")
-            )
-        )
-    }
+//    suspend fun mockCall(): UseCaseResult<List<Recipe>> {
+//        val list = createRecipes()
+//        return handleRecipes(UseCaseResult.Success(list.first()))
+//    }
+//
+//    private fun createRecipes(): List<List<Recipe>> {
+//        return listOf(
+//            listOf(
+//                DefaultRecipe.recipe.copy(title = "Ozelot".toMcFace(), id = Random.nextInt(5000), image = "https://www.thispersondoesnotexist.com/"),
+//                DefaultRecipe.recipe.copy(title = "Nasenbär".toMcFace(), id = Random.nextInt(5000), image = "https://www.thispersondoesnotexist.com/"),
+//                DefaultRecipe.recipe.copy(title = "Egon".toMcFace(), id = Random.nextInt(5000), image = "https://www.thispersondoesnotexist.com/"),
+//                DefaultRecipe.recipe.copy(title = "Grütze".toMcFace(), id = Random.nextInt(5000), image = "https://www.thispersondoesnotexist.com/"),
+//                DefaultRecipe.recipe.copy(title = "Suppe".toMcFace(), id = Random.nextInt(5000), image = "https://www.thispersondoesnotexist.com/"),
+//                DefaultRecipe.recipe.copy(title = "Döner".toMcFace(), id = Random.nextInt(5000), image = "https://www.thispersondoesnotexist.com/"),
+//                DefaultRecipe.recipe.copy(title = "Pizza".toMcFace(), id = Random.nextInt(5000), image = "https://www.thispersondoesnotexist.com/")
+//            )
+//        )
+//    }
 }
