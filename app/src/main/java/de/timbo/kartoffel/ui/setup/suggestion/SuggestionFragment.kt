@@ -13,7 +13,6 @@ import de.timbo.kartoffel.ui.BaseFragment
 import de.timbo.kartoffel.ui.recipes.RecipesActivity
 import de.timbo.kartoffel.ui.setup.SetupFragment
 import de.timbo.kartoffel.ui.setup.SetupViewModel
-import de.timbo.kartoffel.utils.DefaultRecipe
 import de.timbo.kartoffel.utils.Logger
 import de.timbo.kartoffel.utils.viewBinding
 
@@ -117,25 +116,9 @@ class SuggestionFragment : BaseFragment(R.layout.fragment_suggestion), CardStack
 
     override fun onCardAppeared(view: View?, position: Int) {
         Logger.debug("onCardAppeared() called")
-//        val textView = binding.selectEasyFlipContainer.findViewById<TextView>(R.id.item_name)
-//        Logger.debug("CardStackView - onCardAppeared: ($position) ${textView.text}")
     }
 
     override fun onCardDisappeared(view: View?, position: Int) {
         Logger.debug("onCardDisappeared() called")
-    }
-
-    private fun createRecipes(): List<List<Recipe>> {
-        return listOf(
-            listOf(
-                DefaultRecipe.recipe,
-                DefaultRecipe.recipe.copy(title = "Nasenbär"),
-                DefaultRecipe.recipe.copy(title = "Egon"),
-                DefaultRecipe.recipe.copy(title = "Grütze"),
-                DefaultRecipe.recipe.copy(title = "Nasenbär"),
-                DefaultRecipe.recipe.copy(title = "Egon"),
-                DefaultRecipe.recipe.copy(title = "Grütze")
-            )
-        )
     }
 }

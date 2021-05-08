@@ -12,7 +12,10 @@ val useCaseModule = module {
     single { SetFlagForNavigationUseCase() }
     single { SaveRecipesUseCase() }
     single { SaveWeekSuggestionRecipeIdsUseCase() }
+    single { GetSuggestedWeekRecipeIdsUseCase() }
+
+    /** These three useCases handle the discarding of suggested recipes. It is needed to save the recipes to get them displayed on the backside of easyFlipView */
     single { DiscardWeekSuggestionUseCase() }
-    single { DeleteRecipesByIdsUseCase() }
-    single { GetSuggestedWeekRecipesIdsAsLiveDataUseCase() }
+    single { DiscardSuggestedRecipesUseCase() }
+    single { DiscardWeekAndRecipesUseCase() }
 }

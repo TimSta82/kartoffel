@@ -9,11 +9,11 @@ import de.timbo.kartoffel.database.model.WeekSuggestionEntity
 abstract class WeekSuggestionDao : BaseDao<WeekSuggestionEntity>() {
 
     @Query("SELECT * FROM WeekSuggestionEntity")
-    abstract fun getWeekSuggestion(): LiveData<WeekSuggestionEntity>
+    abstract fun getWeekSuggestionAsLiveData(): LiveData<WeekSuggestionEntity>
 
     @Query("DELETE FROM WeekSuggestionEntity WHERE week_id =:id")
     abstract suspend fun discardWeekSuggestion(id: Int)
 
-    @Query("SELECT week_id FROM WeekSuggestionEntity")
-    abstract suspend fun getSuggestedWeekIds(): List<Int>
+    @Query("SELECT * FROM WeekSuggestionEntity")
+    abstract suspend fun getSuggestedWeekEntity(): WeekSuggestionEntity
 }
