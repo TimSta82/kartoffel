@@ -27,11 +27,13 @@ class SuggestionFragment : BaseFragment(R.layout.fragment_suggestion), CardStack
 
     private val cardStackView by lazy { binding.cardStackView.findViewById<CardStackView>(R.id.card_stack_view) }
     private val manager by lazy { CardStackLayoutManager(requireContext(), this) }
-    private val adapter = SuggestionAdapter()
+    private lateinit var adapter : SuggestionAdapter
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
+        val w = requireActivity().windowManager
+        adapter = SuggestionAdapter(w)
         Logger.debug("onViewCreated() called -> suggestion")
         setObservers()
         setClickListeners()
