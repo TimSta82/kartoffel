@@ -27,6 +27,12 @@ class SetupFragment : BaseFragment(R.layout.fragment_setup) {
     }
 
     fun flipTheView() {
-        binding.setupFlipFragmentContainer.flipTheView()
+        val flipView = binding.setupFlipFragmentContainer
+        if (flipView.isFrontSide) {
+            flipView.setFlipTypeFromRight()
+        } else {
+            flipView.setFlipTypeFromLeft()
+        }
+        flipView.flipTheView()
     }
 }

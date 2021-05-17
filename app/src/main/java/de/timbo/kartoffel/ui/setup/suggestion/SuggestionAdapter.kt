@@ -35,7 +35,6 @@ class SuggestionAdapter() : RecyclerView.Adapter<SuggestionAdapter.SelectViewHol
             val flipView = ib.swipeFlipContainer
             flipView.setToHorizontalType()
 
-
             /** Front */
             val tv1 = flipView.findViewById<TextView>(R.id.first_Tv)
             val iv1 = flipView.findViewById<ImageView>(R.id.first_Iv)
@@ -96,7 +95,7 @@ class SuggestionAdapter() : RecyclerView.Adapter<SuggestionAdapter.SelectViewHol
         rl.setOnClickListener {
             binding.swipeFlipContainer.flipTheView()
             backTitle.text = recipe.title
-            backImage.load(recipe.image){
+            backImage.load(recipe.image) {
                 crossfade(600)
                 error(R.drawable.fashion_guru)
             }

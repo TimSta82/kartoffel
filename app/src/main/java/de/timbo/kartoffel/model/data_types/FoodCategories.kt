@@ -15,7 +15,7 @@ enum class FoodCategory(
     BEEF(2, mapOf("includeIngredients" to "beef"), "Beef", R.drawable.ic_beef, false, 21),
     PASTA(3, mapOf("query" to "pasta"), "Pasta", R.drawable.ic_pasta, false, 210),
     PORK(4, mapOf("includeIngredients" to "pork"), "Pork", R.drawable.ic_pork, false, 18),
-    MYSTERY(9, mapOf("mystery" to "mystery"), "Mystery", R.drawable.ic_mystery, false, -1),
+//    MYSTERY(9, mapOf("mystery" to "mystery"), "Mystery", R.drawable.ic_mystery, false, -1),
     SOUP(5, mapOf("tags" to "soup"), "Soup", R.drawable.ic_soup, true, 315),
     VEGAN(6, mapOf("diet" to "vegan"), "Vegan", R.drawable.ic_vegan, true, -1),
     VEGETARIAN(7, mapOf("diet" to "vegetarian"), "Vegetarian", R.drawable.ic_vegetarian, true, -1),
