@@ -21,5 +21,11 @@ class RecipeRepository : BaseRepository() {
         }
     }
 
-    fun getRecipeEntitiesAsLiveData(): LiveData<List<RecipeEntity>>  = dao.getAll()
+    fun getRecipeEntitiesAsLiveData(): LiveData<List<RecipeEntity>> = dao.getAll()
+
+    fun deleteRecipesByIds(ids: List<Int>) {
+        repositoryScope.launch {
+            dao.deleteRecipesByIds(ids)
+        }
+    }
 }

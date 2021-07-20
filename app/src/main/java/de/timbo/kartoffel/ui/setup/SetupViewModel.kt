@@ -3,28 +3,31 @@ package de.timbo.kartoffel.ui.setup
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import de.timbo.kartoffel.extensions.launch
+import de.timbo.kartoffel.extensions.toMcFace
 import de.timbo.kartoffel.model.Recipe
 import de.timbo.kartoffel.model.data_types.FoodCategory
 import de.timbo.kartoffel.ui.BaseViewModel
 import de.timbo.kartoffel.usecases.BaseUseCase
-import de.timbo.kartoffel.usecases.GetRecipesUseCase
-import de.timbo.kartoffel.usecases.SetRecipesSelectedUseCase
+import de.timbo.kartoffel.usecases.GetRecipesForCategoriesFromApiAndSaveInDbUseCase
+import de.timbo.kartoffel.usecases.GetRecipesFromDbAsLiveDataUseCase
+import de.timbo.kartoffel.usecases.SetFlagForNavigationUseCase
+import de.timbo.kartoffel.utils.DefaultRecipe
 import de.timbo.kartoffel.utils.SingleLiveEvent
 import org.koin.core.component.inject
 
+/** this viewModel is used by CategoriesFragment AND SuggestionFragment */
 class SetupViewModel : BaseViewModel() {
 
-    private val getRecipesUseCase by inject<GetRecipesUseCase>()
-    private val setRecipesUseCase by inject<SetRecipesSelectedUseCase>()
+    private val getRecipesForCategoriesFromApiAndSaveInDbUseCase by inject<GetRecipesForCategoriesFromApiAndSaveInDbUseCase>()
+    private val setFlagForNavigationUseCase by inject<SetFlagForNavigationUseCase>()
+    private val getRecipesFromDbAsLiveDataUseCase by inject<GetRecipesFromDbAsLiveDataUseCase>()
 
-    private val _recipes = MutableLiveData<List<Recipe>>()
-    val recipes: LiveData<List<Recipe>> = _recipes
+    /** CATEGORIES_FRAGMENT */
+    private val _categoriesResultSuccess = SingleLiveEvent<Any>() // TODO rename precisely when flow is considered e.g. _showPreview,
+    val categoriesResultSuccess: LiveData<Any> = _categoriesResultSuccess
 
-    private val _success = SingleLiveEvent<Any>()
-    val success: LiveData<Any> = _success
-
-    private val _failure = SingleLiveEvent<Any>()
-    val failure: LiveData<Any> = _failure
+    private val _categoriesResultFailure = SingleLiveEvent<Any>()
+    val failure: LiveData<Any> = _categoriesResultFailure
 
     private val _isLoading = SingleLiveEvent<Boolean>()
     val isLoading: LiveData<Boolean> = _isLoading
@@ -49,6 +52,13 @@ class SetupViewModel : BaseViewModel() {
 
     private val _seven = MutableLiveData(FoodCategory.RANDOM)
     val seven: LiveData<FoodCategory> = _seven
+
+    /** SUGGESTION_FRAGMENT */
+
+    private var tempList = listOf<Recipe>()
+
+    //    private val _suggestedRecipes = MutableLiveData<List<List<Recipe>>>()
+    val suggestedRecipes: LiveData<List<List<Recipe>>> = getRecipesFromDbAsLiveDataUseCase.callForNestedList()
 
     fun applySelectedCategory(oldPosition: Int, selectedCategory: FoodCategory) {
         when (oldPosition) {
@@ -76,15 +86,18 @@ class SetupViewModel : BaseViewModel() {
         )
     }
 
-    fun submitSetup() {
+    fun applyCategories() {
+//        _categoriesResultSuccess.callAsync() // TODO uncomment if API limit is reached
+
         _isLoading.value = true
         launch {
-            when (val result = getRecipesUseCase.call(collectCategories())) {
+//            when (val result = getRecipesForCategoriesFromApiAndSaveInDbUseCase.mockCall()) { // TODO remove when DB handling is working
+            when (val result = getRecipesForCategoriesFromApiAndSaveInDbUseCase.call(collectCategories())) {
                 is BaseUseCase.UseCaseResult.Success -> {
-                    setRecipesUseCase.call(true)
-                    _success.callAsync()
+//                    setFlagForNavigationUseCase.call(true) // TODO
+                    _categoriesResultSuccess.callAsync()
                 }
-                else -> _failure.callAsync()
+                else -> _categoriesResultFailure.callAsync()
             }
             _isLoading.postValue(false)
         }

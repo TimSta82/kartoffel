@@ -6,10 +6,9 @@ import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import de.timbo.kartoffel.R
 
-class SetupActivity: AppCompatActivity() {
+class SetupActivity : AppCompatActivity() {
 
     companion object {
-
         fun startActivity(context: Context) {
             val intent = Intent(context, SetupActivity::class.java)
             context.startActivity(intent)

@@ -1,5 +1,6 @@
 package de.timbo.kartoffel.utils
 
+import de.timbo.kartoffel.extensions.toMcFace
 import de.timbo.kartoffel.model.Recipe
 
 object DefaultRecipe {
@@ -20,7 +21,7 @@ object DefaultRecipe {
         sourceName = "DEFAULT SOURCE NAME",
 //        extendedIngredients = randomDto.extendedIngredients, // TODO
         id = -1,
-        title = "DEFAULT TITLE",
+        title = "DEFAULT TITLE".toMcFace(),
         readyInMinutes = -1,
         sourceUrl = "DEFAULT SOURCE URL",
         image = "DEFAULT IMAGE",

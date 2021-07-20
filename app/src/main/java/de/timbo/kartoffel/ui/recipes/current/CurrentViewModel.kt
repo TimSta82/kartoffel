@@ -18,6 +18,4 @@ class CurrentViewModel : BaseViewModel() {
 
     private val _isLoading = SingleLiveEvent<Boolean>()
     val isLoading: LiveData<Boolean> = _isLoading
-
-
 }

@@ -21,4 +21,15 @@ class GetRecipesFromDbAsLiveDataUseCase : BaseUseCase() {
             return@map tempRecipes.toList()
         }
     }
+
+    fun callForNestedList(): LiveData<List<List<Recipe>>> {
+        val recipes = call()
+        return Transformations.map(recipes) { list ->
+            var tempNestedList = mutableListOf<List<Recipe>>()
+            list.let {
+                tempNestedList.add(it.take(7))
+            }
+            return@map tempNestedList
+        }
+    }
 }

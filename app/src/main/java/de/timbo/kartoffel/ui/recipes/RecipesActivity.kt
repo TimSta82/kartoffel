@@ -28,6 +28,5 @@ class RecipesActivity : AppCompatActivity() {
         navController = findNavController(R.id.nav_host_fragment)
         val bottomNavigationView = findViewById<BottomNavigationView>(R.id.main_bottom_nav_view)
         bottomNavigationView.setupWithNavController(navController)
-
     }
 }

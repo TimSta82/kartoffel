@@ -16,8 +16,14 @@ interface RecipeApiInterface {
     }
 
     @GET("/recipes/complexSearch?apiKey=$API_KEY&number=$NUMBER_SIMPLE&fillIngredients=true&addRecipeInformation=true")
-    suspend fun getRecipes(@QueryMap query: Map<String, String>, @Query ("offset") offset: Int): Response<SimpleRecipesDto>
+    suspend fun getRecipes(@QueryMap query: Map<String, String>, @Query("offset") offset: Int): Response<SimpleRecipesDto>
 
     @GET("/recipes/random?apiKey=$API_KEY&number=$NUMBER_RANDOM")
     suspend fun getRandomRecipes(@QueryMap query: Map<String, String>): Response<RandomRecipesDto>
+
+    // TODO feature commit
+
+    // TODO commit version 1_7
+
+    // TODO commit feature stuff
 }

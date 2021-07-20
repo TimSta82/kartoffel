@@ -31,7 +31,7 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun setObservers() {
-        viewModel.hasRecipes.observe(this) { hasRecipes -> navigate(hasRecipes)}
+        viewModel.hasRecipes.observe(this) { hasRecipes -> navigate(hasRecipes) }
     }
 
     private fun navigate(hasRecipes: Boolean) {

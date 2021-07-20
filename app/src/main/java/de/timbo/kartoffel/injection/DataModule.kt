@@ -14,6 +14,7 @@ val dataModule = module {
 
     single { Room.databaseBuilder(androidContext(), RecipeDb::class.java, "recipeDb").build() }
     single { get<RecipeDb>().recipeDao() }
+    single { get<RecipeDb>().weekSuggestionDao() }
 
     single { AppKeyValueStore(androidContext()) }
 }
