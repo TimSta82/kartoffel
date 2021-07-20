@@ -31,7 +31,7 @@ data class Recipe(
     val image: String?,
     val summary: String?,
     val cuisines: List<String?>?,
-    val dishTypes: List<String?>? ,
+    val dishTypes: List<String?>?,
     val diets: List<String?>?,
     val spoonacularSourceUrl: String?
 //    @SerializedName("instructions")

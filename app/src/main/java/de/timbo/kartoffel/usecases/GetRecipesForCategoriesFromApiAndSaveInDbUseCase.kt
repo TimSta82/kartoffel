@@ -1,6 +1,7 @@
 package de.timbo.kartoffel.usecases
 
 import de.timbo.kartoffel.api.ResponseEvaluator
+import de.timbo.kartoffel.extensions.toMcFace
 import de.timbo.kartoffel.model.Recipe
 import de.timbo.kartoffel.model.data_types.FoodCategory
 import de.timbo.kartoffel.repositories.RecipeRepository
@@ -11,9 +12,11 @@ import kotlinx.coroutines.coroutineScope
 import org.koin.core.component.inject
 import kotlin.random.Random
 
-class GetRecipesUseCase : BaseUseCase() {
+class GetRecipesForCategoriesFromApiAndSaveInDbUseCase : BaseUseCase() {
 
     private val recipesRepository by inject<RecipeRepository>()
+    private val saveWeekSuggestionRecipeIdsUseCase by inject<SaveWeekSuggestionRecipeIdsUseCase>()
+    private val saveRecipesUseCase by inject<SaveRecipesUseCase>()
 
     suspend fun call(selectedCategories: List<FoodCategory>): UseCaseResult<List<Recipe>> {
         val combinedRecipes = mutableListOf<Recipe>()
@@ -55,7 +58,27 @@ class GetRecipesUseCase : BaseUseCase() {
     }
 
     private fun handleRecipes(successResponse: UseCaseResult.Success<List<Recipe>>): UseCaseResult<List<Recipe>> {
-        recipesRepository.saveRecipes(successResponse.resultObject)
+        saveRecipesUseCase.call(recipes = successResponse.resultObject)
+        saveWeekSuggestionRecipeIdsUseCase.call(successResponse.resultObject.map { recipe -> recipe.id ?: -1 })
         return successResponse
     }
+
+//    suspend fun mockCall(): UseCaseResult<List<Recipe>> {
+//        val list = createRecipes()
+//        return handleRecipes(UseCaseResult.Success(list.first()))
+//    }
+//
+//    private fun createRecipes(): List<List<Recipe>> {
+//        return listOf(
+//            listOf(
+//                DefaultRecipe.recipe.copy(title = "Ozelot".toMcFace(), id = Random.nextInt(5000), image = "https://www.thispersondoesnotexist.com/"),
+//                DefaultRecipe.recipe.copy(title = "Nasenbär".toMcFace(), id = Random.nextInt(5000), image = "https://www.thispersondoesnotexist.com/"),
+//                DefaultRecipe.recipe.copy(title = "Egon".toMcFace(), id = Random.nextInt(5000), image = "https://www.thispersondoesnotexist.com/"),
+//                DefaultRecipe.recipe.copy(title = "Grütze".toMcFace(), id = Random.nextInt(5000), image = "https://www.thispersondoesnotexist.com/"),
+//                DefaultRecipe.recipe.copy(title = "Suppe".toMcFace(), id = Random.nextInt(5000), image = "https://www.thispersondoesnotexist.com/"),
+//                DefaultRecipe.recipe.copy(title = "Döner".toMcFace(), id = Random.nextInt(5000), image = "https://www.thispersondoesnotexist.com/"),
+//                DefaultRecipe.recipe.copy(title = "Pizza".toMcFace(), id = Random.nextInt(5000), image = "https://www.thispersondoesnotexist.com/")
+//            )
+//        )
+//    }
 }

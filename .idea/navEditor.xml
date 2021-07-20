@@ -20,13 +20,25 @@
                       </LayoutPositions>
                     </value>
                   </entry>
-                  <entry key="favoritesBackFragment">
+                  <entry key="favBackFragment2">
                     <value>
                       <LayoutPositions>
                         <option name="myPosition">
                           <Point>
-                            <option name="x" value="493" />
-                            <option name="y" value="-412" />
+                            <option name="x" value="550" />
+                            <option name="y" value="70" />
+                          </Point>
+                        </option>
+                      </LayoutPositions>
+                    </value>
+                  </entry>
+                  <entry key="favFrontFragment2">
+                    <value>
+                      <LayoutPositions>
+                        <option name="myPosition">
+                          <Point>
+                            <option name="x" value="537" />
+                            <option name="y" value="-243" />
                           </Point>
                         </option>
                       </LayoutPositions>
@@ -39,30 +51,6 @@
                           <Point>
                             <option name="x" value="375" />
                             <option name="y" value="-57" />
-                          </Point>
-                        </option>
-                      </LayoutPositions>
-                    </value>
-                  </entry>
-                  <entry key="favoritesFrontFragment">
-                    <value>
-                      <LayoutPositions>
-                        <option name="myPosition">
-                          <Point>
-                            <option name="x" value="295" />
-                            <option name="y" value="-414" />
-                          </Point>
-                        </option>
-                      </LayoutPositions>
-                    </value>
-                  </entry>
-                  <entry key="setupFragment">
-                    <value>
-                      <LayoutPositions>
-                        <option name="myPosition">
-                          <Point>
-                            <option name="x" value="-124" />
-                            <option name="y" value="-54" />
                           </Point>
                         </option>
                       </LayoutPositions>

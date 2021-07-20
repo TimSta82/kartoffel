@@ -6,8 +6,16 @@ import org.koin.dsl.module
 val useCaseModule = module {
 
     single { GetQuestionUseCase() }
-    single { GetRecipesUseCase() }
+    single { GetRecipesForCategoriesFromApiAndSaveInDbUseCase() }
     single { GetRecipesFromDbAsLiveDataUseCase() }
     single { HasRecipesSelectedUseCase() }
-    single { SetRecipesSelectedUseCase() }
+    single { SetFlagForNavigationUseCase() }
+    single { SaveRecipesUseCase() }
+    single { SaveWeekSuggestionRecipeIdsUseCase() }
+    single { GetSuggestedWeekRecipeIdsUseCase() }
+
+    /** These three useCases handle the discarding of suggested recipes. It is needed to save the recipes to get them displayed on the backside of easyFlipView */
+    single { DiscardWeekSuggestionUseCase() }
+    single { DiscardSuggestedRecipesUseCase() }
+    single { DiscardWeekAndRecipesUseCase() }
 }
