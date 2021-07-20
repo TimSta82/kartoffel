@@ -20,4 +20,7 @@ interface RecipeApiInterface {
 
     @GET("/recipes/random?apiKey=$API_KEY&number=$NUMBER_RANDOM")
     suspend fun getRandomRecipes(@QueryMap query: Map<String, String>): Response<RandomRecipesDto>
+
+
+    // TODO feature commit
 }
